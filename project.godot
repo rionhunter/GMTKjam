@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody",
+"class": "Character",
+"language": "GDScript",
+"path": "res://base_character/Character.gd"
+}, {
+"base": "TextEdit",
+"class": "Log",
+"language": "GDScript",
+"path": "res://Log.gd"
+} ]
 _global_script_class_icons={
-
+"Character": "",
+"Log": ""
 }
 
 [application]
@@ -23,6 +34,7 @@ config/icon="res://icon.png"
 
 PriorityMatrix="*res://priorityMatrix.gd"
 Keywords="*res://keywords.gd"
+EventHub="*res://event_hub.gd"
 
 [rendering]
 

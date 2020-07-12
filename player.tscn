@@ -24,3 +24,8 @@ radius = 0.342399
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.228881, -0.0733832 )
 width = 0.39781
 depth = 0.35683
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
