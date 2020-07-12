@@ -10,9 +10,9 @@ onready var destination : Node = $Destination
 func _ready():
 	loadFiles()
 	destination = find_node("Destination")
-	findPath()
-
-
+	#findPath() for debugging
+	EventHub.connect("new_destination", self, "findPath")
+	setDestinations()
 
 
 func loadFiles():
@@ -24,6 +24,20 @@ func loadFiles():
 	file.close()
 	print(constantData)
 	
-func findPath():
-	var new_path : = nav.get_simple_path(character.to_global(self.translation), destination.to_global(self.translation))
+	
+func findPath(new_destination := Vector3()):
+	var new_path : PoolVector3Array
+	if new_destination == Vector3():
+		print("sending character to test destination")
+		new_path = nav.get_simple_path(character.to_global(self.translation), destination.to_global(self.translation))
+	else:
+		new_path = nav.get_simple_path(character.to_global(self.translation), new_destination)
 	character.path = new_path
+	print("set the path!")
+	
+	
+func setDestinations():
+	$player.door_loc = $Door.to_global(self.translation)
+	$player.window_loc = $Window.to_global(self.translation)
+	$player.plant_loc = $Plant.to_global(self.translation)
+
