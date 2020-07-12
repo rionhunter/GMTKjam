@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/person2.png-9754f29c8843994d85a115718c58f2bc.stex"
+path="res://.import/helmet1.png-2830f2cabb45d32f5abc267283a76d91.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://person2.png"
-dest_files=[ "res://.import/person2.png-9754f29c8843994d85a115718c58f2bc.stex" ]
+source_file="res://sprites/helmet1.png"
+dest_files=[ "res://.import/helmet1.png-2830f2cabb45d32f5abc267283a76d91.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ball1.png-2c42990892004b5f798d05897e18e0f6.stex"
+path="res://.import/textPanelIconBG.png-38f9bddb9cefe0c2a79a263ba3d82acf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ball1.png"
-dest_files=[ "res://.import/ball1.png-2c42990892004b5f798d05897e18e0f6.stex" ]
+source_file="res://sprites/textPanelIconBG.png"
+dest_files=[ "res://.import/textPanelIconBG.png-38f9bddb9cefe0c2a79a263ba3d82acf.stex" ]
 
 [params]
 
