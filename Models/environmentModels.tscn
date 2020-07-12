@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Models/soilTilled.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Models/plantLeaf.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Models/rocks1.obj" type="ArrayMesh" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.412002, 0.582918, 0.428201 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="plantLeaf" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 0.0574605, -0.0360562 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+
+[node name="rocks1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203591, 0.475861, -0.14292 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="StaticBody" type="StaticBody" parent="rocks1" groups=[
+"navmesh",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="rocks1/StaticBody"]
+shape = SubResource( 1 )
+
+[node name="soilTilled" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203591, 0.475861, -0.14292 )
+mesh = ExtResource( 1 )
+material/0 = null

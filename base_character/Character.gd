@@ -27,7 +27,7 @@ func setPath(value : PoolVector3Array) -> void:
 
 func walk(distance : float) -> void:
 	var embarked = destination["embarked"]
-	embarked = true
+	destination["embarked"] = true
 	var last_position : = self.translation
 	for i in range(path.size()):
 		var distance_to_next : = last_position.distance_to(path[0])
@@ -36,8 +36,8 @@ func walk(distance : float) -> void:
 			break
 		elif distance <= 0:
 			self.transform.origin = path[0]
-			embarked = false
-			print(embarked)
+			destination["embarked"] = false
+
 			break
 		distance -= distance_to_next
 		last_position = path[0]
