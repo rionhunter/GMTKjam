@@ -17,7 +17,7 @@ const NORMAL := Color(1, 1, 1) # White
 const AGGRESSION := Color(1, 0.13, 0.13)
 const AFFECTION := Color(0.85, 0.33, 1)
 const FOOD := Color(0.44, 0.81, 0.5)
-const EXPLORATION := NORMAL # System picks this up as a keyword, but it's not a different color
+const MAINTENANCE := Color(0.53, 0.75, 0.88)
 
 var keys = {
 		"master": "!@#/", 
@@ -54,10 +54,10 @@ func set_keyword_colors() -> void:
 				color = AGGRESSION
 			Keywords.Category.AFFECTION:
 				color = AFFECTION
-			Keywords.Category.EXPLORATION:
-				color = EXPLORATION
 			Keywords.Category.FOOD:
 				color = FOOD
+			Keywords.Category.MAINTENANCE:
+				color = MAINTENANCE
 			_:
 				color = NORMAL
 		$Input.add_keyword_color(word, color)
