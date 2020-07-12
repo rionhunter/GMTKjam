@@ -1,7 +1,10 @@
 extends TextEdit
 
 signal new_input
-signal new_keywords
+
+
+func _ready():
+	grab_focus()
 
 
 func _input(_event):
@@ -17,25 +20,27 @@ func reset():
 
 
 func process_input(input : String) -> void:
-	print("Input received: ", input)
 	emit_signal("new_input", input)
-	var words = input.split(" ")
-	var input_dir = new_category_dir()
-	var keywords = []
-	for word in words:
-		if get_keyword_color(word) != Color(): # If it is a keyword
-			var category = Keywords.dir[word]
-			input_dir[category] = input_dir[category] + 1
-			keywords.append(word)
-	print("keyword counts: ", input_dir)
 	
-	# Not sure which one to use ;; might use both, depending
-	emit_signal("new_keywords", keywords)
-	emit_signal("keyword_counts", input_dir)
-
-
-func new_category_dir():
-	var dir = {}
-	for category in Keywords.Category:
-		dir[Keywords.Category[category]] = 0
-	return dir	
+	# Debugging commands
+	if input == "stats":
+		EventHub.emit_signal("stat_check")
+	if input == "queue":
+		EventHub.emit_signal("queue_check")
+	
+	input = input.replace("?", " ")
+	input = input.replace(",", " ")
+	input = input.replace(".", " ")
+	var words = input.split(" ")
+	var input_dir = {}
+	for word in words:
+		if has_keyword_color(word): # If it is a keyword
+			if !input_dir.has(word):
+				input_dir[word] = 1
+			else:
+				input_dir[word] = input_dir[word] + 1
+	
+	if !input_dir:
+		EventHub.emit_signal("meaningless_input")
+	else:
+		EventHub.emit_signal("new_keywords", input_dir)

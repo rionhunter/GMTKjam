@@ -1,0 +1,74 @@
+﻿{
+	"AGGRESSION":
+		[
+		"I keep getting these angry thoughts",
+		"why would I want to do that?",
+		"I couldn't. That would be so mean",
+		"...am I a horrible person for thinking that?",
+		],
+
+	"AFFECTION":
+		[
+		"I miss my Laura",
+		"Laura, Laura, my dear Laura. Not long now",
+		"I can't wait to fix Laura a plate of potato dumplings",
+		"man it's lonely in space",
+		],	
+
+	"EXPLORATION":
+		[
+		"but...why would I do that? Are there potatoes there?",
+		"why do I get a sudden urge to move? Huh. Ignoring that!",
+		"I need something more...some purpose...what is my life even for?",
+		"it's like my mind is trying to tell me something",
+		],
+
+	"FOOD":
+		[
+		"do I have enough food?",
+		"maybe I should check on the crops",
+		"hmmm how's my pantry looking?",
+		"man do I love potatoes",
+		],
+
+	"GREETING":
+
+		[
+		"is someone there?",
+		"I must be hearing things...",
+		"did the potato juice go bad?",
+		"hello?",
+		"that's creepy, I thought I heard someone",
+		"yep, I'm officially talking to myself. Well done, me. That's a new low.",
+		],
+
+	"MAINTENANCE":
+		[
+		"hmm, what do I need right now?",
+		"when did I last take a bio break?",
+		"when does the new Wizards of Potatoly Place come out?"
+		],
+
+	"MISC":
+		[
+		"nahhh",
+		"hmmm",
+		"why would I...",
+		"why can't I just focus?",
+		"that's an interesting thought",
+		"heh",
+		"wow okay, not that",
+		"I have the weirdest thoughts",
+		"why, brain, why?"
+		],
+
+	"HELPER_TEXT":
+		[
+		"I feel like I should be doing something",
+		"are the crops okay?",
+		"how long until I can harvest more potatoes, I wonder?",
+		"it's like, give me a sign! Or more food. Specifically potatoes.",
+		"what do I need to check in on?",
+		"I wonder if there's anything good on tv",
+		],
+}

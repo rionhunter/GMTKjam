@@ -16,6 +16,7 @@ const NORMAL := Color(1, 1, 1) # White
 # The associated color for each type of keyword
 const AGGRESSION := Color(1, 0.13, 0.13)
 const AFFECTION := Color(0.85, 0.33, 1)
+const FOOD := Color(0.44, 0.81, 0.5)
 const EXPLORATION := NORMAL # System picks this up as a keyword, but it's not a different color
 
 var keys = {
@@ -38,10 +39,12 @@ func _ready():
 		parse("!@#/:00001")
 	initialize_text_fields()
 
+
 func initialize_text_fields() -> void:
 	$Input.modulate = NORMAL
 	$Log.modulate = NORMAL
 	set_keyword_colors()
+
 
 func set_keyword_colors() -> void:
 	var color = Color()
@@ -53,6 +56,10 @@ func set_keyword_colors() -> void:
 				color = AFFECTION
 			Keywords.Category.EXPLORATION:
 				color = EXPLORATION
+			Keywords.Category.FOOD:
+				color = FOOD
+			_:
+				color = NORMAL
 		$Input.add_keyword_color(word, color)
 		$Log.add_keyword_color(word, color)
 
