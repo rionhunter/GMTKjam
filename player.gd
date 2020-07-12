@@ -1,4 +1,4 @@
-extends RigidBody
+extends Node
 
 # The player and the character are documented as two different entities
 

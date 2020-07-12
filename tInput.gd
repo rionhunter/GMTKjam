@@ -34,7 +34,6 @@ var testString = "Here's $400. !!$$:00400. don't spend it all at once"
 func _ready():
 	for i in keys.keys():
 		testString = parse(testString)
-	print(testString)
 	if currentState == gameState.dev:
 		parse("!@#/:00001")
 	initialize_text_fields()
@@ -81,11 +80,9 @@ func parse(toParse):
 func implement(attribute, amount):
 	if attribute == "money":
 		money += amount
-		print(money)
 	if attribute == "master":
 		inMaster(amount)
 
 
 func inMaster(code):
-	print("dev mode active")
 	pass

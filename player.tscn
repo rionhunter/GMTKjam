@@ -1,31 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 
-[sub_resource type="CapsuleShape" id=1]
-radius = 0.54929
-height = 0.572827
-
-[node name="player" type="RigidBody"]
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
+[node name="player" type="Node"]
 script = ExtResource( 1 )
-
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.889143, 0 )
-shape = SubResource( 1 )
-
-[node name="CSGSphere" type="CSGSphere" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60549, 0 )
-radius = 0.342399
-
-[node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.228881, -0.0733832 )
-width = 0.39781
-depth = 0.35683
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
