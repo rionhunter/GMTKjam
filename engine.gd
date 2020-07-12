@@ -10,12 +10,10 @@ onready var destination : Node = $Destination
 func _ready():
 	loadFiles()
 	destination = find_node("Destination")
-	pass # Replace with function body.
+	findPath()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
 
 func loadFiles():
 	var file = File.new()
@@ -25,8 +23,6 @@ func loadFiles():
 #		constantData.parse_json(file.get_as_text())
 	file.close()
 	print(constantData)
-	findPath()
-	pass
 	
 func findPath():
 	var new_path : = nav.get_simple_path(character.to_global(self.translation), destination.to_global(self.translation))

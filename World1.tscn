@@ -19,20 +19,21 @@ agent/max_slope = 10.4
 [sub_resource type="Environment" id=2]
 background_mode = 1
 background_color = Color( 0.243137, 0.0784314, 0.203922, 1 )
-background_energy = 0.0
-ambient_light_color = Color( 0.862745, 0.658824, 0.372549, 1 )
-ambient_light_energy = 2.93
+background_energy = 9.49
+ambient_light_color = Color( 0.960784, 0.682353, 0.666667, 1 )
+ambient_light_energy = 0.65
+ambient_light_sky_contribution = 0.0
 fog_enabled = true
 fog_color = Color( 0.639216, 0.278431, 0.25098, 1 )
 fog_sun_color = Color( 1, 0.882353, 0.607843, 1 )
-fog_depth_begin = 5.0
-fog_depth_curve = 0.287174
+fog_depth_end = 50.0
+fog_depth_curve = 0.683019
 fog_transmit_curve = 1.7411
 fog_height_enabled = true
 fog_height_min = 0.5
-fog_height_curve = 1.86607
+fog_height_curve = 10.556
 tonemap_mode = 1
-tonemap_exposure = 0.72
+tonemap_exposure = 0.63
 dof_blur_far_distance = 6.38
 dof_blur_far_transition = 54.77
 dof_blur_far_amount = 0.12
@@ -62,7 +63,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0911511, 0 )
 mesh_library = ExtResource( 3 )
 cell_size = Vector3( 1, 0.3, 1 )
 data = {
-"cells": PoolIntArray( 3, 0, 983041, 4, 0, 786433, 65530, 0, 1441792, 0, 1, 2, 4, 2, 0, -65539, 2, 1, 15, 65524, 1441792, 13, 65525, 0, 2, 65532, 65537, 1, 65534, 1, 2, 65534, 851969, 3, 65535, 851969 )
+"cells": PoolIntArray( 3, 0, 983041, 4, 0, 786433, 65530, 0, 1441792, 0, 1, 2, 4, 2, 0, -65539, 2, 1, 15, 65524, 1441792, 13, 65525, 0, 65528, 65526, 1441795, 65528, 65531, 1441795, 2, 65532, 65537, 1, 65534, 1, 2, 65534, 851969, 3, 65535, 851969 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -82,4 +83,4 @@ transform = Transform( 1, 0, 0, 0, 0.738526, 0.674225, 0, -0.674225, 0.738526, 0
 current = true
 
 [node name="Destination" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10247, 0.0407429, -1.93728 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58454, 0.0407429, -8.3394 )
