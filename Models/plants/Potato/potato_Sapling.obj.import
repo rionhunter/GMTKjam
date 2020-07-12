@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/potato_Sapling.obj-55cd8f6a15131708a0be085eecee57fa.mesh"
+
+[deps]
+
+files=[ "res://.import/potato_Sapling.obj-55cd8f6a15131708a0be085eecee57fa.mesh" ]
+
+source_file="res://Models/plants/Potato/potato_Sapling.obj"
+dest_files=[ "res://.import/potato_Sapling.obj-55cd8f6a15131708a0be085eecee57fa.mesh", "res://.import/potato_Sapling.obj-55cd8f6a15131708a0be085eecee57fa.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

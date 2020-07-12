@@ -59,15 +59,15 @@ height = 0.0957544
 depth = 150.0
 
 [node name="EnvironmentAssets" type="GridMap" parent="Navigation/NavigationMeshInstance/Ground"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0911511, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005, 0 )
 mesh_library = ExtResource( 3 )
-cell_size = Vector3( 1, 0.3, 1 )
+cell_size = Vector3( 1, 0.05, 1 )
 data = {
-"cells": PoolIntArray( 3, 0, 983041, 4, 0, 786433, 65530, 0, 1441792, 0, 1, 2, 4, 2, 0, -65539, 2, 1, 65523, 65521, -1073086461, 65528, 65521, 655363, 65533, 65521, 537526275, 15, 65524, 1441792, 13, 65525, 0, 2, 65532, 65537, 1, 65534, 1, 2, 65534, 851969, 3, 65535, 851969 )
+"cells": PoolIntArray( 3, 0, 537853953, 4, 0, 1074528257, 65530, 0, 1441792, 0, 1, 2, 65536, 1, 6, 65537, 1, 1441798, 4, 2, 0, -65539, 2, 1, 65523, 65521, -1609957373, 65528, 65521, 655363, 65533, 65521, 655363, 15, 65524, 1441792, 13, 65525, 0, 2, 65532, 65537, 1, 65534, 1, 2, 65534, 851969, 3, 65535, 851969 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, 1, 0 )
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
