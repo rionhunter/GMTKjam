@@ -68,7 +68,6 @@ var plant_loc : Vector3
 
 func _ready():
 	rng.randomize()
-	update_priorities()
 	#addToQueue("Test action")
 	
 	# Connect to input signals
@@ -86,9 +85,7 @@ func _ready():
 	var result_json = JSON.parse(text)
 	bark_dict = result_json.result
 	file.close()
-	
-	
-
+	update_priorities()
 
 func list_stats():
 	# For debugging purposes, triggered when entering "stats" in the input line
@@ -105,10 +102,12 @@ func list_queue():
 
 
 func addToQueue(task):
-	if task == null or queue.has(task):
+	if task == null or queue.has(task) or current_action == task:
 		return
 	else:
 		queue.append(task)	
+		yield(get_tree().create_timer(1), "timeout")
+		think_about("yes", task)
 		
 
 func manage_queue():
@@ -124,7 +123,8 @@ func choose_action():
 	# Called when not doing anything and nothing in queue,
 	# or when some vitals drop below a threshold
 
-	EventHub.emit_signal("new_thought", "what shall I do next...")
+	random_response("CHOOSE_ACTION")
+	yield(get_tree().create_timer(1), "timeout")
 	
 	var threshold := 5.0
 	if bladder <= threshold:
@@ -139,38 +139,36 @@ func choose_action():
 
 func next_action():
 	# Pulls the next action from the prioritized queue
-	if len(queue) == 0:
+	if len(queue) == 0: # nothing in the queue
 		choose_action()
 		return
 	if predisposed: # already doing something
 		return
-	
+
 	predisposed = true
 	current_action = queue.pop_front()
+	think_about("start")
+	
 	match current_action:
 		"farm":
-			EventHub.emit_signal("new_action", "going to farm potatoes")
 			EventHub.emit_signal("new_destination", plant_loc)
 		"eat":
-			EventHub.emit_signal("new_action", "going to eat")
 			EventHub.emit_signal("new_destination", door_loc)
 		"sleep":
-			EventHub.emit_signal("new_action", "going to sleep")
 			EventHub.emit_signal("new_destination", door_loc)
 		"potty":
-			EventHub.emit_signal("new_action", "going to restroom")
 			EventHub.emit_signal("new_destination", door_loc)
 		"entertainment":
-			EventHub.emit_signal("new_action", "going to watch tv")
 			EventHub.emit_signal("new_destination", door_loc)
 		_:
 			EventHub.emit_signal("new_action", "going to do: " + current_action)
 			EventHub.emit_signal("new_destination", door_loc)
+			print("ERROR: this action not coded")
 
-func think_about(action : String):
-	var resultingThought = (current_action + "_" + action)
+
+func think_about(action : String, subject := current_action):
+	var resultingThought = (subject + "_" + action)
 	resultingThought = resultingThought.to_upper()
-	print(resultingThought)
 	random_response(resultingThought)
 
 
@@ -178,11 +176,14 @@ func next(action : String):
 	EventHub.emit_signal("new_action", action)
 	EventHub.emit_signal("new_destination")
 
+
 func random_response(category : String):
+	if !bark_dict.has(category):
+		print("no phrases found for: ", category)
+		return
 	var responses = bark_dict[category]
 	var i = rng.randi_range(0, len(responses)-1)
 	EventHub.emit_signal("new_thought", responses[i])
-
 
 
 func check_food():
@@ -194,17 +195,16 @@ func check_food():
 	if needed
 	"""
 	if potatoes < 5:
-		addToQueue("farm") # Placeholder for now
-		EventHub.emit_signal("new_thought", "I'll get some farming in soon")
+		addToQueue("farm")
 		return
 	else:
-		EventHub.emit_signal("new_thought", "I've got enough potatoes for a while")
-	
+		think_about("no", "farm")
+		yield(get_tree().create_timer(1), "timeout")
+		
 	if hunger < 7:
 		addToQueue("eat")
-		EventHub.emit_signal("new_thought", "I could use a snack")
 	else:
-		EventHub.emit_signal("new_thought", "I'm full right now")
+		think_about("no", "eat")
 
 
 func check_stats():
@@ -218,6 +218,7 @@ func check_stats():
 	if min(hunger, min(rested, min(happiness, bladder))) <= cutoff:
 		choose_action()
 
+
 func on_destination_reached():
 	print("current action: ", current_action)
 	#EventHub.emit_signal("new_thought", "arrived", current_action)
@@ -226,33 +227,28 @@ func on_destination_reached():
 		"farm":
 			EventHub.emit_signal("animate", "work")
 		"entertainment":
+			yield(get_tree().create_timer(1), "timeout")
 			EventHub.emit_signal("in_house")
-			EventHub.emit_signal("new_action", "Watching Real Housewives of Potatoville")
 			yield(get_tree().create_timer(10), "timeout")
 			EventHub.emit_signal("outside")
 			on_action_done()
 		"potty":
 			EventHub.emit_signal("in_house")
-			EventHub.emit_signal("new_action", "visiting little astronaut's room")
 			bladder = stat_max
 			yield(get_tree().create_timer(5), "timeout")
-			EventHub.emit_signal("new_thought", "whew do I feel better")
 			EventHub.emit_signal("outside")
 			on_action_done()
 		"eat":
 			EventHub.emit_signal("in_house")
 			if potatoes <= 0:
-				EventHub.emit_signal("new_thought", "I'm all out of potatoes!")
 				addToQueue("farm")
 				predisposed = false
 			else:
-				EventHub.emit_signal("new_action", "eating potatoes")
 				hunger = max(hunger + 5, stat_max)
 				yield(get_tree().create_timer(7), "timeout")
-				EventHub.emit_signal("new_thought", "Mmmm potatoes")
 				potatoes -= 1
-				var potato_string = "current potatoes: " + str(potatoes)	
-				EventHub.emit_signal("new_action", "ate 1 potato. " + potato_string)
+				var potato_string = "Now I have " + str(potatoes) + " left."
+				EventHub.emit_signal("new_thought", "That's one potato down. " + potato_string)
 				EventHub.emit_signal("outside")
 				on_action_done()
 		"sleep":
@@ -267,9 +263,10 @@ func on_destination_reached():
 			EventHub.emit_signal("outside")
 			on_action_done()
 
+
 func on_action_done():
 	# Method to call at end of animation to replace hard coded wait times in below functions
-	print("finished that task!")
+	think_about("finish")
 	match current_action:
 		"farm":
 			potatoes +=1
@@ -278,7 +275,6 @@ func on_action_done():
 		"entertainment":
 			EventHub.emit_signal("outside")
 			happiness = min(happiness + 5, stat_max)
-			EventHub.emit_signal("new_thought", "love this episode")
 			yield(get_tree().create_timer(2), "timeout")
 	current_action = "none"
 	predisposed = false
@@ -338,34 +334,25 @@ func _on_Timer_timeout():
 	to the queue.
 	"""
 	var decrement = .05 # Arbitrary for now
-	var time_between_thoughts := 0.5
 	
 	hunger = max(hunger - decrement*5, 0)
 	if hunger == 0:
-		EventHub.emit_signal("new_thought", "hunger")
-		yield(get_tree().create_timer(time_between_thoughts), "timeout")
+		random_response("HUNGER")
 		addToQueue("eat")
-		EventHub.emit_signal("new_thought", "I'll eat soon, promise, body")
 		
 	bladder = max(bladder - decrement*7, 0)
 	if bladder == 0:
-		EventHub.emit_signal("new_thought", "Sweet potato lord do I need to pee")
-		yield(get_tree().create_timer(time_between_thoughts), "timeout")
+		random_response("BLADDER")
 		addToQueue("potty")
-		EventHub.emit_signal("new_thought", "Going to visit the restroom soon")
 		
 	rested = max(rested - decrement*3, 0)
 	if rested == 0:
-		EventHub.emit_signal("new_thought", "I'm liable to pass out right now")
-		yield(get_tree().create_timer(time_between_thoughts), "timeout")
+		random_response("ENERGY")
 		addToQueue("sleep")
-		EventHub.emit_signal("new_thought", "I'll definitely sleep soon")
 		
 	happiness = max(happiness - decrement, 0)
 	if happiness == 0:
-		EventHub.emit_signal("new_thought", "I just feel so down")
-		yield(get_tree().create_timer(time_between_thoughts), "timeout")
+		random_response("DEPRESSION")
 		addToQueue("entertainment")
-		EventHub.emit_signal("new_thought", "need to plan for some downtime...")
 		
 	update_priorities()

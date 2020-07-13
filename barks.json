@@ -36,6 +36,12 @@
 		"heh. What would a good space-themed pickup line be?",
 		],
 
+	"CHOOSE_ACTION":
+		[
+		"what shall I do next...",
+		"hmmmm...",
+		],
+
 	"EXPLORATION":
 		[
 		"but...why would I do that? Are there potatoes there?",
@@ -94,39 +100,24 @@
 		"I wonder if there's anything good on tv",
 		],
 
-	"TV_SHOWS":
-		[
-		"The Real Housewives of Potatoville",
-		"Pink Mirror",
-		"Upmoon Abbey",
-		"Daily Potato",
-		"a blank screen",
-		"The Moon's Next Top Potato Model",
-		"the depths of human depravity",
-		"my life's essence slowly draining away",
-		"a mukbang",
-		"Survivor",
-		"The Moon's Got Talent",
-		"Married at First Text",
-		"Baby Mom",
-		],
-		
-	"TV_COMMENTARY":
-		[
-		"love this episode",
-		"did I nod off there?",
-		"wish they showed more potatoes",
-		"why am I watching this?",
-		"I cannot believe people got paid money to make that",
-		"better the first time",
-		"I'll never get sick of that show",
-		"heh",
-		"lawl",
-		"maybe I should have pursued acting...",
-		"I hear they're filming an episode on the next moon over",
-		],
-		
-    "FARM_FINISHED":
+    "FARM_YES":
+        [
+        "I'll get some farming in soon",
+        "gotta check on those crops in a bit"
+        ],
+
+    "FARM_NO":
+        [
+        "I've got enough potatoes for a while",
+        "already got pockets full of potatoes"
+        ],
+
+    "FARM_START":
+        [
+        "Time to check on my lovelies"
+        ],	
+	
+    "FARM_FINISH":
         [
         "got potato",
         "another day, another potato."
@@ -138,17 +129,66 @@
         "Yes hello my little pretties. It's almost time."
         ],
     
+	"ENTERTAINMENT_START":
+		[
+		"Going to catch up with the Real Housewives of Potatoville",
+		"Going to watch the new Pink Mirror",
+		"Haven't watched Upmoon Abbey in forever",
+		"Gonna catch this week's Daily Potato",
+		"The Moon's Next Top Potato Model is on soon",
+		"I'm gonna rewatch Survivor now",
+		"The Moon's Got Talent always cheers me up",
+		"Going to watch Married at First Text",
+		"Baby Mom is a trash show, but I can't stop watching",
+        	"Hope there's something good on",
+		],
+
+
     "ENTERTAINMENT_ARRIVE":
         [
-        "Hope there's something good on",
-        "Dang just missed the start of the next episode."
+        "Dang just missed the start",
+	"Do I have too much screen time?",
+	"It's nice to just veg out sometimes",
+	"Can't shake the feeling that I should be doing something else...",
+	"Yes! It just started."
         ],
+
+    "ENTERTAINMENT_YES":
+	[
+	"I'll catch some TV soon"
+	],
+
+    	"ENTERTAINMENT_FINISH":
+		[
+		"love that episode",
+		"did I nod off there?",
+		"wish they showed more potatoes",
+		"why am I watching this?",
+		"I cannot believe people got paid money to make that",
+		"better the first time",
+		"I'll never get sick of that show",
+		"heh. I feel a bit better now",
+		"lawl they just crack me up",
+		"maybe I should have pursued acting...",
+		"I hear they're filming an episode on the next moon over",
+		],
         
+    "POTTY_START":
+        [
+        "Gotta pee gotta pee gotta pee",
+        "Going to visit the little astronaut's room"
+        ],
+
     "POTTY_ARRIVE":
         [
         "oH maaan I nearly didn't make it that time",
         "I wish we didn't need to pee as often as we do."
         ],
+
+	"POTTY_FINISH":
+	[
+	"WHEW do I feel better"
+	],
         
     "TV_WATCHING":
         [
@@ -157,7 +197,7 @@
         "Oh hey that's the actor from that other thing..."
         ],
     
-    "TV_FINISHED":
+    "TV_FINISH":
         [
         "That episode was whack",
         "I wish we got more channels here...",
@@ -168,12 +208,73 @@
     "HUNGER":
         [
         "I am ravenous..",
-        "I need to eat pretty bad."
+        "I need to eat pretty bad.",
+	"a potato sounds good right about now"
         ],
-        
+
+    "BLADDER":
+        [
+        "Sweet potato lord do I need to pee"
+        ],
+
+        "ENERGY":
+        [
+        "I'm liable to pass out right now"
+        ],
+
+    "DEPRESSION":
+        [
+        "I just feel so down"
+        ],
+
+ "EAT_YES":
+	[
+	"I'll grab a snack in a bit",
+	"I will eat you soon, potato"
+	],
+
+     "EAT_NO":
+	[
+	"I'm full right now",
+	"I'm not hungry"
+	],
+
+    "EAT_START":
+        [
+        "I'll go eat something now"
+        ],
+
     "EAT_ARRIVE":
         [
         "I'm so hungry I could eat a whole potato.",
         "I remember a time when I got to eat lots of delicious things that were other things that weren't this."
+        ],
+
+    "EAT_FINISH":
+        [
+        "Mmmm potatoes"
+        ],
+
+	"EAT_ERROR":
+	[
+	"I'm all out of potatoes!",
+	"no more potatoes... :("
+	],
+
+    "SLEEP_START":
+        [
+        "time for a nap!"
+        ],
+
+    "SLEEP_ARRIVE":
+        [
+        "so sleepy"
+        ],
+
+    "SLEEP_FINISH":
+        [
+        "sleep is basically the best thing ever",
+	"nice and rested and ready to start the day!"
         ]
+
 }
