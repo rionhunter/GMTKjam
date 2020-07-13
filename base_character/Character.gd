@@ -1,7 +1,7 @@
 extends KinematicBody
 class_name Character
 
-var speed = 1.0
+var speed = 1.5
 
 
 # TODO: get details on 3D environment to inform movement
