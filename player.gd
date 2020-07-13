@@ -36,6 +36,7 @@ var weather : float # Should have weather condition be controled elsewhere and s
 
 ## Character inventory
 # We as the player don't see this or interact with it directly, so it doesn't need to be too flash
+var inventory = {"food": {"potatoes" : 1, "carrots" : 0}}
 var potatoes := 1
 
 ### Queue
@@ -85,6 +86,8 @@ func _ready():
 	var result_json = JSON.parse(text)
 	bark_dict = result_json.result
 	file.close()
+	
+	
 
 
 func list_stats():
@@ -164,11 +167,22 @@ func next_action():
 			EventHub.emit_signal("new_action", "going to do: " + current_action)
 			EventHub.emit_signal("new_destination", door_loc)
 
+func think_about(action : String):
+	var resultingThought = (current_action + "_" + action)
+	resultingThought = resultingThought.to_upper()
+	print(resultingThought)
+	random_response(resultingThought)
+
+
+func next(action : String):
+	EventHub.emit_signal("new_action", action)
+	EventHub.emit_signal("new_destination")
 
 func random_response(category : String):
 	var responses = bark_dict[category]
 	var i = rng.randi_range(0, len(responses)-1)
 	EventHub.emit_signal("new_thought", responses[i])
+
 
 
 func check_food():
@@ -206,9 +220,10 @@ func check_stats():
 
 func on_destination_reached():
 	print("current action: ", current_action)
+	#EventHub.emit_signal("new_thought", "arrived", current_action)
+	think_about("arrive")
 	match current_action:
 		"farm":
-			EventHub.emit_signal("new_thought", "the potatoes are looking good!")
 			EventHub.emit_signal("animate", "work")
 		"entertainment":
 			EventHub.emit_signal("in_house")
@@ -327,7 +342,7 @@ func _on_Timer_timeout():
 	
 	hunger = max(hunger - decrement*5, 0)
 	if hunger == 0:
-		EventHub.emit_signal("new_thought", "I am starving right now")
+		EventHub.emit_signal("new_thought", "hunger")
 		yield(get_tree().create_timer(time_between_thoughts), "timeout")
 		addToQueue("eat")
 		EventHub.emit_signal("new_thought", "I'll eat soon, promise, body")

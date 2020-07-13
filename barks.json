@@ -15,6 +15,27 @@
 		"man it's lonely in space",
 		],	
 
+	"BACKGROUND":
+		[
+		"do I really love potatoes, or just the fact that they're the only thing that reminds me of home?",
+		"I dreamed of living in space, but now...I guess it's just not what I expected",
+		"it's so lonely out here",
+		"why don't they make space suits in more colors?",
+		"I want to stop being alone, but I can't stand the thought of being around people. How does that make sense?",
+		"go to space, they said, be a pioneer, they said...",
+		"my hometown was so proud when the news came out. Why aren't I?",
+		"is teal a blue or a green?",
+		"maybe I just can't be happy",
+		"do potatoes just taste better in space?",
+		"I miss hats",
+		"sometimes it feels like my life is just a meaningless sequence of looping events",
+		"am I going space mad? I can't be, if I'm thinking that...can I?",
+		"*ah ah ah ah staying alive, staying alive!* - such a classic",
+		"at least I don't have to worry about the earth pandemic...beyond all my friends and family being there...",
+		"how much wood *could* a woodchuck chuck?",
+		"heh. What would a good space-themed pickup line be?",
+		],
+
 	"EXPLORATION":
 		[
 		"but...why would I do that? Are there potatoes there?",
@@ -72,4 +93,87 @@
 		"what do I need to check in on?",
 		"I wonder if there's anything good on tv",
 		],
+
+	"TV_SHOWS":
+		[
+		"The Real Housewives of Potatoville",
+		"Pink Mirror",
+		"Upmoon Abbey",
+		"Daily Potato",
+		"a blank screen",
+		"The Moon's Next Top Potato Model",
+		"the depths of human depravity",
+		"my life's essence slowly draining away",
+		"a mukbang",
+		"Survivor",
+		"The Moon's Got Talent",
+		"Married at First Text",
+		"Baby Mom",
+		],
+		
+	"TV_COMMENTARY":
+		[
+		"love this episode",
+		"did I nod off there?",
+		"wish they showed more potatoes",
+		"why am I watching this?",
+		"I cannot believe people got paid money to make that",
+		"better the first time",
+		"I'll never get sick of that show",
+		"heh",
+		"lawl",
+		"maybe I should have pursued acting...",
+		"I hear they're filming an episode on the next moon over",
+		],
+		
+    "FARM_FINISHED":
+        [
+        "got potato",
+        "another day, another potato."
+        ],
+        
+    "FARM_ARRIVE":
+        [
+        "Nice to see the plants are doing well",
+        "Yes hello my little pretties. It's almost time."
+        ],
+    
+    "ENTERTAINMENT_ARRIVE":
+        [
+        "Hope there's something good on",
+        "Dang just missed the start of the next episode."
+        ],
+        
+    "POTTY_ARRIVE":
+        [
+        "oH maaan I nearly didn't make it that time",
+        "I wish we didn't need to pee as often as we do."
+        ],
+        
+    "TV_WATCHING":
+        [
+        "Ergh. This character drives me up the wall.",
+        "Wow this episode is super intense.",
+        "Oh hey that's the actor from that other thing..."
+        ],
+    
+    "TV_FINISHED":
+        [
+        "That episode was whack",
+        "I wish we got more channels here...",
+        "Another rerun.",
+        "It's weird this planet has an alien version of Sienfield."
+        ],
+    
+    "HUNGER":
+        [
+        "I am ravenous..",
+        "I need to eat pretty bad."
+        ],
+        
+    "EAT_ARRIVE":
+        [
+        "I'm so hungry I could eat a whole potato.",
+        "I remember a time when I got to eat lots of delicious things that were other things that weren't this."
+        ]
 }

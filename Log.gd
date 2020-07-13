@@ -29,3 +29,4 @@ func _on_Player_new_action(action: String):
 	set_cursor()
 	insert_text_at_cursor("[[*" + action + "*]]" + "\n")
 
+
