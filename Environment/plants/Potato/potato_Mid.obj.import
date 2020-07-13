@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/potato_Mid.obj-dbc42e082f5b3f35a2c6b3b03c4dd963.mesh"
+
+[deps]
+
+files=[ "res://.import/potato_Mid.obj-dbc42e082f5b3f35a2c6b3b03c4dd963.mesh" ]
+
+source_file="res://Environment/plants/Potato/potato_Mid.obj"
+dest_files=[ "res://.import/potato_Mid.obj-dbc42e082f5b3f35a2c6b3b03c4dd963.mesh", "res://.import/potato_Mid.obj-dbc42e082f5b3f35a2c6b3b03c4dd963.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

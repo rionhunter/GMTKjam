@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/plantLeaf.obj-33a777d1fa140f1001035fc9d8512666.mesh"
+
+[deps]
+
+files=[ "res://.import/plantLeaf.obj-33a777d1fa140f1001035fc9d8512666.mesh" ]
+
+source_file="res://Environment/plantLeaf.obj"
+dest_files=[ "res://.import/plantLeaf.obj-33a777d1fa140f1001035fc9d8512666.mesh", "res://.import/plantLeaf.obj-33a777d1fa140f1001035fc9d8512666.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
