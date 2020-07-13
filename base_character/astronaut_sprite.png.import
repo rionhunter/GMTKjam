@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/sprite.png-5f8d07b0bf1c4bbe7a2069e1cf321440.s3tc.stex"
-path.etc2="res://.import/sprite.png-5f8d07b0bf1c4bbe7a2069e1cf321440.etc2.stex"
+path.s3tc="res://.import/astronaut_sprite.png-e30a7bc338cfa5133bb11fd5fe8273ac.s3tc.stex"
+path.etc2="res://.import/astronaut_sprite.png-e30a7bc338cfa5133bb11fd5fe8273ac.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://base_character/sprite.png"
-dest_files=[ "res://.import/sprite.png-5f8d07b0bf1c4bbe7a2069e1cf321440.s3tc.stex", "res://.import/sprite.png-5f8d07b0bf1c4bbe7a2069e1cf321440.etc2.stex" ]
+source_file="res://base_character/astronaut_sprite.png"
+dest_files=[ "res://.import/astronaut_sprite.png-e30a7bc338cfa5133bb11fd5fe8273ac.s3tc.stex", "res://.import/astronaut_sprite.png-e30a7bc338cfa5133bb11fd5fe8273ac.etc2.stex" ]
 
 [params]
 

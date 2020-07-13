@@ -46,6 +46,7 @@ var potatoes := 1
 
 var queue := []
 var predisposed := false
+var current_action := "none"
 
 ### Responses
 # Keeping track of flavor text to print to screen when 
@@ -55,6 +56,13 @@ var bark_dict := {}
 var rng = RandomNumberGenerator.new()
 var failed_attempts := 0
 const max_attempts_before_response := 3
+
+### Destinations
+# Spatial nodes that show where the player should go to complete an action
+
+var door_loc : Vector3
+var window_loc : Vector3
+var plant_loc : Vector3
 
 
 func _ready():
@@ -67,6 +75,8 @@ func _ready():
 	EventHub.connect("meaningless_input", self, "_on_meaningless_input")
 	EventHub.connect("stat_check", self, "list_stats")
 	EventHub.connect("queue_check", self, "list_queue")
+	EventHub.connect("reached_destination", self, "on_destination_reached")
+	EventHub.connect("animation_done", self, "on_action_done")
 	
 	# Open and parse response lines
 	var file = File.new()
@@ -133,23 +143,26 @@ func next_action():
 		return
 	
 	predisposed = true
-	var action = queue.pop_front()
-	match action:
+	current_action = queue.pop_front()
+	match current_action:
 		"farm":
-			farm()
+			EventHub.emit_signal("new_action", "going to farm potatoes")
+			EventHub.emit_signal("new_destination", plant_loc)
 		"eat":
-			eat()
+			EventHub.emit_signal("new_action", "going to eat")
+			EventHub.emit_signal("new_destination", door_loc)
 		"sleep":
-			sleep()
+			EventHub.emit_signal("new_action", "going to sleep")
+			EventHub.emit_signal("new_destination", door_loc)
 		"potty":
-			potty_break()
+			EventHub.emit_signal("new_action", "going to restroom")
+			EventHub.emit_signal("new_destination", door_loc)
 		"entertainment":
-			entertainment()
+			EventHub.emit_signal("new_action", "going to watch tv")
+			EventHub.emit_signal("new_destination", door_loc)
 		_:
-			EventHub.emit_signal("new_action", "doing unspecified action: " + action)
-			yield(get_tree().create_timer(5), "timeout")
-			EventHub.emit_signal("new_thought", "done with that")
-			predisposed = false
+			EventHub.emit_signal("new_action", "going to do: " + current_action)
+			EventHub.emit_signal("new_destination", door_loc)
 
 
 func random_response(category : String):
@@ -166,8 +179,19 @@ func check_food():
 	TODO: implement checking logic, using signals with farm and pantry 
 	if needed
 	"""
-	addToQueue("farm") # Placeholder for now
-	EventHub.emit_signal("new_thought", "I'll get some farming in soon")
+	if potatoes < 5:
+		addToQueue("farm") # Placeholder for now
+		EventHub.emit_signal("new_thought", "I'll get some farming in soon")
+		return
+	else:
+		EventHub.emit_signal("new_thought", "I've got enough potatoes for a while")
+	
+	if hunger < 7:
+		addToQueue("eat")
+		EventHub.emit_signal("new_thought", "I could use a snack")
+	else:
+		EventHub.emit_signal("new_thought", "I'm full right now")
+
 
 func check_stats():
 	"""
@@ -180,64 +204,68 @@ func check_stats():
 	if min(hunger, min(rested, min(happiness, bladder))) <= cutoff:
 		choose_action()
 
+func on_destination_reached():
+	print("current action: ", current_action)
+	match current_action:
+		"farm":
+			EventHub.emit_signal("new_thought", "the potatoes are looking good!")
+			EventHub.emit_signal("animate", "work")
+		"entertainment":
+			EventHub.emit_signal("in_house")
+			EventHub.emit_signal("new_action", "Watching Real Housewives of Potatoville")
+			yield(get_tree().create_timer(10), "timeout")
+			EventHub.emit_signal("outside")
+			on_action_done()
+		"potty":
+			EventHub.emit_signal("in_house")
+			EventHub.emit_signal("new_action", "visiting little astronaut's room")
+			bladder = stat_max
+			yield(get_tree().create_timer(5), "timeout")
+			EventHub.emit_signal("new_thought", "whew do I feel better")
+			EventHub.emit_signal("outside")
+			on_action_done()
+		"eat":
+			EventHub.emit_signal("in_house")
+			if potatoes <= 0:
+				EventHub.emit_signal("new_thought", "I'm all out of potatoes!")
+				addToQueue("farm")
+				predisposed = false
+			else:
+				EventHub.emit_signal("new_action", "eating potatoes")
+				hunger = max(hunger + 5, stat_max)
+				yield(get_tree().create_timer(7), "timeout")
+				EventHub.emit_signal("new_thought", "Mmmm potatoes")
+				potatoes -= 1
+				var potato_string = "current potatoes: " + str(potatoes)	
+				EventHub.emit_signal("new_action", "ate 1 potato. " + potato_string)
+				EventHub.emit_signal("outside")
+				on_action_done()
+		"sleep":
+			EventHub.emit_signal("in_house")
+			yield(get_tree().create_timer(10), "timeout")
+			EventHub.emit_signal("outside")
+			on_action_done()
+		_:
+			print("action not specified; I'll just sit in the house for a bit")
+			EventHub.emit_signal("in_house")
+			yield(get_tree().create_timer(5), "timeout")
+			EventHub.emit_signal("outside")
+			on_action_done()
+
 func on_action_done():
 	# Method to call at end of animation to replace hard coded wait times in below functions
-	predisposed = false
-
-
-func farm():
-	# TODO: Get farm status then select the next farming task, use signals instead of creating timer
-	EventHub.emit_signal("new_action", "farming potatoes")
-	yield(get_tree().create_timer(5), "timeout")
-	EventHub.emit_signal("new_thought", "the potatoes are looking good!")
-	
-	potatoes +=1
-	var potato_string = "current potatoes: " + str(potatoes)
-	EventHub.emit_signal("new_action", "received 1 potato. " + potato_string)
-	predisposed = false
-
-
-func eat():
-	if potatoes <= 0:
-		EventHub.emit_signal("new_thought", "I'm all out of potatoes!")
-		farm()
-		return
-	
-	EventHub.emit_signal("new_action", "eating potatoes")
-	hunger = max(hunger + 5, stat_max)
-	yield(get_tree().create_timer(5), "timeout")
-	EventHub.emit_signal("new_thought", "Mmmm potatoes")
-	potatoes -= 1
-	var potato_string = "current potatoes: " + str(potatoes)	
-	EventHub.emit_signal("new_action", "ate 1 potato. " + potato_string)
-	predisposed = false
-
-
-func potty_break():
-	# TODO: set location for bathroom, etc
-	EventHub.emit_signal("new_action", "visiting little astronaut's room")
-	bladder = stat_max
-	yield(get_tree().create_timer(5), "timeout")
-	EventHub.emit_signal("new_thought", "whew do I feel better")
-	predisposed = false
-
-	
-func sleep():
-	# TODO: set location for bed, etc
-	EventHub.emit_signal("new_action", "sleeping (but dreaming of potatoes)")
-	rested = stat_max
-	yield(get_tree().create_timer(10), "timeout")
-	rested = stat_max
-	EventHub.emit_signal("new_thought", "all rested!")
-	predisposed = false
-
-
-func entertainment():
-	# TODO: location and action
-	EventHub.emit_signal("new_action", "Watching Real Housewives of Potatoville")
-	happiness = min(happiness + 5, stat_max)
-	yield(get_tree().create_timer(10), "timeout")
-	EventHub.emit_signal("new_thought", "love this episode")
+	print("finished that task!")
+	match current_action:
+		"farm":
+			potatoes +=1
+			var potato_string = "current potatoes: " + str(potatoes)
+			EventHub.emit_signal("new_action", "received 1 potato. " + potato_string)
+		"entertainment":
+			EventHub.emit_signal("outside")
+			happiness = min(happiness + 5, stat_max)
+			EventHub.emit_signal("new_thought", "love this episode")
+			yield(get_tree().create_timer(2), "timeout")
+	current_action = "none"
 	predisposed = false
 
 
