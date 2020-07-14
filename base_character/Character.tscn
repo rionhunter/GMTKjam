@@ -291,13 +291,13 @@ shape = SubResource( 1 )
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.0119602, 0.596193, -0.0296451 )
 cast_shadow = 0
-offset = Vector2( 0, 6.90883 )
+offset = Vector2( 0, 2.20978 )
 billboard = 1
 shaded = true
 texture = ExtResource( 2 )
 vframes = 7
 hframes = 11
-frame = 26
+frame = 28
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "helm_idle_right_down"

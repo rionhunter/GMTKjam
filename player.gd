@@ -57,6 +57,7 @@ var bark_dict := {}
 var rng = RandomNumberGenerator.new()
 var failed_attempts := 0
 const max_attempts_before_response := 3
+const buffer_time := 1.0
 
 ### Destinations
 # Spatial nodes that show where the player should go to complete an action
@@ -106,7 +107,7 @@ func addToQueue(task):
 		return
 	else:
 		queue.append(task)	
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(buffer_time), "timeout")
 		think_about("yes", task)
 		
 
@@ -124,7 +125,7 @@ func choose_action():
 	# or when some vitals drop below a threshold
 
 	random_response("CHOOSE_ACTION")
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(buffer_time), "timeout")
 	
 	var threshold := 5.0
 	if bladder <= threshold:
@@ -199,7 +200,7 @@ func check_food():
 		return
 	else:
 		think_about("no", "farm")
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(buffer_time), "timeout")
 		
 	if hunger < 7:
 		addToQueue("eat")
@@ -227,15 +228,15 @@ func on_destination_reached():
 		"farm":
 			EventHub.emit_signal("animate", "work")
 		"entertainment":
-			yield(get_tree().create_timer(1), "timeout")
+			yield(get_tree().create_timer(buffer_time), "timeout")
 			EventHub.emit_signal("in_house")
-			yield(get_tree().create_timer(10), "timeout")
+			yield(get_tree().create_timer(buffer_time*10), "timeout")
 			EventHub.emit_signal("outside")
 			on_action_done()
 		"potty":
 			EventHub.emit_signal("in_house")
 			bladder = stat_max
-			yield(get_tree().create_timer(5), "timeout")
+			yield(get_tree().create_timer(buffer_time*5), "timeout")
 			EventHub.emit_signal("outside")
 			on_action_done()
 		"eat":
@@ -245,7 +246,7 @@ func on_destination_reached():
 				predisposed = false
 			else:
 				hunger = max(hunger + 5, stat_max)
-				yield(get_tree().create_timer(7), "timeout")
+				yield(get_tree().create_timer(buffer_time*7), "timeout")
 				potatoes -= 1
 				var potato_string = "Now I have " + str(potatoes) + " left."
 				EventHub.emit_signal("new_thought", "That's one potato down. " + potato_string)
@@ -253,13 +254,13 @@ func on_destination_reached():
 				on_action_done()
 		"sleep":
 			EventHub.emit_signal("in_house")
-			yield(get_tree().create_timer(10), "timeout")
+			yield(get_tree().create_timer(buffer_time*10), "timeout")
 			EventHub.emit_signal("outside")
 			on_action_done()
 		_:
 			print("action not specified; I'll just sit in the house for a bit")
 			EventHub.emit_signal("in_house")
-			yield(get_tree().create_timer(5), "timeout")
+			yield(get_tree().create_timer(buffer_time*5), "timeout")
 			EventHub.emit_signal("outside")
 			on_action_done()
 
@@ -275,7 +276,7 @@ func on_action_done():
 		"entertainment":
 			EventHub.emit_signal("outside")
 			happiness = min(happiness + 5, stat_max)
-			yield(get_tree().create_timer(2), "timeout")
+			yield(get_tree().create_timer(buffer_time*2), "timeout")
 	current_action = "none"
 	predisposed = false
 
@@ -290,7 +291,6 @@ func update_priorities():
 
 func _on_new_keywords(input: Dictionary) -> void:
 	failed_attempts = 0
-	var time_between_thoughts := 0.5
 	for word in input:
 		match Keywords.dir[word]:
 			Keywords.Category.AGGRESSION:
@@ -301,13 +301,13 @@ func _on_new_keywords(input: Dictionary) -> void:
 				random_response("EXPLORATION")
 			Keywords.Category.FOOD:
 				random_response("FOOD")
-				yield(get_tree().create_timer(time_between_thoughts), "timeout")
+				yield(get_tree().create_timer(buffer_time), "timeout")
 				check_food()
 			Keywords.Category.GREETING:
 				random_response("GREETING")
 			Keywords.Category.MAINTENANCE:
 				random_response("MAINTENANCE")
-				yield(get_tree().create_timer(time_between_thoughts), "timeout")
+				yield(get_tree().create_timer(buffer_time), "timeout")
 				
 			_: #input is a keyword in keywords.gd, but no response defined in match statement
 				random_response("MISC")
@@ -327,7 +327,7 @@ func _on_meaningless_input():
 		random_response("MISC")
 
 
-func _on_Timer_timeout():
+func _on_StatusTimer_timeout():
 	"""
 	When the timer node times out (autostarts on load), decrement applicable stats 
 	and reassess priorities. If any stats get too low, add the corresponding action
@@ -356,3 +356,7 @@ func _on_Timer_timeout():
 		addToQueue("entertainment")
 		
 	update_priorities()
+
+
+func _on_RandThoughtTimer_timeout():
+	random_response("BACKGROUND")
