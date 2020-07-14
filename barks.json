@@ -100,6 +100,16 @@
 		"I wonder if there's anything good on tv",
 		],
 
+	"WHY":
+		[
+		"heh, I mean, why does anyone do anything?",
+		"why do I keep questioning myself?",
+		"I guess the real question is: why aren't I happy?",
+		"why do I always watch trash shows?",
+		"because deep down I guess I hate myself?",
+		"why not?"
+		],
+
     "FARM_YES":
         [
         "I'll get some farming in soon",
@@ -119,8 +129,9 @@
 	
     "FARM_FINISH":
         [
-        "got potato",
-        "another day, another potato."
+        "always nice to see anothing living thing every now and again",
+        "another day, another potato.",
+	"I'm such a proud plant parent"
         ],
         
     "FARM_ARRIVE":

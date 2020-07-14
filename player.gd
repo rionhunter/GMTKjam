@@ -78,6 +78,7 @@ func _ready():
 	EventHub.connect("queue_check", self, "list_queue")
 	EventHub.connect("reached_destination", self, "on_destination_reached")
 	EventHub.connect("animation_done", self, "on_action_done")
+	EventHub.connect("harvested", self, "on_harvest")
 	
 	# Open and parse response lines
 	var file = File.new()
@@ -100,6 +101,14 @@ func list_stats():
 func list_queue():
 	# For debugging purposes, triggered when entering "queue" in the input line
 	print("queue: ", queue)
+
+
+func on_harvest(num : int):
+	var message = str(num) + " more potatoes to stuff in my pockets"
+	EventHub.emit_signal("new_thought", message)
+	potatoes += num
+	message = "Now I've got " + str(potatoes) + " total"
+	EventHub.emit_signal("new_thought", message)
 
 
 func addToQueue(task):
@@ -270,9 +279,7 @@ func on_action_done():
 	think_about("finish")
 	match current_action:
 		"farm":
-			potatoes +=1
-			var potato_string = "current potatoes: " + str(potatoes)
-			EventHub.emit_signal("new_action", "received 1 potato. " + potato_string)
+			EventHub.emit_signal("tended_plants")
 		"entertainment":
 			EventHub.emit_signal("outside")
 			happiness = min(happiness + 5, stat_max)
@@ -308,7 +315,10 @@ func _on_new_keywords(input: Dictionary) -> void:
 			Keywords.Category.MAINTENANCE:
 				random_response("MAINTENANCE")
 				yield(get_tree().create_timer(buffer_time), "timeout")
-				
+			Keywords.Category.SUDO:
+				queue.clear()
+			Keywords.Category.WHY:
+				random_response("WHY")
 			_: #input is a keyword in keywords.gd, but no response defined in match statement
 				random_response("MISC")
 

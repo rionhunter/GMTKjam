@@ -8,6 +8,7 @@ var speed = 1.5
 var destination  = {"location": Spatial, "determined" : false, "embarked" : false}
 var path : = PoolVector3Array() setget setPath
 var x_direction := 1.0 # start out facing right
+var z_direction := 1.0
 
 
 
@@ -40,6 +41,7 @@ func walk(distance : float) -> void:
 		var distance_to_next : = last_position.distance_to(path[0])
 		if distance <= distance_to_next and distance >= 0:
 			x_direction = self.transform.origin.direction_to(path[0]).x
+			z_direction = self.transform.origin.direction_to(path[0]).z
 			self.transform.origin = last_position.linear_interpolate(path[0], distance / distance_to_next)
 			break
 		elif distance == 0: # currently does not get called
@@ -61,7 +63,21 @@ func walk(distance : float) -> void:
 func animate_sprite(animation : String):
 	match animation:
 		"walk":
-			if x_direction >= 0:
+			# First two are most straightforward cases
+			if x_direction >= 0 and z_direction >= 0:
+				$Sprite3D.flip_h = false
+				$AnimationPlayer.play("helm_walk_right_down")
+			elif x_direction < 0 and z_direction < 0:
+				$Sprite3D.flip_h = false
+				$AnimationPlayer.play("helm_walk_left_up")
+			elif abs(z_direction) > x_direction:
+				$Sprite3D.flip_h = true
+				if z_direction > 0:
+					$AnimationPlayer.play("helm_walk_right_down")
+				else:
+					$AnimationPlayer.play("helm_walk_left_up")
+			elif x_direction > 0:
+				$Sprite3D.flip_h = false
 				$AnimationPlayer.play("helm_walk_right_down")
 			else:
 				$AnimationPlayer.play("helm_walk_left_up")

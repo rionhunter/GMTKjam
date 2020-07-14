@@ -22,6 +22,8 @@ func _on_Input_new_input(input : String):
 
 
 func _on_Player_new_thought(thought : String):
+	if queue.has(thought):
+		return
 	queue.append(thought)
 
 
