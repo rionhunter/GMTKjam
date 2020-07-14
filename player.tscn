@@ -6,11 +6,11 @@
 script = ExtResource( 1 )
 
 [node name="StatusTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 7.0
 autostart = true
 
 [node name="RandThoughtTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 60.0
 autostart = true
 [connection signal="timeout" from="StatusTimer" to="." method="_on_StatusTimer_timeout"]
 [connection signal="timeout" from="RandThoughtTimer" to="." method="_on_RandThoughtTimer_timeout"]
