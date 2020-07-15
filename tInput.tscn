@@ -65,4 +65,9 @@ position = Vector2( -6, 590.08 )
 z_index = 1
 texture = ExtResource( 6 )
 flip_h = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
 [connection signal="new_input" from="Input" to="Log" method="_on_Input_new_input"]
+[connection signal="timeout" from="Timer" to="Log" method="_on_Timer_timeout"]

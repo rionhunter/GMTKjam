@@ -9,7 +9,9 @@ enum Category {
 	GREETING,
 	MAINTENANCE,
 	RESOURCES,
-	SOCIAL
+	SOCIAL,
+	SUDO,
+	WHY
 	}
 
 """ 
@@ -32,6 +34,9 @@ var dir = {
 	"hit": Category.AGGRESSION,
 	"kill": Category.AGGRESSION,
 	"fight": Category.AGGRESSION,
+	"hate": Category.AGGRESSION,
+	"annoy": Category.AGGRESSION,
+	"annoying": Category.AGGRESSION,
 	
 	"outside": Category.EXPLORATION,
 	"left": Category.EXPLORATION,
@@ -71,5 +76,10 @@ var dir = {
 	"break": Category.MAINTENANCE,
 	"need": Category.MAINTENANCE,
 	"needs": Category.MAINTENANCE,
-	"check": Category.MAINTENANCE
+	"check": Category.MAINTENANCE,
+	
+	"sudo": Category.SUDO,
+	"debug": Category.SUDO,
+	
+	"why": Category.WHY
 	}

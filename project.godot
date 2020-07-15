@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Log",
 "language": "GDScript",
 "path": "res://Log.gd"
+}, {
+"base": "Node",
+"class": "Plant",
+"language": "GDScript",
+"path": "res://Environment/plant.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
-"Log": ""
+"Log": "",
+"Plant": ""
 }
 
 [application]
@@ -34,6 +40,11 @@ config/icon="res://icon.png"
 
 Keywords="*res://keywords.gd"
 EventHub="*res://event_hub.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
 
 [rendering]
 

@@ -17,3 +17,9 @@ signal animate
 # From character
 signal reached_destination
 signal animation_done
+signal tended_plants
+
+# From plants
+signal harvested  # TODO: rethink how signals should look with more than one plant type
+signal watered 
+signal sowed
