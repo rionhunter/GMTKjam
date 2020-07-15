@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/viaduct1.obj-d1b4368ad93c5565a9dd6b6f217f920b.mesh"
+
+[deps]
+
+files=[ "res://.import/viaduct1.obj-d1b4368ad93c5565a9dd6b6f217f920b.mesh" ]
+
+source_file="res://Environment/Base/viaduct1.obj"
+dest_files=[ "res://.import/viaduct1.obj-d1b4368ad93c5565a9dd6b6f217f920b.mesh", "res://.import/viaduct1.obj-d1b4368ad93c5565a9dd6b6f217f920b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

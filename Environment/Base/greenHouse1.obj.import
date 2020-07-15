@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/greenHouse1.obj-0d8f6ba47c77e9f2994b40e8e47299e0.mesh"
+
+[deps]
+
+files=[ "res://.import/greenHouse1.obj-0d8f6ba47c77e9f2994b40e8e47299e0.mesh" ]
+
+source_file="res://Environment/Base/greenHouse1.obj"
+dest_files=[ "res://.import/greenHouse1.obj-0d8f6ba47c77e9f2994b40e8e47299e0.mesh", "res://.import/greenHouse1.obj-0d8f6ba47c77e9f2994b40e8e47299e0.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

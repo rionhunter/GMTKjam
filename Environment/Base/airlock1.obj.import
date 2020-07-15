@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/airlock1.obj-a2ebaec06e88c5e7efee9a8f1c321d07.mesh"
+
+[deps]
+
+files=[ "res://.import/airlock1.obj-a2ebaec06e88c5e7efee9a8f1c321d07.mesh" ]
+
+source_file="res://Environment/Base/airlock1.obj"
+dest_files=[ "res://.import/airlock1.obj-a2ebaec06e88c5e7efee9a8f1c321d07.mesh", "res://.import/airlock1.obj-a2ebaec06e88c5e7efee9a8f1c321d07.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
