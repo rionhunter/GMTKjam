@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Environment/Base/stairs.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Environment/Base/airlock1.obj" type="ArrayMesh" id=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 1.22778, 0.768567, 1.569 )
+extents = Vector3( 0.394776, 0.897875, 0.451942 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.20492, 0.496818, 1.51671 )
 
 [node name="airlock1" type="MeshInstance"]
 transform = Transform( 3.69552e-07, 0, -1, 0, 1, 0, 1, 0, 3.69552e-07, 1.3171, -0.152528, -8.74414 )
@@ -22,6 +25,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978035, 2.64722, 8.34465e-07
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.727995, 0 )
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78663, 2.09383, 0.818131 )
 shape = SubResource( 1 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8834, 2.12391, -0.871083 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.971892, 0 )
+shape = SubResource( 2 )
