@@ -40,6 +40,18 @@
 		[
 		"what shall I do next...",
 		"hmmmm...",
+		"what should I do next? hmmm",
+		"what's next?",
+		"So many things to do, so little time.",
+		"hm hmm hmmmmmm...",
+		"done with that. Now what?",
+		"hrmmm",
+		"Got a lot of stuff to get done",
+		"Should I watch more TV or be productive?",
+		"Am I feeling motivated to do work?",
+		"What do I feel like doing?",
+		"What should I do?",
+		"Next up..."
 		],
 
 	"EXPLORATION":
@@ -158,22 +170,24 @@
     "ENTERTAINMENT_ARRIVE":
         [
         "Dang just missed the start",
-	"Do I have too much screen time?",
+	"Oh.. what show is this?",
 	"It's nice to just veg out sometimes",
-	"Can't shake the feeling that I should be doing something else...",
+	"Aha, no. Definitely going watch a different channel.",
 	"Yes! It just started."
         ],
 
     "ENTERTAINMENT_YES":
 	[
-	"I'll catch some TV soon"
+	"I'll catch some TV soon",
+	"I should see if there's anything worth watching on TV.",
+	"There's usually something good on TV around now.",
+	"Going to take a break soon and watch some TV."
 	],
 
     	"ENTERTAINMENT_FINISH":
 		[
 		"loved that episode",
 		"did I nod off there?",
-		"wish they showed more potatoes",
 		"why am I watching this?",
 		"I cannot believe people got paid money to make that",
 		"better the first time",
@@ -182,6 +196,14 @@
 		"lawl they just crack me up",
 		"maybe I should have pursued acting...",
 		"I hear they're filming an episode on the next moon over",
+		"Oh THAT'S the actor's name. I knew I knew them from somewhere.",
+		"I would have written that episode a little differently if I was directing.",
+		"Woah, they really botched the end of that one.",
+		"I was so hooked right up until the end.",
+		"The music that plays over the end credits is the best part about this show.",
+		"That episode was incredible.",
+		"Well that was an average episode..",
+		"What a cliffhanger. Now I can't wait until the next one."
 		],
         
     "POTTY_START":
@@ -198,7 +220,13 @@
 
 	"POTTY_FINISH":
 	[
-	"WHEW do I feel better"
+	"WHEW do I feel better",
+	"Washing my hands properly...",
+	"Glad there's ventilation in there.",
+	"Glad nobody else has to smell that.",
+	"If ghosts are real, they've definitely seen me... going to the little astronaut's room...",
+	"It's good they made this suit so accessible.",
+	"Thankfully there's no toilet-paper inventory mechanic otherwise things here would get messy"
 	],
         
     "TV_WATCHING":
@@ -274,18 +302,32 @@
 
     "SLEEP_START":
         [
-        "time for a nap!"
+		"time for a nap!",
+		"I'm starting to get pretty tired",
+		"I'm so tired I'm getting clumsy.",
+		"I'm going to stop yawning and start snoring.",
+		"Time for me to hit the hay.",
+		"I'm about ready for some shut-eye.",
+		"I am tired.",
+		"I'm not heaps tired, but I'm a little bored so I'm going to go lie down."
         ],
 
     "SLEEP_ARRIVE":
         [
-        "so sleepy"
+		"so sleepy",
+		"I always forget to make my bed",
+		"Man today went quick.",
+		"Nights here are freezing.",
+		"I think the day cycle is slightly faster here...",
+		"These PJs are so comfy."
         ],
 
     "SLEEP_FINISH":
         [
-        "sleep is basically the best thing ever",
-	"nice and rested and ready to start the day!"
+		"sleep is basically the best thing ever",
+	"nice and rested and ready to start the day!",
+	"Could do with a nice hot cup of coffee..",
+	"Mornings smell weird on this planet.."
         ]
 
 }
