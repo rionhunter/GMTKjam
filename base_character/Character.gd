@@ -14,6 +14,8 @@ var house_pos : Vector3
 var door_pos : Vector3
 var final_destination : Vector3
 var is_inside := false
+enum State {NORMAL, AIRLOCK}
+var state = State.NORMAL
 
 
 func _ready():
@@ -22,6 +24,9 @@ func _ready():
 	EventHub.connect("door", self, "_on_door_triggered")
 	EventHub.connect("animate", self, "_on_player_animation")
 	EventHub.connect("new_destination", self, "_on_new_destination")
+	EventHub.connect("inside_lock_triggered", self, "_on_inside_lock_triggered")
+	EventHub.connect("outside_lock_triggered", self, "_on_outside_lock_triggered")
+	EventHub.connect("airlock_finished", self, "_on_airlock_finished")
 	animate_sprite("idle")
 	
 func _process(delta):
@@ -33,8 +38,8 @@ func setPath(value : PoolVector3Array) -> void:
 	path = value
 	if value.size() == 0:
 		return
-	var final_destination = path[len(path) - 1]
-	if final_destination.distance_to(door_pos) < 0.1 and is_inside:
+	var last_point = path[len(path) - 1]
+	if last_point.distance_to(door_pos) < 0.1 and is_inside:
 		EventHub.emit_signal("reached_destination")
 		return
 	destination["determined"] = true
@@ -61,12 +66,20 @@ func walk(distance : float) -> void:
 		last_position = path[0]
 		path.remove(0)
 		if path.size() == 0: #bandaid solution; may be better way of doing
-			animate_sprite("idle")
-			destination["embarked"] = false
-			destination["determined"] = false
-			EventHub.emit_signal("reached_destination")
+			_on_end_of_path()
 			break
-		
+
+func _on_end_of_path():
+	animate_sprite("idle")
+	destination["embarked"] = false
+	destination["determined"] = false
+	if state == State.AIRLOCK:
+		EventHub.emit_signal("start_airlock")
+		state = State.NORMAL
+	else:
+		EventHub.emit_signal("reached_destination")
+
+
 func animate_sprite(animation : String):
 	if is_inside:
 		_inside_animation(animation)
@@ -127,54 +140,50 @@ func _outside_animation(animation : String):
 				$AnimationPlayer.play("helm_idle_right_down")
 			else:
 				$AnimationPlayer.play("helm_idle_left_up")
-			
+
 
 func _on_new_destination(location : Vector3):
-	# TODO: allow for in-base destinations
 	final_destination = location
 	if final_destination.distance_to(translation) < 0.1:
 		EventHub.emit_signal("reached_destination")
-	elif is_inside:
-		is_inside = false
-		use_door()
 	else:
 		EventHub.emit_signal("path_requested", location)
 	
+
+func _wait_for_airlock(wait_loc : Vector3):
+	EventHub.emit_signal("path_requested", wait_loc)
+	state = State.AIRLOCK
+	print("waiting for airlock")
 	
-func _on_door_triggered():
-	if $DoorCreak.playing:
+	
+func _on_airlock_finished():
+	EventHub.emit_signal("path_requested", final_destination)
+	print("airlock done")
+
+
+func _on_outside_lock_triggered(wait_loc : Vector3):
+	print("x direction: ", x_direction)
+	# going left/outside
+	if x_direction < 0: 
+		print("no need for airlock!")
 		return
-	print("inside is ", is_inside)
-	if is_inside:
-		is_inside = false
-	else:
+		
+	# going right/inside from the outside: wait for airlock first
+	print("character going inside and needs airlock first")
+	_wait_for_airlock(wait_loc)
+
+func _on_inside_lock_triggered(wait_loc : Vector3):
+	print("x direction: ", x_direction)
+	# going right/inside: already had airlock event
+	if x_direction > 0: 
+		print("no need for airlock!")
 		is_inside = true
-	use_door()
-
-
-func use_door():
-	$Sprite3D.visible = false
-	if path:
-		path = []
-		if is_inside:
-			translation = final_destination
-			#EventHub.emit_signal("new_destination", final_destination)
-		# TODO: make it so character can navigate inside the ship
-
-	if !is_inside:
-		translation = door_pos
-		EventHub.emit_signal("path_requested", final_destination)
-	$DoorCreak.play()
-	animate_sprite("idle")
-	print("inside is ", is_inside)
-
-
-func _on_DoorCreak_finished():
-	$Sprite3D.visible = true
-	if is_inside:
-		print("reached indoors destination")
-		EventHub.emit_signal("reached_destination")
-	print("inside is ", is_inside)
+		return
+		
+	# going left/outside from the inside: wait for airlock first and put on helmet
+	print("character going outside and needs airlock first")
+	_wait_for_airlock(wait_loc) 
+	is_inside = false
 
 
 func _on_player_animation(anim : String):

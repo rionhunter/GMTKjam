@@ -163,7 +163,7 @@ func next_action():
 		"farm":
 			EventHub.emit_signal("new_destination", plant_loc)
 		"eat":
-			EventHub.emit_signal("new_destination", window_loc)
+			EventHub.emit_signal("new_destination", door_loc)
 		"sleep":
 			EventHub.emit_signal("new_destination", window_loc)
 		"potty":

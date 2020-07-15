@@ -90,7 +90,7 @@ environment = SubResource( 3 )
 [node name="player" parent="." instance=ExtResource( 4 )]
 
 [node name="Destination" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56456, 0.0407439, 0.625692 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2.9, -12 )
 
 [node name="Plant" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17045, 0.142325, 2.38361 )
@@ -110,4 +110,4 @@ current = true
 fov = 82.9
 
 [node name="PotatoPlant" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6167, 0.29294, -15.1528 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52734, 0.29294, 1.7971 )

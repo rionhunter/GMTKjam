@@ -16,6 +16,7 @@ signal animate
 
 # From character
 signal reached_destination
+signal start_airlock
 signal animation_done
 signal tended_plants
 signal path_requested
@@ -26,4 +27,6 @@ signal watered
 signal sowed
 
 # From building
-signal door
+signal outside_lock_triggered
+signal inside_lock_triggered
+signal airlock_finished
