@@ -18,8 +18,12 @@ signal animate
 signal reached_destination
 signal animation_done
 signal tended_plants
+signal path_requested
 
 # From plants
 signal harvested  # TODO: rethink how signals should look with more than one plant type
 signal watered 
 signal sowed
+
+# From building
+signal door

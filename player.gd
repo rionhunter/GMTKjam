@@ -26,7 +26,7 @@ var stat_max := 10.0
 # Lower level stats (higher == better) 
 # (all stats have same stat_max but could change faster or slower or have more
 # weighting in the main stats above)
-var hunger := 10.0
+var hunger := 2.0
 var health := 10.0
 var happiness := 7.0
 var disposition := 8.0
@@ -163,16 +163,16 @@ func next_action():
 		"farm":
 			EventHub.emit_signal("new_destination", plant_loc)
 		"eat":
-			EventHub.emit_signal("new_destination", door_loc)
+			EventHub.emit_signal("new_destination", window_loc)
 		"sleep":
-			EventHub.emit_signal("new_destination", door_loc)
+			EventHub.emit_signal("new_destination", window_loc)
 		"potty":
-			EventHub.emit_signal("new_destination", door_loc)
+			EventHub.emit_signal("new_destination", window_loc)
 		"entertainment":
-			EventHub.emit_signal("new_destination", door_loc)
+			EventHub.emit_signal("new_destination", window_loc)
 		_:
 			EventHub.emit_signal("new_action", "going to do: " + current_action)
-			EventHub.emit_signal("new_destination", door_loc)
+			EventHub.emit_signal("new_destination", window_loc)
 			print("ERROR: this action not coded")
 
 
@@ -238,39 +238,25 @@ func on_destination_reached():
 			EventHub.emit_signal("animate", "work")
 		"entertainment":
 			yield(get_tree().create_timer(buffer_time), "timeout")
-			EventHub.emit_signal("in_house")
 			yield(get_tree().create_timer(buffer_time*10), "timeout")
-			EventHub.emit_signal("outside")
 			on_action_done()
 		"potty":
-			EventHub.emit_signal("in_house")
 			bladder = stat_max
 			yield(get_tree().create_timer(buffer_time*5), "timeout")
-			EventHub.emit_signal("outside")
 			on_action_done()
 		"eat":
-			EventHub.emit_signal("in_house")
 			if potatoes <= 0:
 				addToQueue("farm")
 				predisposed = false
 			else:
 				hunger = max(hunger + 5, stat_max)
-				yield(get_tree().create_timer(buffer_time*7), "timeout")
-				potatoes -= 1
-				var potato_string = "Now I have " + str(potatoes) + " left."
-				EventHub.emit_signal("new_thought", "That's one potato down. " + potato_string)
-				EventHub.emit_signal("outside")
-				on_action_done()
+				EventHub.emit_signal("animate", "eat")
 		"sleep":
-			EventHub.emit_signal("in_house")
 			yield(get_tree().create_timer(buffer_time*10), "timeout")
-			EventHub.emit_signal("outside")
 			on_action_done()
 		_:
 			print("action not specified; I'll just sit in the house for a bit")
-			EventHub.emit_signal("in_house")
 			yield(get_tree().create_timer(buffer_time*5), "timeout")
-			EventHub.emit_signal("outside")
 			on_action_done()
 
 
@@ -281,9 +267,12 @@ func on_action_done():
 		"farm":
 			EventHub.emit_signal("tended_plants")
 		"entertainment":
-			EventHub.emit_signal("outside")
 			happiness = min(happiness + 5, stat_max)
 			yield(get_tree().create_timer(buffer_time*2), "timeout")
+		"eat":
+			potatoes -= 1
+			var potato_string = "Now I have " + str(potatoes) + " left."
+			EventHub.emit_signal("new_thought", "That's one potato down. " + potato_string)
 	current_action = "none"
 	predisposed = false
 

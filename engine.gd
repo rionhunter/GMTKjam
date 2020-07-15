@@ -11,7 +11,7 @@ func _ready():
 	loadFiles()
 	destination = find_node("Destination")
 	#findPath() for debugging
-	EventHub.connect("new_destination", self, "findPath")
+	EventHub.connect("path_requested", self, "findPath")
 	setDestinations()
 
 
@@ -40,4 +40,7 @@ func setDestinations():
 	$player.door_loc = $Door.to_global(self.translation)
 	$player.window_loc = $Window.to_global(self.translation)
 	$player.plant_loc = $Plant.to_global(self.translation)
+	#$Character.house_pos = $Window.translation
+	$Character.house_pos = $Window.to_global(self.translation)
+	$Character.door_pos = $Door.to_global(self.translation)
 

@@ -90,7 +90,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17045, 0.142325, 2.38361 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.71809, 9.53674e-07, -11.2871 )
 
 [node name="Window" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.54835, 3.60322, -6.87629 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52701, 1.65732, -9.39539 )
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.27858, 0.134125, -2.31291 )

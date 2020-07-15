@@ -1,11 +1,42 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://base_character/Character.gd" type="Script" id=1]
 [ext_resource path="res://base_character/astronaut_sprite.png" type="Texture" id=2]
+[ext_resource path="res://base_character/door.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.51765
 height = 0.35355
+
+[sub_resource type="Animation" id=11]
+resource_name = "eat"
+length = 3.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.5, 0.8, 1.1, 1.4, 1.7, 2, 2.3, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 66, 67, 68, 69, 70, 71, 67, 66, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_animation_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "helm_idle_left_up"
@@ -193,6 +224,9 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
+[sub_resource type="Animation" id=12]
+resource_name = "tv"
+
 [sub_resource type="Animation" id=8]
 resource_name = "walk_left_up"
 length = 1.5
@@ -297,16 +331,22 @@ shaded = true
 texture = ExtResource( 2 )
 vframes = 7
 hframes = 11
-frame = 33
+frame = 66
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "helm_idle_right_down"
+anims/eat = SubResource( 11 )
 anims/helm_idle_left_up = SubResource( 2 )
 anims/helm_idle_right_down = SubResource( 3 )
 anims/helm_walk_left_up = SubResource( 4 )
 anims/helm_walk_right_down = SubResource( 5 )
 anims/idle_left_up = SubResource( 6 )
 anims/idle_right_down = SubResource( 7 )
+anims/tv = SubResource( 12 )
 anims/walk_left_up = SubResource( 8 )
 anims/walk_right_down = SubResource( 9 )
 anims/work = SubResource( 10 )
+
+[node name="DoorCreak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="finished" from="DoorCreak" to="." method="_on_DoorCreak_finished"]
