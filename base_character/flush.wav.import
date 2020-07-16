@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flush.wav-7311d23da6be047b17e8b74a4981d697.sample"
+
+[deps]
+
+source_file="res://base_character/flush.wav"
+dest_files=[ "res://.import/flush.wav-7311d23da6be047b17e8b74a4981d697.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

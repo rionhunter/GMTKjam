@@ -10,10 +10,8 @@ var destination  = {"location": Spatial, "determined" : false, "embarked" : fals
 var path : = PoolVector3Array() setget setPath
 var x_direction := 1.0 # start out facing right
 var z_direction := 1.0
-var house_pos : Vector3
-var door_pos : Vector3
 var final_destination : Vector3
-var is_inside := false
+var is_inside := true
 enum State {NORMAL, AIRLOCK}
 var state = State.NORMAL
 
@@ -21,7 +19,6 @@ var state = State.NORMAL
 func _ready():
 #	destination["location"] = find_node("Desination")
 #	destination["embarked"] = true
-	EventHub.connect("door", self, "_on_door_triggered")
 	EventHub.connect("animate", self, "_on_player_animation")
 	EventHub.connect("new_destination", self, "_on_new_destination")
 	EventHub.connect("inside_lock_triggered", self, "_on_inside_lock_triggered")
@@ -39,9 +36,9 @@ func setPath(value : PoolVector3Array) -> void:
 	if value.size() == 0:
 		return
 	var last_point = path[len(path) - 1]
-	if last_point.distance_to(door_pos) < 0.1 and is_inside:
-		EventHub.emit_signal("reached_destination")
-		return
+#	if last_point.distance_to(door_pos) < 0.1 and is_inside:
+#		EventHub.emit_signal("reached_destination")
+#		return
 	destination["determined"] = true
 
 func walk(distance : float) -> void:
@@ -107,6 +104,7 @@ func _inside_animation(animation : String):
 				$AnimationPlayer.play("walk_right_down")
 			else:
 				$AnimationPlayer.play("walk_left_up")
+				$AnimationPlayer.play("walk_left_up")
 		"idle":
 			if x_direction >= 0:
 				$AnimationPlayer.play("idle_right_down")
@@ -153,35 +151,27 @@ func _on_new_destination(location : Vector3):
 func _wait_for_airlock(wait_loc : Vector3):
 	EventHub.emit_signal("path_requested", wait_loc)
 	state = State.AIRLOCK
-	print("waiting for airlock")
 	
 	
 func _on_airlock_finished():
 	EventHub.emit_signal("path_requested", final_destination)
-	print("airlock done")
 
 
 func _on_outside_lock_triggered(wait_loc : Vector3):
-	print("x direction: ", x_direction)
 	# going left/outside
 	if x_direction < 0: 
-		print("no need for airlock!")
 		return
 		
 	# going right/inside from the outside: wait for airlock first
-	print("character going inside and needs airlock first")
 	_wait_for_airlock(wait_loc)
 
 func _on_inside_lock_triggered(wait_loc : Vector3):
-	print("x direction: ", x_direction)
 	# going right/inside: already had airlock event
 	if x_direction > 0: 
-		print("no need for airlock!")
 		is_inside = true
 		return
 		
 	# going left/outside from the inside: wait for airlock first and put on helmet
-	print("character going outside and needs airlock first")
 	_wait_for_airlock(wait_loc) 
 	is_inside = false
 
@@ -189,6 +179,9 @@ func _on_inside_lock_triggered(wait_loc : Vector3):
 func _on_player_animation(anim : String):
 	if $AnimationPlayer.has_animation(anim):
 		$AnimationPlayer.play(anim)
+		if anim == "entertainment":
+			EventHub.emit_signal("watching_started")
+			x_direction = 1
 	else:
 		print("I don't have the animation ", anim)
 		print("I'm just going to do this")
@@ -196,6 +189,8 @@ func _on_player_animation(anim : String):
 
 
 func _on_animation_finished():
+	if $AnimationPlayer.current_animation == "entertainment":
+		EventHub.emit_signal("watching_finished")
 	animate_sprite("idle")
 	EventHub.emit_signal("animation_done")
 	

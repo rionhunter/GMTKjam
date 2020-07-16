@@ -20,6 +20,8 @@ signal start_airlock
 signal animation_done
 signal tended_plants
 signal path_requested
+signal watching_started
+signal watching_finished
 
 # From plants
 signal harvested  # TODO: rethink how signals should look with more than one plant type

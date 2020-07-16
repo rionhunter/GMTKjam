@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Plant",
 "language": "GDScript",
 "path": "res://Environment/plant.gd"
+}, {
+"base": "MeshInstance",
+"class": "Viaduct",
+"language": "GDScript",
+"path": "res://Environment/Base/viaduct1.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
 "Log": "",
-"Plant": ""
+"Plant": "",
+"Viaduct": ""
 }
 
 [application]

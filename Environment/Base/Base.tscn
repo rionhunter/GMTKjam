@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Environment/Base/viaduct1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://baseModules1.tscn" type="PackedScene" id=2]
@@ -7,6 +7,14 @@
 [ext_resource path="res://Environment/Base/airlock1.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Skin" id=1]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Viaduct
+
+
+func _ready():
+	needs_airlock = false
+"
 
 [node name="Base" type="Spatial"]
 transform = Transform( 1.53527, 0, 0, 0, 1.53527, 0, 0, 0, 1.53527, -0.0243216, 0, 1.85323 )
@@ -28,3 +36,4 @@ skin = SubResource( 1 )
 
 [node name="viaduct2" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.637349, 0, -5.57188e-08, 0, 0.637349, 0, 5.57188e-08, 0, -0.637349, 10.9067, 0.166806, -8.90292 )
+script = SubResource( 2 )
