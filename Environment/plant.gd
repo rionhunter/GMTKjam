@@ -84,5 +84,4 @@ func _update_mesh():
 	# Plant starts out as soil mesh instance, then gets updated according to 
 	# the current state (if there's a model for the current state)
 	if plant_model.has(state):
-		print("replacing plant model due to state change")
 		$MeshInstance.replace_by(plant_model[state])

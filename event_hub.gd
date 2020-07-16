@@ -16,10 +16,19 @@ signal animate
 
 # From character
 signal reached_destination
+signal start_airlock
 signal animation_done
 signal tended_plants
+signal path_requested
+signal watching_started
+signal watching_finished
 
 # From plants
 signal harvested  # TODO: rethink how signals should look with more than one plant type
 signal watered 
 signal sowed
+
+# From building
+signal outside_lock_triggered
+signal inside_lock_triggered
+signal airlock_finished

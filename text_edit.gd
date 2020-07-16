@@ -20,6 +20,9 @@ func reset():
 
 
 func process_input(input : String) -> void:
+	if input == "":
+		return
+	
 	emit_signal("new_input", input)
 	
 	# Debugging commands

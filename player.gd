@@ -26,7 +26,7 @@ var stat_max := 10.0
 # Lower level stats (higher == better) 
 # (all stats have same stat_max but could change faster or slower or have more
 # weighting in the main stats above)
-var hunger := 10.0
+var hunger := 4.0
 var health := 10.0
 var happiness := 7.0
 var disposition := 8.0
@@ -62,9 +62,7 @@ const buffer_time := 1.0
 ### Destinations
 # Spatial nodes that show where the player should go to complete an action
 
-var door_loc : Vector3
-var window_loc : Vector3
-var plant_loc : Vector3
+var destinations := {}
 
 
 func _ready():
@@ -88,6 +86,11 @@ func _ready():
 	bark_dict = result_json.result
 	file.close()
 	update_priorities()
+
+
+func set_destinations(dests_in : Dictionary):
+	destinations = dests_in
+
 
 func list_stats():
 	# For debugging purposes, triggered when entering "stats" in the input line
@@ -159,21 +162,13 @@ func next_action():
 	current_action = queue.pop_front()
 	think_about("start")
 	
-	match current_action:
-		"farm":
-			EventHub.emit_signal("new_destination", plant_loc)
-		"eat":
-			EventHub.emit_signal("new_destination", door_loc)
-		"sleep":
-			EventHub.emit_signal("new_destination", door_loc)
-		"potty":
-			EventHub.emit_signal("new_destination", door_loc)
-		"entertainment":
-			EventHub.emit_signal("new_destination", door_loc)
-		_:
-			EventHub.emit_signal("new_action", "going to do: " + current_action)
-			EventHub.emit_signal("new_destination", door_loc)
-			print("ERROR: this action not coded")
+	if !destinations.has(current_action):
+		print("ERROR: this action not coded")
+		EventHub.emit_signal("new_action", "going to do: " + current_action)
+		EventHub.emit_signal("new_destination", destinations["eat"])
+
+	else:
+		EventHub.emit_signal("new_destination", destinations[current_action])
 
 
 func think_about(action : String, subject := current_action):
@@ -206,7 +201,6 @@ func check_food():
 	"""
 	if potatoes < 5:
 		addToQueue("farm")
-		return
 	else:
 		think_about("no", "farm")
 		yield(get_tree().create_timer(buffer_time), "timeout")
@@ -230,48 +224,13 @@ func check_stats():
 
 
 func on_destination_reached():
-	print("current action: ", current_action)
-	#EventHub.emit_signal("new_thought", "arrived", current_action)
 	think_about("arrive")
-	match current_action:
-		"farm":
-			EventHub.emit_signal("animate", "work")
-		"entertainment":
-			yield(get_tree().create_timer(buffer_time), "timeout")
-			EventHub.emit_signal("in_house")
-			yield(get_tree().create_timer(buffer_time*10), "timeout")
-			EventHub.emit_signal("outside")
-			on_action_done()
-		"potty":
-			EventHub.emit_signal("in_house")
-			bladder = stat_max
-			yield(get_tree().create_timer(buffer_time*5), "timeout")
-			EventHub.emit_signal("outside")
-			on_action_done()
-		"eat":
-			EventHub.emit_signal("in_house")
-			if potatoes <= 0:
-				addToQueue("farm")
-				predisposed = false
-			else:
-				hunger = max(hunger + 5, stat_max)
-				yield(get_tree().create_timer(buffer_time*7), "timeout")
-				potatoes -= 1
-				var potato_string = "Now I have " + str(potatoes) + " left."
-				EventHub.emit_signal("new_thought", "That's one potato down. " + potato_string)
-				EventHub.emit_signal("outside")
-				on_action_done()
-		"sleep":
-			EventHub.emit_signal("in_house")
-			yield(get_tree().create_timer(buffer_time*10), "timeout")
-			EventHub.emit_signal("outside")
-			on_action_done()
-		_:
-			print("action not specified; I'll just sit in the house for a bit")
-			EventHub.emit_signal("in_house")
-			yield(get_tree().create_timer(buffer_time*5), "timeout")
-			EventHub.emit_signal("outside")
-			on_action_done()
+	if current_action == "eat" and potatoes <= 0:
+		think_about("error")
+		addToQueue("farm")
+		predisposed = false
+		return
+	EventHub.emit_signal("animate", current_action)
 
 
 func on_action_done():
@@ -281,9 +240,17 @@ func on_action_done():
 		"farm":
 			EventHub.emit_signal("tended_plants")
 		"entertainment":
-			EventHub.emit_signal("outside")
 			happiness = min(happiness + 5, stat_max)
 			yield(get_tree().create_timer(buffer_time*2), "timeout")
+		"eat":
+			hunger = max(hunger + 5, stat_max)
+			potatoes -= 1
+			var potato_string = "Now I have " + str(potatoes) + " left."
+			EventHub.emit_signal("new_thought", "That's one potato down. " + potato_string)
+		"potty":
+			bladder = stat_max
+		"sleep":
+			rested = stat_max
 	current_action = "none"
 	predisposed = false
 
@@ -345,23 +312,23 @@ func _on_StatusTimer_timeout():
 	"""
 	var decrement = .05 # Arbitrary for now
 	
-	hunger = max(hunger - decrement*5, 0)
-	if hunger == 0:
+	hunger = max(hunger - decrement*4, 0)
+	if hunger == 0 and !queue.has("eat"):
 		random_response("HUNGER")
 		addToQueue("eat")
 		
-	bladder = max(bladder - decrement*7, 0)
-	if bladder == 0:
+	bladder = max(bladder - decrement*5, 0)
+	if bladder == 0 and !queue.has("potty"):
 		random_response("BLADDER")
 		addToQueue("potty")
 		
 	rested = max(rested - decrement*3, 0)
-	if rested == 0:
+	if rested == 0 and !queue.has("sleep"):
 		random_response("ENERGY")
 		addToQueue("sleep")
 		
 	happiness = max(happiness - decrement, 0)
-	if happiness == 0:
+	if happiness == 0 and !queue.has("entertainment"):
 		random_response("DEPRESSION")
 		addToQueue("entertainment")
 		
