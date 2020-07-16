@@ -11,10 +11,7 @@ enum playerState {default, determine, dialogue}
 var state = playerState.default 
 
 ### Character Stats
-# Control over the character can be lost when stats don't align, etc
-# Basic bodily needs, health
-# Wallet
-# 
+var character = {"FIRST_NAME": "", "LAST_NAME": "", "NICKNAMES": [],}
 # Stretch Goal: Mood
 
 # The main stats built from others
@@ -33,6 +30,11 @@ var disposition := 8.0
 var bladder := 10.0
 var rested := 10.0
 var weather : float # Should have weather condition be controled elsewhere and send signals
+
+#TODO:
+
+var hydration := 10.0
+
 
 ## Character inventory
 # We as the player don't see this or interact with it directly, so it doesn't need to be too flash

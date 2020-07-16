@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Environment/Base/viaduct1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://baseModules1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Environment/Base/bed1.fbx" type="PackedScene" id=3]
+[ext_resource path="res://Environment/plants/tree1.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://Environment/Base/greenHouse1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Environment/Base/airlock1.tscn" type="PackedScene" id=6]
 
@@ -24,6 +25,12 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 7.62213
 
 [node name="bed1" parent="baseModules1" instance=ExtResource( 3 )]
 transform = Transform( -2.8213e-07, 0, -1, 0, 1, 0, 1, 0, -2.8213e-07, -1.22155, 1.00559, 1.36403 )
+
+[node name="tree1" type="MeshInstance" parent="baseModules1"]
+transform = Transform( 0.101536, 0, 0.0826071, 0, 0.130895, 0, -0.0826071, 0, 0.101536, -0.486262, 1.64008, 3.35498 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
 
 [node name="airlock1" parent="." instance=ExtResource( 6 )]
 transform = Transform( 3.69552e-07, 0, -1, 0, 1, 0, 1, 0, 3.69552e-07, 1.86531, -0.152528, -8.7641 )
