@@ -359,13 +359,17 @@ func _on_StatusTimer_timeout():
 
 func _on_note_detected():
 # Saves note text to player's notes array in order shown in barks.json file 
-	if first_note:
-		EventHub.emit_signal("new_thought", "Huh. Looks like a torn page.")
-	else:
-		("ANOTHER_NOTE")
 	var all_notes = bark_dict["NOTES"]
-	notes.append(all_notes[note_index])
-	note_index += 1
+	if first_note:
+		EventHub.emit_signal("new_thought", "Huh. Looks like a torn page with some writing on it")
+		first_note = false
+	elif note_index >= len(all_notes):
+		EventHub.emit_signal("new_thought", "This one is blank")
+	else:
+		random_response("ANOTHER_NOTE")
+		notes.append(all_notes[note_index])
+		print("appended: ", all_notes[note_index])
+		note_index += 1
 
 
 func _on_RandThoughtTimer_timeout():

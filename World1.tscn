@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://base_character/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://engine.gd" type="Script" id=2]
@@ -95,6 +95,30 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
+[sub_resource type="Curve3D" id=12]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 2.97894, 0, -4.05388, 0, 0, 0, 0, 0, 0, -0.0583076, 0, -4.68958, 0, 0, 0, 0, 0, 0, -0.658695, 0, -6.63201, 0, 0, 0, 0, 0, 0, -2.63644, 0, -7.6562, 0, 0, 0, 0, 0, 0, -5.49711, 0, -7.47962, 0, 0, 0, 0, 0, 0, -7.65144, 0, -5.53719, 0, 0, 0, 0, 0, 0, -8.49904, 0, -3.31223, 0, 0, 0, 0, 0, 0, -8.11056, 0, -1.68765, 0, 0, 0, 0, 0, 0, -5.88559, 0, -0.98131, 0, 0, 0, 0, 0, 0, -3.97848, 0, -1.3698, 0, 0, 0, 0, 0, 0, -2.17732, 0, -2.53525 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=13]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 3.25115, 0, -3.92017, 0, 0, 0, 0, 0, 0, 5.26964, 0, -1.61333, 0, 0, 0, 0, 0, 0, 8.48274, 0, -0.459908, 0, 0, 0, 0, 0, 0, 12.9728, 0, -0.748263, 0, 0, 0, 0, 0, 0, 17.0098, 0, -2.72556, 0, 0, 0, 0, 0, 0, 20.4289, 0, -6.47418, 0, 0, 0, 0, 0, 0, 22.9829, 0, -4.20853, 0, 0, 0, 0, 0, 0, 21.294, 0, -1.11901 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=14]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 2.83922, 0, -3.92017, 0, 0, 0, 0, 0, 0, 2.9216, 0, -1.57214, 0, 0, 0, 0, 0, 0, -0.827015, 0, -1.24259, 0, 0, 0, 0, 0, 0, -4.57564, 0, -1.24259, 0, 0, 0, 0, 0, 0, 8.97707, 0, -0.954232, 0, 0, 0, 0, 0, 0, -4.65802, 0, -0.70707, 0, 0, 0, 0, 0, 0, 8.40036, 0, -1.61333 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=15]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 3.15047, 0, -3.30911, 0, 0, 0, 0, 0, 0, -1.4451, 0, -5.66294, 0, 0, 0, 0, 0, 0, -1.55718, 0, -9.3618, 0, 0, 0, 0, 0, 0, -1.55718, 0, -12.8925, 0, 0, 0, 0, 0, 0, -0.268181, 0, -15.5266, 0, 0, 0, 0, 0, 0, 3.03838, 0, -15.8628, 0, 0, 0, 0, 0, 0, 6.96143, 0, -17.5442, 0, 0, 0, 0, 0, 0, 9.42734, 0, -19.5617 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
 [node name="World" type="Spatial"]
 script = ExtResource( 2 )
 
@@ -121,7 +145,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0911511, 0 )
 mesh_library = ExtResource( 3 )
 cell_size = Vector3( 1, 0.3, 1 )
 data = {
-"cells": PoolIntArray( 65530, 0, 1441792, 0, 1, 1073741826, 1, 1, 2, 2, 1, 2, 6, 1, 1, 2, 2, 2, 4, 2, 0, -65539, 2, 1, 65533, 65526, 1441792, 3, 65528, 262145, 4, 65528, 655361, 4, 65529, 1, 5, 65529, 983041, 10, 65529, 655361, 5, 65530, 983041, 10, 65530, 983041, 6, 65531, 0, 65532, 65531, 1441796, 131069, 65531, 524292, 327674, 65531, 327684, 327675, 65531, 1048580, 2, 65532, 65537, 0, 65533, 393217, 13, 65533, 393217 )
+"cells": PoolIntArray( 65530, 0, 1612054528, 0, 1, 2, 1, 1, 2, 2, 1, 2, 6, 1, 1, 2, 2, 2, 4, 2, 0, -65539, 2, 1, 65533, 65526, 1441792, 3, 65528, 262145, 4, 65528, 655361, 4, 65529, 1, 5, 65529, 983041, 10, 65529, 655361, 5, 65530, 1074724865, 10, 65530, 983041, 6, 65531, 0, 65532, 65531, 1075183620, 131069, 65531, 524292, 327674, 65531, 327684, 327675, 65531, 1048580, 2, 65532, 65537, 0, 65533, 393217, 13, 65533, 393217 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -178,7 +202,34 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6061, 1.97508, -9.82556 )
 [node name="Path" type="Path" parent="ExplorationPaths"]
 curve = SubResource( 11 )
 
+[node name="Path2" type="Path" parent="ExplorationPaths"]
+curve = SubResource( 12 )
+
+[node name="Path3" type="Path" parent="ExplorationPaths"]
+curve = SubResource( 13 )
+
+[node name="Path4" type="Path" parent="ExplorationPaths"]
+curve = SubResource( 14 )
+
+[node name="Path5" type="Path" parent="ExplorationPaths"]
+curve = SubResource( 15 )
+
 [node name="Discoverables" type="Spatial" parent="."]
 
 [node name="Note" parent="Discoverables" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2455, 0.534864, -7.86527 )
+
+[node name="Note2" parent="Discoverables" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31812, 0.534864, -7.22957 )
+
+[node name="Note3" parent="Discoverables" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1324, 0.534864, -2.82185 )
+
+[node name="Note4" parent="Discoverables" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.992788, 0.534864, -1.17411 )
+
+[node name="Note5" parent="Discoverables" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2456, 0.534864, -17.6509 )
+
+[node name="Note6" parent="Discoverables" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8111, 1.9351, -12.2101 )

@@ -66,93 +66,93 @@ atlas = ExtResource( 2 )
 region = Rect2( 552, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
-flags = 2
-atlas = ExtResource( 1 )
+flags = 3
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
-flags = 2
-atlas = ExtResource( 1 )
+flags = 3
+atlas = ExtResource( 3 )
 region = Rect2( 46, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
-flags = 2
-atlas = ExtResource( 1 )
+flags = 3
+atlas = ExtResource( 3 )
 region = Rect2( 92, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
-flags = 2
-atlas = ExtResource( 1 )
+flags = 3
+atlas = ExtResource( 3 )
 region = Rect2( 138, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
-flags = 2
-atlas = ExtResource( 1 )
+flags = 3
+atlas = ExtResource( 3 )
 region = Rect2( 184, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
-flags = 2
-atlas = ExtResource( 1 )
+flags = 3
+atlas = ExtResource( 3 )
 region = Rect2( 230, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
-flags = 2
-atlas = ExtResource( 1 )
+flags = 3
+atlas = ExtResource( 3 )
 region = Rect2( 276, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=20]
-flags = 2
-atlas = ExtResource( 1 )
+flags = 3
+atlas = ExtResource( 3 )
 region = Rect2( 322, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=21]
-flags = 2
-atlas = ExtResource( 1 )
+flags = 3
+atlas = ExtResource( 3 )
 region = Rect2( 368, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=22]
-flags = 3
-atlas = ExtResource( 3 )
+flags = 2
+atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=23]
-flags = 3
-atlas = ExtResource( 3 )
+flags = 2
+atlas = ExtResource( 1 )
 region = Rect2( 46, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=24]
-flags = 3
-atlas = ExtResource( 3 )
+flags = 2
+atlas = ExtResource( 1 )
 region = Rect2( 92, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=25]
-flags = 3
-atlas = ExtResource( 3 )
+flags = 2
+atlas = ExtResource( 1 )
 region = Rect2( 138, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=26]
-flags = 3
-atlas = ExtResource( 3 )
+flags = 2
+atlas = ExtResource( 1 )
 region = Rect2( 184, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=27]
-flags = 3
-atlas = ExtResource( 3 )
+flags = 2
+atlas = ExtResource( 1 )
 region = Rect2( 230, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=28]
-flags = 3
-atlas = ExtResource( 3 )
+flags = 2
+atlas = ExtResource( 1 )
 region = Rect2( 276, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=29]
-flags = 3
-atlas = ExtResource( 3 )
+flags = 2
+atlas = ExtResource( 1 )
 region = Rect2( 322, 0, 46, 32 )
 
 [sub_resource type="AtlasTexture" id=30]
-flags = 3
-atlas = ExtResource( 3 )
+flags = 2
+atlas = ExtResource( 1 )
 region = Rect2( 368, 0, 46, 32 )
 
 [sub_resource type="SpriteFrames" id=31]
@@ -162,14 +162,14 @@ animations = [ {
 "name": "potato",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
-"loop": true,
-"name": "news",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
 "name": "housewives",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"loop": true,
+"name": "news",
 "speed": 5.0
 } ]
 
@@ -179,7 +179,7 @@ script = ExtResource( 4 )
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 frames = SubResource( 31 )
-animation = "news"
+animation = "potato"
 frame = 3
 playing = true
 

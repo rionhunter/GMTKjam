@@ -188,6 +188,7 @@ func _on_player_animation(anim : String):
 	if anim == "explore":
 		if patrol_path[len(patrol_path) - 1].distance_to(translation) < 0.1:
 			EventHub.emit_signal("animation_done")
+			EventHub.emit_signal("new_patrol_path")
 		else:
 			setPath(patrol_path)
 		return
