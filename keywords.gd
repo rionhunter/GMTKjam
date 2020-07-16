@@ -23,6 +23,7 @@ and to use something like word2vec to get better context
 Words here should be all lowercase
 
 Should consider adding some key phrases as easter eggs, e.g. 'open the pod bay doors'
+TODO: explore adding external tools like Dialogflow for more chatbot-type functionality
 """
 var dir = {
 	"kiss": Category.AFFECTION,

@@ -21,37 +21,37 @@ agent/radius = 0.1
 agent/max_climb = 0.63
 agent/max_slope = 36.1
 
-[sub_resource type="VisualShaderNodeColorFunc" id=5]
+[sub_resource type="VisualShaderNodeColorFunc" id=2]
 
-[sub_resource type="VisualShaderNodeInput" id=6]
+[sub_resource type="VisualShaderNodeInput" id=3]
 output_port_for_preview = 0
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeInput" id=7]
+[sub_resource type="VisualShaderNodeInput" id=4]
 output_port_for_preview = 0
 input_name = "time"
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=8]
+[sub_resource type="VisualShaderNodeScalarFunc" id=5]
 function = 0
 
-[sub_resource type="VisualShader" id=9]
+[sub_resource type="VisualShader" id=6]
 graph_offset = Vector2( -321.822, 89.8334 )
-nodes/fragment/2/node = SubResource( 5 )
+nodes/fragment/2/node = SubResource( 2 )
 nodes/fragment/2/position = Vector2( 40, 520 )
-nodes/fragment/3/node = SubResource( 6 )
+nodes/fragment/3/node = SubResource( 3 )
 nodes/fragment/3/position = Vector2( -120, 200 )
-nodes/fragment/4/node = SubResource( 7 )
+nodes/fragment/4/node = SubResource( 4 )
 nodes/fragment/4/position = Vector2( -180, 420 )
-nodes/fragment/5/node = SubResource( 8 )
+nodes/fragment/5/node = SubResource( 5 )
 nodes/fragment/5/position = Vector2( 128.178, 307.833 )
 
-[sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 9 )
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=8]
 extents = Vector3( 55.6672, 0.357684, 51.3468 )
 
-[sub_resource type="ProceduralSky" id=11]
+[sub_resource type="ProceduralSky" id=9]
 sky_top_color = Color( 0, 0, 0, 1 )
 sky_horizon_color = Color( 0.45098, 0.0745098, 0.0745098, 1 )
 sky_curve = 0.00742218
@@ -66,9 +66,9 @@ sun_angle_max = 155.06
 sun_curve = 0.186606
 sun_energy = 0.75
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=10]
 background_mode = 2
-background_sky = SubResource( 11 )
+background_sky = SubResource( 9 )
 background_color = Color( 0.243137, 0.0784314, 0.207843, 1 )
 background_energy = 9.49
 ambient_light_color = Color( 1, 0.376471, 0, 1 )
@@ -89,7 +89,7 @@ tonemap_exposure = 0.45
 dof_blur_far_distance = 7.42
 dof_blur_far_quality = 2
 
-[sub_resource type="Curve3D" id=4]
+[sub_resource type="Curve3D" id=11]
 _data = {
 "points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 3.46092, 0, -4.31947, 0, 0, 0, 0, 0, 0, 3.89346, 0, -2.01256, 0, 0, 0, 0, 0, 0, 5.6717, 0, -1.19553, 0, 0, 0, 0, 0, 0, 8.36309, 0, -1.29165, 0, 0, 0, 0, 0, 0, 8.65146, 0, -2.87765, 0, 0, 0, 0, 0, 0, 8.02667, 0, -4.75202, 0, 0, 0, 0, 0, 0, 8.36309, 0, -6.19383, 0, 0, 0, 0, 0, 0, 9.13206, 0, -7.2031, 0, 0, 0, 0, 0, 0, 10.7661, 0, -7.39535, 0, 0, 0, 0, 0, 0, 11.8715, 0, -6.77056, 0, 0, 0, 0, 0, 0, 12.0157, 0, -5.56904, 0, 0, 0, 0, 0, 0, 10.9584, 0, -4.60783, 0, 0, 0, 0, 0, 0, 10.2855, 0, -3.21408, 0, 0, 0, 0, 0, 0, 10.1894, 0, -1.77226, 0, 0, 0, 0, 0, 0, 9.37237, 0, -0.618807, 0, 0, 0, 0, 0, 0, 7.69025, 0, -0.138202, 0, 0, 0, 0, 0, 0, 4.27795, 0, -0.282383, 0, 0, 0, 0, 0, 0, 2.40359, 0, 0.534646 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
@@ -114,14 +114,14 @@ use_collision = true
 width = 2000.0
 height = 0.0957544
 depth = 2000.0
-material = SubResource( 10 )
+material = SubResource( 7 )
 
 [node name="EnvironmentAssets" type="GridMap" parent="Navigation/NavigationMeshInstance/Ground"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0911511, 0 )
 mesh_library = ExtResource( 3 )
 cell_size = Vector3( 1, 0.3, 1 )
 data = {
-"cells": PoolIntArray( 65530, 0, 1441792, 0, 1, 2, 1, 1, 2, 2, 1, 2, 6, 1, 1, 2, 2, 2, 4, 2, 0, -65539, 2, 1, 65533, 65526, 1441792, 3, 65528, 262145, 4, 65528, 655361, 4, 65529, 1, 5, 65529, 983041, 10, 65529, 655361, 5, 65530, 983041, 10, 65530, 983041, 6, 65531, 0, 65532, 65531, 1441796, 131069, 65531, 524292, 327674, 65531, 327684, 327675, 65531, 1048580, 2, 65532, 65537, 0, 65533, 393217, 13, 65533, 393217 )
+"cells": PoolIntArray( 65530, 0, 1441792, 0, 1, 1073741826, 1, 1, 2, 2, 1, 2, 6, 1, 1, 2, 2, 2, 4, 2, 0, -65539, 2, 1, 65533, 65526, 1441792, 3, 65528, 262145, 4, 65528, 655361, 4, 65529, 1, 5, 65529, 983041, 10, 65529, 655361, 5, 65530, 983041, 10, 65530, 983041, 6, 65531, 0, 65532, 65531, 1441796, 131069, 65531, 524292, 327674, 65531, 327684, 327675, 65531, 1048580, 2, 65532, 65537, 0, 65533, 393217, 13, 65533, 393217 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -134,10 +134,10 @@ __meta__ = {
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Ground/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.170441, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+environment = SubResource( 10 )
 
 [node name="TVScreen" parent="WorldEnvironment" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8254, 3.24633, -13.8739 )
@@ -176,7 +176,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6061, 1.97508, -9.82556 )
 [node name="ExplorationPaths" type="Spatial" parent="."]
 
 [node name="Path" type="Path" parent="ExplorationPaths"]
-curve = SubResource( 4 )
+curve = SubResource( 11 )
 
 [node name="Discoverables" type="Spatial" parent="."]
 
