@@ -56,8 +56,7 @@
 
 	"EXPLORATION":
 		[
-		"but...why would I do that? Are there potatoes there?",
-		"why do I get a sudden urge to move? Huh. Ignoring that!",
+		"why do I get a sudden urge to move?",
 		"I need something more...some purpose...what is my life even for?",
 		"it's like my mind is trying to tell me something",
 		],
@@ -122,6 +121,64 @@
 		"why not?"
 		],
 
+	"NOTES":
+		[
+		"Day 1: The locals aren't hostile, but they are ambivalent. Every attempt at socializing is met with abject disinterest. Tomorrow I will try my best anecdote, but I fear it will not be enough",
+		"Day 2: They were not at all impressed or endeared that I once subsisted entirely on yogurt and apples for three weeks. All may be for naught.",
+		],
+
+	"ANOTHER_NOTE":
+		[
+		"More litter to pick up",
+		"Another page?",
+		"Where do these keep coming from?"
+		],
+
+	"NOTE_YES":
+		[
+		"What does this even say?",
+		"Let's see what we have here",
+		"Tell me your secrets",
+		"I can't help myself"
+		],
+
+	"NOTE_ERROR":
+		[
+		"I've already read all the notes so far",
+		"There's nothing to read",
+		"Read what?",
+		"If I want to read more notes, I'll have to find them"
+		],
+
+    "EXPLORE_YES":
+        [
+        "Maybe I'll take a walk",
+        "I do need exercise"
+        ],
+
+    "EXPLORE_NO":
+        [
+        "I just want to stay inside, eat potatoes, and watch tv",
+	"I can't spend time lollygagging around"
+        ],
+
+    "EXPLORE_START":
+        [
+        "Walk time",
+	"A nice walk is definitely what I need",
+	"I've got to take a walk more often",
+	"Gotta stay in shape!"
+        ],	
+	
+    "EXPLORE_FINISH":
+        [
+        "I needed that",
+        "I never *want* to exercise, but I do always feel better afterwards",
+	"That was nice",
+	"If only I could smell the flowers through my helmet"
+        ],
+        
+    
     "FARM_YES":
         [
         "I'll get some farming in soon",
@@ -299,6 +356,7 @@
 	"I'm all out of potatoes!",
 	"no more potatoes... :("
 	],
+
 
     "SLEEP_START":
         [

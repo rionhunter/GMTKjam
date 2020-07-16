@@ -24,6 +24,7 @@ func turn_off():
 	$Timer.stop()
 	$AnimatedSprite3D.stop()
 	$AnimatedSprite3D.visible = false
+	$AnimatedSprite3D.set_frame(0)
 
 
 func choose_random_channel():

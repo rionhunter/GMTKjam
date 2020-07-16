@@ -14,6 +14,7 @@ var final_destination : Vector3
 var is_inside := true
 enum State {NORMAL, AIRLOCK}
 var state = State.NORMAL
+var patrol_path : PoolVector3Array setget setPatrolPath
 
 
 func _ready():
@@ -24,12 +25,19 @@ func _ready():
 	EventHub.connect("inside_lock_triggered", self, "_on_inside_lock_triggered")
 	EventHub.connect("outside_lock_triggered", self, "_on_outside_lock_triggered")
 	EventHub.connect("airlock_finished", self, "_on_airlock_finished")
+	EventHub.connect("start_exploring", self, "_on_start_exploring")
 	animate_sprite("idle")
-	
+
+
 func _process(delta):
 	if destination["determined"]:
 		var move_distance = speed * delta
 		walk(move_distance)
+
+
+func setPatrolPath(value : PoolVector3Array):
+	patrol_path = value
+
 
 func setPath(value : PoolVector3Array) -> void:
 	path = value
@@ -177,6 +185,13 @@ func _on_inside_lock_triggered(wait_loc : Vector3):
 
 
 func _on_player_animation(anim : String):
+	if anim == "explore":
+		if patrol_path[len(patrol_path) - 1].distance_to(translation) < 0.1:
+			EventHub.emit_signal("animation_done")
+		else:
+			setPath(patrol_path)
+		return
+	
 	if $AnimationPlayer.has_animation(anim):
 		$AnimationPlayer.play(anim)
 		if anim == "entertainment":
@@ -195,3 +210,10 @@ func _on_animation_finished():
 	EventHub.emit_signal("animation_done")
 	
 
+func _on_start_exploring():
+	if len(patrol_path) <= 0:
+		print("ERROR: no patrol path set")
+		return
+	final_destination = patrol_path[0]
+	EventHub.emit_signal("new_destination", patrol_path[0])
+	

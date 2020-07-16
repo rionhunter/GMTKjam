@@ -13,6 +13,7 @@ signal new_destination
 signal in_house
 signal outside
 signal animate
+signal start_exploring
 
 # From character
 signal reached_destination
@@ -22,6 +23,7 @@ signal tended_plants
 signal path_requested
 signal watching_started
 signal watching_finished
+signal new_note
 
 # From plants
 signal harvested  # TODO: rethink how signals should look with more than one plant type
@@ -32,3 +34,6 @@ signal sowed
 signal outside_lock_triggered
 signal inside_lock_triggered
 signal airlock_finished
+
+# From mystery notes
+signal note_detected

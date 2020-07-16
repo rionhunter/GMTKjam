@@ -49,9 +49,11 @@ shape = SubResource( 3 )
 
 [node name="Door" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -15.0
 
 [node name="Airlock" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -10.0
 
 [node name="WaitPos" type="Spatial" parent="."]
 transform = Transform( 1, 0, 2.91323e-13, 0, 1, 0, -2.91323e-13, 0, 1, 0.0688996, 1.47631, -0.42548 )

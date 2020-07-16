@@ -38,6 +38,9 @@ var weather : float # Should have weather condition be controled elsewhere and s
 # We as the player don't see this or interact with it directly, so it doesn't need to be too flash
 var inventory = {"food": {"potatoes" : 1, "carrots" : 0}}
 var potatoes := 1
+var notes := []
+var first_note := true
+var note_index := 0
 
 ### Queue
 # Each time a new item is added, as well as at random, semi-frequent intervals, the character will assess the
@@ -77,6 +80,7 @@ func _ready():
 	EventHub.connect("reached_destination", self, "on_destination_reached")
 	EventHub.connect("animation_done", self, "on_action_done")
 	EventHub.connect("harvested", self, "on_harvest")
+	EventHub.connect("note_detected", self, "_on_note_detected")
 	
 	# Open and parse response lines
 	var file = File.new()
@@ -161,6 +165,10 @@ func next_action():
 	predisposed = true
 	current_action = queue.pop_front()
 	think_about("start")
+	
+	if current_action == "explore":
+		EventHub.emit_signal("start_exploring")
+		return
 	
 	if !destinations.has(current_action):
 		print("ERROR: this action not coded")
@@ -263,6 +271,15 @@ func update_priorities():
 	manage_queue()
 
 
+func read_note():
+	if len(notes) > 0:
+		random_response("NOTE_YES")
+		yield(get_tree().create_timer(buffer_time*1.5), "timeout")
+		EventHub.emit_signal("new_note", notes.pop_front())
+	else:
+		random_response("NOTE_ERROR")
+
+
 func _on_new_keywords(input: Dictionary) -> void:
 	failed_attempts = 0
 	for word in input:
@@ -273,6 +290,7 @@ func _on_new_keywords(input: Dictionary) -> void:
 				random_response("AFFECTION")
 			Keywords.Category.EXPLORATION:
 				random_response("EXPLORATION")
+				addToQueue("explore")
 			Keywords.Category.FOOD:
 				random_response("FOOD")
 				yield(get_tree().create_timer(buffer_time), "timeout")
@@ -286,6 +304,8 @@ func _on_new_keywords(input: Dictionary) -> void:
 				queue.clear()
 			Keywords.Category.WHY:
 				random_response("WHY")
+			Keywords.Category.READ:
+				read_note()
 			_: #input is a keyword in keywords.gd, but no response defined in match statement
 				random_response("MISC")
 
@@ -333,6 +353,17 @@ func _on_StatusTimer_timeout():
 		addToQueue("entertainment")
 		
 	update_priorities()
+
+
+func _on_note_detected():
+# Saves note text to player's notes array in order shown in barks.json file 
+	if first_note:
+		EventHub.emit_signal("new_thought", "Huh. Looks like a torn page.")
+	else:
+		("ANOTHER_NOTE")
+	var all_notes = bark_dict["NOTES"]
+	notes.append(all_notes[note_index])
+	note_index += 1
 
 
 func _on_RandThoughtTimer_timeout():

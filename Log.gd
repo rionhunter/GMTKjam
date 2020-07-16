@@ -9,7 +9,7 @@ var queue = []
 func _ready():
 	EventHub.connect("new_thought", self, "_on_Player_new_thought")
 	EventHub.connect("new_action", self, "_on_Player_new_action")
-	
+	EventHub.connect("new_note", self, "_on_new_note_read")
 
 func set_cursor():
 	# Function resets cursor to last line so player input doesn't affect output
@@ -35,6 +35,12 @@ func display_thought(thought : String):
 func _on_Player_new_action(action: String):
 	set_cursor()
 	insert_text_at_cursor("[[*" + action + "*]]" + "\n")
+
+
+func _on_new_note_read(note : String):
+	set_cursor()
+	
+	insert_text_at_cursor('"' + note + '"' + "\n")
 
 
 func _on_Timer_timeout():

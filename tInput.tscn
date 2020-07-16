@@ -46,6 +46,7 @@ syntax_highlighting = true
 context_menu_enabled = false
 shortcut_keys_enabled = false
 selecting_enabled = false
+wrap_enabled = true
 caret_blink = true
 caret_moving_by_right_click = false
 script = ExtResource( 5 )

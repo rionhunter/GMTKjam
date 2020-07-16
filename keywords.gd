@@ -8,6 +8,7 @@ enum Category {
 	FOOD, 
 	GREETING,
 	MAINTENANCE,
+	READ,
 	RESOURCES,
 	SOCIAL,
 	SUDO,
@@ -42,6 +43,13 @@ var dir = {
 	"left": Category.EXPLORATION,
 	"right": Category.EXPLORATION,
 	"up": Category.EXPLORATION,
+	"go": Category.EXPLORATION,
+	"wander": Category.EXPLORATION,
+	"walk": Category.EXPLORATION,
+	"run": Category.EXPLORATION,
+	"travel": Category.EXPLORATION,
+	"explore": Category.EXPLORATION,
+	"find": Category.EXPLORATION,
 	
 	"food": Category.FOOD,
 	"farm": Category.FOOD,
@@ -77,6 +85,8 @@ var dir = {
 	"need": Category.MAINTENANCE,
 	"needs": Category.MAINTENANCE,
 	"check": Category.MAINTENANCE,
+	
+	"read" : Category.READ,
 	
 	"sudo": Category.SUDO,
 	"debug": Category.SUDO,
