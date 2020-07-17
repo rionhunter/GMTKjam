@@ -156,6 +156,7 @@ margin_top = 280.0
 margin_right = 606.0
 margin_bottom = 294.0
 text = "*Executing protocol: Id*"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

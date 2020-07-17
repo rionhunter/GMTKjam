@@ -18,9 +18,13 @@ func _input(_event):
 func reset():
 	text = ""
 
+func invalid_input():
+	# TODO: add feedback noise if entering blank string
+	pass
 
 func process_input(input : String) -> void:
 	if input == "":
+		invalid_input()
 		return
 	
 	emit_signal("new_input", input)
@@ -42,14 +46,24 @@ func process_input(input : String) -> void:
 	# Tags any input starting with "say" or that is bookended with quotation marks
 	#      and passes this text to player's dialogue node
 	# TODO: have separate commands list that get processed in a function?
-	if words[0] == "say":
-		EventHub.emit_signal("player_speech", original_input.substr(3))
+	if original_input.begins_with("say"):
+		if original_input == "say":
+			EventHub.emit_signal("new_thought", "say what?")
+		else:
+			EventHub.emit_signal("player_speech", original_input.substr(3))
+		return
+	elif original_input.ends_with("out loud"):
+		var end_index = original_input.find_last("out loud")
+		if end_index == 0:
+			EventHub.emit_signal("new_thought", "say what out loud?")
+		else:
+			EventHub.emit_signal("player_speech", original_input.substr(0,end_index - 1))
 		return
 	elif original_input[0] == '"' and original_input[-1] == '"':
 		EventHub.emit_signal("player_speech", original_input.substr(1, len(original_input)-2))
 		return
-	
-	
+
+
 	for word in words:
 		if has_keyword_color(word): # If it is a keyword
 			if !input_dir.has(word):

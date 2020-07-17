@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/soundbits_03_r2_static.wav-04f889646aa1f5de45d3999efe0793e8.sample"
+
+[deps]
+
+source_file="res://Environment/Base/tv/soundbits_03_r2_static.wav"
+dest_files=[ "res://.import/soundbits_03_r2_static.wav-04f889646aa1f5de45d3999efe0793e8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

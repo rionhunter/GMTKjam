@@ -17,8 +17,8 @@
 
 	"ANIMAL":
 		[
-		"They always run away from me D:",
-		"Those deerp are so cute",
+		"The animals outside always run away from me D:",
+		"Those deerp out there are so cute",
 		"I wonder if the locals could help me tame a deerp"
 		],
 
@@ -64,8 +64,7 @@
 	"EXPLORATION":
 		[
 		"why do I get a sudden urge to move?",
-		"I need something more... some purpose
-...what is my life even for?",
+		"I need something more ... some purpose ... what is my life even for?",
 		"it's like my mind is trying to tell me something",
 		],
 
@@ -80,19 +79,13 @@
 	"GREETING":
 
 		[
-		"is someone there?",
-		"I must be hearing things...",
-		"did the potato juice go bad?",
-		"hello?",
-		"that's creepy, I thought I heard someone",
-		"yep, I'm officially talking to myself. Well done, me. That's a new low.",
+		"Did I just think something I intended to say?",
+		"Maybe I should be saying this out loud"
 		],
 
 	"MAINTENANCE":
 		[
 		"hmm, what do I need right now?",
-		"when did I last take a bio break?",
-		"maybe...or maybe I should...",
 		"oh! that reminds me"
 		],
 
@@ -110,6 +103,21 @@
 		"why, brain, why?"
 		],
 
+	"PRIORITY":
+		[
+		"Yeah, I'll do that next"
+		],
+
+	"ALREADY_NEXT":
+		[
+		"That's next on my list, I swear!"
+		],
+
+	"PUSH":
+		[
+		"Okay, brain, you win, I'll stop what I'm doing now"
+		],
+
 	"HELPER_TEXT":
 		[
 		"I feel like I should be doing something",
@@ -118,6 +126,12 @@
 		"it's like, give me a sign! Or more food. Specifically potatoes.",
 		"what do I need to check in on?",
 		"I wonder if there's anything good on tv",
+		],
+
+	"TALK":
+		[
+		"What should I say?",
+		"Talk out loud?"
 		],
 
 	"WHY":
@@ -135,7 +149,8 @@
 		],
 	"WHAT":
 		[
-		"it's exactly what it looks like"
+		"I'm not sure",
+		"what indeed?"
 		],
 	"WHERE":
 		[
@@ -293,6 +308,16 @@
 		"Well that was an average episode..",
 		"What a cliffhanger. Now I can't wait until the next one."
 		],
+
+ "POTTY_YES":
+        [
+	"Yeah, I think I will take a bio break soon"
+        ],
+
+ "POTTY_NO":
+        [
+	"I don't need to go"
+        ],
         
     "POTTY_START":
         [
@@ -388,17 +413,14 @@
 	"no more potatoes... :("
 	],
 
-
-    "SLEEP_START":
+    "SLEEP_YES":
         [
-		"time for a nap!",
-		"I'm starting to get pretty tired",
-		"I'm so tired I'm getting clumsy.",
-		"I'm going to stop yawning and start snoring.",
-		"Time for me to hit the hay.",
-		"I'm about ready for some shut-eye.",
-		"I am tired.",
-		"I'm not heaps tired, but I'm a little bored so I'm going to go lie down."
+		"I'll take a nap soon"
+        ],
+
+    "SLEEP_NO":
+        [
+		"I'm not tired though"
         ],
 
     "SLEEP_ARRIVE":

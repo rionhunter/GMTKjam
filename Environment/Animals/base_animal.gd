@@ -6,6 +6,7 @@ func _ready():
 	$AnimationPlayer.play("idle")
 	$Sprite3D.flip_h = flip
 
+
 func _on_Area_body_entered(body):
 	if body.get_name() == "Character":
 		disappear()
@@ -13,7 +14,7 @@ func _on_Area_body_entered(body):
 
 func disappear():
 	$AnimationPlayer.play("hide")
-	
+
 
 func _on_hidden():
 	queue_free()

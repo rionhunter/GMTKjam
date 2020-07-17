@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://base_character/dialogue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Aliens/sprite1.png" type="Texture" id=2]
@@ -10,6 +10,23 @@ height = 0.090602
 
 [sub_resource type="SphereShape" id=2]
 radius = 3.68065
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
 
 [node name="Alien" type="KinematicBody"]
 script = ExtResource( 3 )
@@ -29,10 +46,16 @@ billboard = 1
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 3 )
 
 [node name="Dialogue" parent="." instance=ExtResource( 1 )]
 y_offset = -52.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

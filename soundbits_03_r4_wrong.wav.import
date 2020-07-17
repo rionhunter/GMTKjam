@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/soundbits_03_r4_wrong.wav-d1fb0fae88097dd9eb6c9e68f3b4f5c0.sample"
+
+[deps]
+
+source_file="res://soundbits_03_r4_wrong.wav"
+dest_files=[ "res://.import/soundbits_03_r4_wrong.wav-d1fb0fae88097dd9eb6c9e68f3b4f5c0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

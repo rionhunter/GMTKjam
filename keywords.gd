@@ -10,12 +10,20 @@ Words here should be all lowercase, with category values all uppercase
 
 Should consider adding some key phrases as easter eggs, e.g. 'open the pod bay doors'
 TODO: explore adding external tools like Dialogflow for more chatbot-type functionality
+
+TODO: re-add and work on 'what' responses
 """
 var dir = {
 	"kiss": "AFFECTION",
 	"hug": "AFFECTION",
 	"snog": "AFFECTION",
 	"love": "AFFECTION",
+	
+	"yes": "AFFIRMATIVE",
+	"okay" : "AFFIRMATIVE",
+	"k": "AFFIRMATIVE",
+	"ok": "AFFIRMATIVE",
+	"sure": "AFFIRMATIVE",
 	
 	"attack": "AGGRESSION",
 	"punch": "AGGRESSION",
@@ -25,6 +33,10 @@ var dir = {
 	"hate": "AGGRESSION",
 	"annoy": "AGGRESSION",
 	"annoying": "AGGRESSION",
+	"pushy": "AGRESSION",
+	"bossy": "AGRESSION",
+	"bad": "AGRESSION",
+	"hurt": "AGRESSION",
 	
 	"pet": "ANIMAL",
 	"creature": "ANIMAL",
@@ -33,8 +45,10 @@ var dir = {
 	"dog": "ANIMAL",
 	"fox": "ANIMAL",
 	"ghost": "ANIMAL",
+	"deerp": "ANIMAL",
 	
 	"say": "COMMAND",
+	"out loud": "COMMAND",
 	
 	"north": "DIRECTION",
 	"south": "DIRECTION",
@@ -49,21 +63,22 @@ var dir = {
 	"explore": "EXPLORATION",
 	"find": "EXPLORATION",
 	
-	"food": "FOOD",
-	"farm": "FOOD",
-	"eat": "FOOD",
-	"harvest": "FOOD",
-	"till": "FOOD",
-	"fertilize": "FOOD",
-	"reap": "FOOD",
-	"sow": "FOOD",
-	"crops": "FOOD",
-	"crop": "FOOD",
-	"potato": "FOOD",
-	"potatoes": "FOOD",
-	"dinner": "FOOD",
-	"lunch": "FOOD",
-	"breakfast":"FOOD",
+	"food": "EAT",
+	"dinner": "EAT",
+	"lunch": "EAT",
+	"breakfast":"EAT",
+	"eat": "EAT",
+	
+	"harvest": "FARM",
+	"till": "FARM",
+	"fertilize": "FARM",
+	"reap": "FARM",
+	"farm": "FARM",
+	"sow": "FARM",
+	"crops": "FARM",
+	"crop": "FARM",
+	"potato": "FARM",
+	"potatoes": "FARM",
 	
 	"hi": "GREETING",
 	"hello": "GREETING",
@@ -77,19 +92,30 @@ var dir = {
 	"goodbye": "GOODBYE",
 	"bai": "GOODBYE",
 	
-	"bathroom": "MAINTENANCE",
-	"toilet": "MAINTENANCE",
-	"potty": "MAINTENANCE",
-	"tv": "MAINTENANCE",
-	"restroom": "MAINTENANCE",
-	"relax": "MAINTENANCE",
-	"break": "MAINTENANCE",
+	"help": "HELP",
+	
+	"bathroom": "POTTY",
+	"toilet": "POTTY",
+	"potty": "POTTY",
+	"restroom": "POTTY",
+	"pee": "POTTY",
+	
+	"relax": "ENTERTAINMENT",
+	"break": "ENTERTAINMENT",
+	"tv": "ENTERTAINMENT",
+	
 	"need": "MAINTENANCE",
 	"needs": "MAINTENANCE",
 	"check": "MAINTENANCE",
-	"sleep": "MAINTENANCE",
-	"pee": "MAINTENANCE",
 	
+	"no": "NEGATIVE",
+	"nope": "NEGATIVE",
+	"negative": "NEGATIVE",
+	"negatory": "NEGATIVE",
+	"not": "NEGATIVE",
+	
+	"sleep": "SLEEP",
+
 	"read" : "READ",
 	"note" : "READ",
 	"notes" : "READ",
@@ -102,7 +128,15 @@ var dir = {
 	"why": "WHY",
 	"how": "HOW",
 	"who": "WHO",
-	"what": "WHAT",
 	"when": "WHEN",
-	"where": "WHERE"
+	"where": "WHERE",
+	"what": "WHAT",
+	
+	"want": "WANT",
+	
+	"x ae a-12": "X",
+	"x": "X",
+	
+	"talk": "TALK",
+	"speak": "TALK"
 	}

@@ -64,7 +64,17 @@ func set_keyword_colors() -> void:
 				color = EXPLORATION
 			"FOOD":
 				color = FOOD
+			"EAT":
+				color = FOOD
+			"FARM":
+				color = FOOD
+			"SLEEP":
+				color = MAINTENANCE
+			"POTTY":
+				color = MAINTENANCE
 			"MAINTENANCE":
+				color = MAINTENANCE
+			"ENTERTAINMENT":
 				color = MAINTENANCE
 			"READ":
 				color = READ

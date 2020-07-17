@@ -20,9 +20,13 @@ func _process(_delta):
 
 
 func _on_text_displayed():
-	$AnimationPlayer.play("hide")
-	
+	pass
+
 
 func set_and_show(speech : String):
 	$Label.text = speech
 	$AnimationPlayer.play("show")
+
+
+func hide_text():
+	$AnimationPlayer.play("hide")

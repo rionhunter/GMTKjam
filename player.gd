@@ -19,6 +19,7 @@ var mood : float
 var body : float
 var mind : float
 var stat_max := 10.0
+var stat_action_cutoff := 8.0 
 
 # Lower level stats (higher == better) 
 # (all stats have same stat_max but could change faster or slower or have more
@@ -27,8 +28,8 @@ var hunger := 4.0
 var health := 10.0
 var happiness := 7.0
 var disposition := 8.0
-var bladder := 10.0
-var rested := 10.0
+var bladder := 8.0
+var rested := 8.0
 var weather : float # Should have weather condition be controled elsewhere and send signals
 
 #TODO:
@@ -143,7 +144,6 @@ func choose_action():
 	# or when some vitals drop below a threshold
 
 	random_response("CHOOSE_ACTION")
-	yield(get_tree().create_timer(buffer_time), "timeout")
 	
 	var threshold := 5.0
 	if bladder <= threshold:
@@ -155,6 +155,25 @@ func choose_action():
 	if happiness <= threshold or len(queue) == 0:
 		addToQueue("entertainment")
 
+
+func add_lowest():
+	var lowest =  min(hunger, min(rested, min(happiness, bladder)))
+
+	if bladder <= lowest:
+		addToQueue("potty")
+	if hunger <= lowest:
+		addToQueue("eat")
+	if rested <= lowest:
+		addToQueue("sleep")
+	if happiness <= lowest:
+		addToQueue("entertainment")
+
+
+func stat_check(stat : float, action : String):
+	if stat < stat_action_cutoff:
+		addToQueue(action)
+	else:
+		think_about("no", action)
 
 func next_action():
 	# Pulls the next action from the prioritized queue
@@ -213,24 +232,11 @@ func check_food():
 		addToQueue("farm")
 	else:
 		think_about("no", "farm")
-		yield(get_tree().create_timer(buffer_time), "timeout")
 		
 	if hunger < 7:
 		addToQueue("eat")
 	else:
 		think_about("no", "eat")
-
-
-func check_stats():
-	"""
-	Maintenance thought has been suggested by player: check state of bladder,
-	sleep, and entertainment, and see if should add something to our queue.
-	
-	All stats are out of 10, with 10 being the best condition
-	"""
-	var cutoff := 5.0
-	if min(hunger, min(rested, min(happiness, bladder))) <= cutoff:
-		choose_action()
 
 
 func on_destination_reached():
@@ -251,7 +257,6 @@ func on_action_done():
 			EventHub.emit_signal("tended_plants")
 		"entertainment":
 			happiness = min(happiness + 5, stat_max)
-			yield(get_tree().create_timer(buffer_time*2), "timeout")
 		"eat":
 			hunger = max(hunger + 5, stat_max)
 			potatoes -= 1
@@ -276,7 +281,7 @@ func update_priorities():
 func read_note():
 	if len(notes) > 0:
 		random_response("NOTE_YES")
-		yield(get_tree().create_timer(buffer_time*1.5), "timeout")
+		yield(get_tree().create_timer(buffer_time*2), "timeout")
 		EventHub.emit_signal("new_note", notes.pop_front())
 	else:
 		random_response("NOTE_ERROR")
@@ -289,16 +294,26 @@ func _on_new_keywords(input: Dictionary) -> void:
 		if Keywords.dir[word] == "SUDO":
 			queue.clear()
 			return
-		random_response(Keywords.dir[word])
 		match Keywords.dir[word]:
 			"EXPLORATION":
 				addToQueue("explore")
-			"FOOD":
-				check_food()
-			"MAINTENANCE":
-				choose_action()
+			"FARM":
+				addToQueue("farm")
+			"POTTY":
+				stat_check(bladder, "potty")
+			"SLEEP":
+				stat_check(rested, "sleep")
+			"ENTERTAINMENT":
+				stat_check(happiness, "entertainment")
+			"EAT":
+				stat_check(hunger, "eat")
 			"READ":
 				read_note()
+			"MAINTENANCE":
+				random_response("MAINTENANCE")
+				add_lowest()
+			_:
+				random_response(Keywords.dir[word])
 
 
 func _on_meaningless_input():

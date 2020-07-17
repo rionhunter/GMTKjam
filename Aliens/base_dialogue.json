@@ -2,7 +2,7 @@
 	"AGGRESSION":
 		[
 		"you're mean!",
-		"... I don't like you either",
+		"... maybe I don't like you either",
 		"why would you say something like that?"
 		],
 
@@ -13,14 +13,42 @@
 		"Not so bad yourself!"
 		],
 
+	"AFFIRMATIVE":
+		[
+		"Fantastic! So glad to hear it",
+		"Thank you, I will be much obliged"
+		],
+
+	"ANIMAL":
+		[
+		"You want to know about the deerp?",
+		"I could tell you how to tame the deerp if you help me with something first"
+		],
+
+	"EAT":
+		[
+		"I have no need for sustenance ... unlike my missing deerp"
+		],
+
+	"ENTERTAINMENT":
+		[
+		"Television is a mind prison",
+		"I'd rather you help me find my deerp"
+		],
+
+	"NO_RESPONSE":
+		[
+		"Aren't you going to say something?",
+		"Maybe try saying something out loud?",
+		"Okay then"
+		],
+
 	"GREETING":
 		[
-		"...",
-		"........",
 		"hi",
 		"ohai",
 		"heya!",
-		"howsit going?"
+		"how's it going?"
 		],
 
 	"GOODBYE":
@@ -28,5 +56,68 @@
 		"bye",
 		"seeya",
 		"nice talking"
+		],
+
+	"HELP":
+		[
+		"You could help me find my missing deerp"
+		],
+
+	"NEGATIVE":
+		[
+		"You're no fun.",
+		"Are you just going to stay inside this tiny room and watch tv all day?"
+		],
+
+	"WHAT":
+		[
+		"How should I know?",
+		"Try figuring it out on your own"
+		],
+
+	"WANT":
+		[
+		"and I want to find my missing deerp"
+		],
+
+	"WHY":
+		[
+		"Don't question me",
+		"Why not?"
+		],
+
+	"WHO":
+		[
+		"I'm your roommate, B-12"
+		],
+
+	"HOW":
+		[
+		"If you're not sure how, try taking a walk",
+		"That is up to you"
+		],
+
+	"WHERE":
+		[
+		"Try outside",
+		"I think I that yesterday on a walk"
+		],
+	
+	"X":
+		[
+		"I think X AE A-12 is outside now"
+		],
+
+	"MISC":
+		[
+		"...",
+		"......",
+		"Okay...",
+		"Well then",
+		"Wait, tell me more",
+		"and?",
+		"And how does that make you feel?",
+		"Have you told X AE A-12 this?",
+		"...look, I just want to find my missing deerp"
 		]
 }

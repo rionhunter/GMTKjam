@@ -41,3 +41,6 @@ signal airlock_finished
 
 # From mystery notes
 signal note_detected
+
+# From aliens
+signal quest
