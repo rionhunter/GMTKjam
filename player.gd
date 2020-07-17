@@ -83,6 +83,7 @@ func _ready():
 	EventHub.connect("animation_done", self, "on_action_done")
 	EventHub.connect("harvested", self, "on_harvest")
 	EventHub.connect("note_detected", self, "_on_note_detected")
+	EventHub.connect("game_started", self, "_on_game_started")
 	
 	# Open and parse response lines
 	var file = File.new()
@@ -91,7 +92,6 @@ func _ready():
 	var result_json = JSON.parse(text)
 	bark_dict = result_json.result
 	file.close()
-	update_priorities()
 
 
 func set_destinations(dests_in : Dictionary):
@@ -284,32 +284,21 @@ func read_note():
 
 func _on_new_keywords(input: Dictionary) -> void:
 	failed_attempts = 0
+
 	for word in input:
+		if Keywords.dir[word] == "SUDO":
+			queue.clear()
+			return
+		random_response(Keywords.dir[word])
 		match Keywords.dir[word]:
-			Keywords.Category.AGGRESSION:
-				random_response("AGGRESSION")
-			Keywords.Category.AFFECTION:
-				random_response("AFFECTION")
-			Keywords.Category.EXPLORATION:
-				random_response("EXPLORATION")
+			"EXPLORATION":
 				addToQueue("explore")
-			Keywords.Category.FOOD:
-				random_response("FOOD")
-				yield(get_tree().create_timer(buffer_time), "timeout")
+			"FOOD":
 				check_food()
-			Keywords.Category.GREETING:
-				random_response("GREETING")
-			Keywords.Category.MAINTENANCE:
-				random_response("MAINTENANCE")
-				yield(get_tree().create_timer(buffer_time), "timeout")
-			Keywords.Category.SUDO:
-				queue.clear()
-			Keywords.Category.WHY:
-				random_response("WHY")
-			Keywords.Category.READ:
+			"MAINTENANCE":
+				choose_action()
+			"READ":
 				read_note()
-			_: #input is a keyword in keywords.gd, but no response defined in match statement
-				random_response("MISC")
 
 
 func _on_meaningless_input():
@@ -359,14 +348,24 @@ func _on_StatusTimer_timeout():
 
 func _on_note_detected():
 # Saves note text to player's notes array in order shown in barks.json file 
-	if first_note:
-		EventHub.emit_signal("new_thought", "Huh. Looks like a torn page.")
-	else:
-		("ANOTHER_NOTE")
 	var all_notes = bark_dict["NOTES"]
-	notes.append(all_notes[note_index])
-	note_index += 1
+	if first_note:
+		EventHub.emit_signal("new_thought", "Huh. Picked up a torn page with some writing on it")
+		first_note = false
+	else:
+		random_response("ANOTHER_NOTE")
+	if note_index >= len(all_notes): # More notes in world than available dialogue
+		EventHub.emit_signal("new_thought", "This one is blank")
+	else:
+		notes.append(all_notes[note_index])
+		print("appended: ", all_notes[note_index])
+		note_index += 1
 
 
 func _on_RandThoughtTimer_timeout():
 	random_response("BACKGROUND")
+
+
+func _on_game_started():
+	update_priorities()
+	$StatusTimer.start()

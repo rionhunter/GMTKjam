@@ -5,12 +5,14 @@ var constantData = {}
 
 onready var nav : Navigation = $Navigation
 onready var character : KinematicBody = $Character
+var patrol_index := 0
 
 
 func _ready():
 	loadFiles()
 	#findPath() for debugging
 	EventHub.connect("path_requested", self, "findPath")
+	EventHub.connect("new_patrol_path", self, "newPatrolPath")
 	setDestinations()
 
 
@@ -36,6 +38,9 @@ func setDestinations():
 	for node in children:
 		dest_dict[node.get_name().to_lower()] = to_global(node.translation)
 	$player.set_destinations(dest_dict)
-	
-	character.patrol_path = $ExplorationPaths/Path.curve.get_baked_points()
-	$ExplorationPaths/Path.call_deferred("queue_free")
+	newPatrolPath()
+
+
+func newPatrolPath():
+	character.patrol_path = $ExplorationPaths.get_child(patrol_index).curve.get_baked_points()
+	patrol_index = (patrol_index + 1) % $ExplorationPaths.get_child_count()

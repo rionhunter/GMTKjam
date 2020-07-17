@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://base_character/Character.gd" type="Script" id=1]
 [ext_resource path="res://base_character/astronaut_sprite.png" type="Texture" id=2]
 [ext_resource path="res://base_character/snore.wav" type="AudioStream" id=3]
 [ext_resource path="res://base_character/flush.wav" type="AudioStream" id=4]
 [ext_resource path="res://base_character/door.wav" type="AudioStream" id=5]
+[ext_resource path="res://base_character/player_dialogue.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.51765
@@ -80,6 +81,35 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4.1, 4.4, 4.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 44, 45, 46, 47, 44, 45, 46, 47, 44, 45, 46, 47, 44, 45, 46, 47, 44, 45, 46, 47, 14, 12, 13 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_animation_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3, 3.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -100,7 +130,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -128,7 +158,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -156,7 +186,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -184,7 +214,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 10 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -224,7 +254,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 10 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -252,7 +282,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -280,8 +310,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "potty"
+[sub_resource type="Animation" id=12]
 length = 8.0
 tracks/0/type = "audio"
 tracks/0/path = NodePath("AudioStreamPlayer")
@@ -320,8 +349,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "sleep"
+[sub_resource type="Animation" id=13]
 length = 10.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:frame")
@@ -369,14 +397,14 @@ tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "clips": [ {
-"end_offset": 0.0,
+"end_offset": 3.0,
 "start_offset": 0.0,
 "stream": ExtResource( 3 )
 } ],
-"times": PoolRealArray( 0.6 )
+"times": PoolRealArray( 0.7 )
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -404,7 +432,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.3, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -449,24 +477,26 @@ shaded = true
 texture = ExtResource( 2 )
 vframes = 7
 hframes = 11
-frame = 11
+frame = 13
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "helm_idle_right_down"
 anims/eat = SubResource( 2 )
 anims/entertainment = SubResource( 3 )
 anims/farm = SubResource( 4 )
-anims/helm_idle_left_up = SubResource( 5 )
-anims/helm_idle_right_down = SubResource( 6 )
-anims/helm_walk_left_up = SubResource( 7 )
-anims/helm_walk_right_down = SubResource( 8 )
-anims/idle_left_up = SubResource( 9 )
-anims/idle_right_down = SubResource( 10 )
-anims/potty = SubResource( 11 )
-anims/sleep = SubResource( 12 )
-anims/walk_left_up = SubResource( 13 )
-anims/walk_right_down = SubResource( 14 )
+anims/helm_farm = SubResource( 5 )
+anims/helm_idle_left_up = SubResource( 6 )
+anims/helm_idle_right_down = SubResource( 7 )
+anims/helm_walk_left_up = SubResource( 8 )
+anims/helm_walk_right_down = SubResource( 9 )
+anims/idle_left_up = SubResource( 10 )
+anims/idle_right_down = SubResource( 11 )
+anims/potty = SubResource( 12 )
+anims/sleep = SubResource( 13 )
+anims/walk_left_up = SubResource( 14 )
+anims/walk_right_down = SubResource( 15 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-volume_db = -10.0
+stream = ExtResource( 3 )
+
+[node name="Dialogue" parent="." instance=ExtResource( 6 )]

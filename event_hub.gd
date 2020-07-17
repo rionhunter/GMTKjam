@@ -5,6 +5,8 @@ signal new_keywords
 signal meaningless_input
 signal stat_check
 signal queue_check
+signal player_speech
+signal game_started
 
 # From player
 signal new_thought
@@ -21,6 +23,7 @@ signal start_airlock
 signal animation_done
 signal tended_plants
 signal path_requested
+signal new_patrol_path
 signal watching_started
 signal watching_finished
 signal new_note

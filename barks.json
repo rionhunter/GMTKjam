@@ -15,6 +15,13 @@
 		"man it's lonely in space",
 		],	
 
+	"ANIMAL":
+		[
+		"They always run away from me D:",
+		"Those deerp are so cute",
+		"I wonder if the locals could help me tame a deerp"
+		],
+
 	"BACKGROUND":
 		[
 		"do I really love potatoes, or just the fact that they're the only thing that reminds me of home?",
@@ -57,7 +64,8 @@
 	"EXPLORATION":
 		[
 		"why do I get a sudden urge to move?",
-		"I need something more...some purpose...what is my life even for?",
+		"I need something more... some purpose
+...what is my life even for?",
 		"it's like my mind is trying to tell me something",
 		],
 
@@ -84,7 +92,8 @@
 		[
 		"hmm, what do I need right now?",
 		"when did I last take a bio break?",
-		"when does the new Wizards of Potatoly Place come out?"
+		"maybe...or maybe I should...",
+		"oh! that reminds me"
 		],
 
 	"MISC":
@@ -120,11 +129,33 @@
 		"because deep down I guess I hate myself?",
 		"why not?"
 		],
+	"WHO":
+		[
+		"You know, no one knows me on this planet. I could give myself a whole different name if I wanted."
+		],
+	"WHAT":
+		[
+		"it's exactly what it looks like"
+		],
+	"WHERE":
+		[
+		"Hmmm where did I put those notes?"
+		],
+	"WHEN":
+		[
+		"I may be able to take off for home as soon as tomorrow. Just need to find the manual."
+		],
+	"HOW":
+		[
+		"how now, brown cow",
+		"how indeed"
+		],
 
 	"NOTES":
 		[
 		"Day 1: The locals aren't hostile, but they are ambivalent. Every attempt at socializing is met with abject disinterest. Tomorrow I will try my best anecdote, but I fear it will not be enough",
 		"Day 2: They were not at all impressed or endeared that I once subsisted entirely on yogurt and apples for three weeks. All may be for naught.",
+		"Day 5: They keep asking probing questions like 'how are you really?' and 'is everything okay' and 'what are you excited about?'",
 		],
 
 	"ANOTHER_NOTE":
