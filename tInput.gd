@@ -54,19 +54,19 @@ func set_keyword_colors() -> void:
 	var color = Color()
 	for word in Keywords.dir:
 		match Keywords.dir[word]:
-			Keywords.Category.AGGRESSION:
+			"AGGRESSION":
 				color = AGGRESSION
-			Keywords.Category.AFFECTION:
+			"AFFECTION":
 				color = AFFECTION
-			Keywords.Category.COMMAND:
+			"COMMAND":
 				color = COMMAND
-			Keywords.Category.EXPLORATION:
+			"EXPLORATION":
 				color = EXPLORATION
-			Keywords.Category.FOOD:
+			"FOOD":
 				color = FOOD
-			Keywords.Category.MAINTENANCE:
+			"MAINTENANCE":
 				color = MAINTENANCE
-			Keywords.Category.READ:
+			"READ":
 				color = READ
 			_:
 				color = NORMAL

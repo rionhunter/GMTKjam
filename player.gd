@@ -284,36 +284,21 @@ func read_note():
 
 func _on_new_keywords(input: Dictionary) -> void:
 	failed_attempts = 0
+
 	for word in input:
+		if Keywords.dir[word] == "SUDO":
+			queue.clear()
+			return
+		random_response(Keywords.dir[word])
 		match Keywords.dir[word]:
-			Keywords.Category.AGGRESSION:
-				random_response("AGGRESSION")
-			Keywords.Category.AFFECTION:
-				random_response("AFFECTION")
-			Keywords.Category.EXPLORATION:
-				random_response("EXPLORATION")
+			"EXPLORATION":
 				addToQueue("explore")
-			Keywords.Category.FOOD:
-				random_response("FOOD")
-				yield(get_tree().create_timer(buffer_time), "timeout")
+			"FOOD":
 				check_food()
-			Keywords.Category.GREETING:
-				random_response("GREETING")
-			Keywords.Category.MAINTENANCE:
-				random_response("MAINTENANCE")
-				yield(get_tree().create_timer(buffer_time), "timeout")
-			Keywords.Category.SUDO:
-				queue.clear()
-			Keywords.Category.WHY:
-				random_response("WHY")
-			Keywords.Category.HOW:
-				random_response("HOW")
-			Keywords.Category.READ:
+			"MAINTENANCE":
+				choose_action()
+			"READ":
 				read_note()
-			_: #input is a keyword in keywords.gd, but no response defined in match statement
-				random_response("MISC")
-				print("no response coded for: ", word)
-				print("check player's _on_new_keyword function")
 
 
 func _on_meaningless_input():
