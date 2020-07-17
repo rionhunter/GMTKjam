@@ -41,11 +41,15 @@ func play_next():
 		$AnimationPlayer.play(next_channel)
 	else:
 		$AnimationPlayer.play("static") # don't have that animation
-
+	next_channel = get_random_channel()
 
 func _on_Timer_timeout():
-	$AnimationPlayer.play("static")
-	next_channel = get_random_channel()
+	if $AnimationPlayer.get_current_animation() == next_channel: # already playing
+		next_channel = get_random_channel()
+		return
+	else:
+		$AnimationPlayer.play("static")
+
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
