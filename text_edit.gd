@@ -20,7 +20,7 @@ func reset():
 
 func invalid_input():
 	# TODO: add feedback noise if entering blank string
-	pass
+	$AudioStreamPlayer.play()
 
 func process_input(input : String) -> void:
 	if input == "":

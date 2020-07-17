@@ -14,6 +14,7 @@ func _on_Area_body_entered(body):
 
 func disappear():
 	$AnimationPlayer.play("hide")
+	$AudioStreamPlayer.play()
 
 
 func _on_hidden():
