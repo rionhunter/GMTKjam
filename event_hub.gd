@@ -5,6 +5,7 @@ signal new_keywords
 signal meaningless_input
 signal stat_check
 signal queue_check
+signal player_speech
 
 # From player
 signal new_thought

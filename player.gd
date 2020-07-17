@@ -361,12 +361,13 @@ func _on_note_detected():
 # Saves note text to player's notes array in order shown in barks.json file 
 	var all_notes = bark_dict["NOTES"]
 	if first_note:
-		EventHub.emit_signal("new_thought", "Huh. Looks like a torn page with some writing on it")
+		EventHub.emit_signal("new_thought", "Huh. Picked up a torn page with some writing on it")
 		first_note = false
-	elif note_index >= len(all_notes):
-		EventHub.emit_signal("new_thought", "This one is blank")
 	else:
 		random_response("ANOTHER_NOTE")
+	if note_index >= len(all_notes): # More notes in world than available dialogue
+		EventHub.emit_signal("new_thought", "This one is blank")
+	else:
 		notes.append(all_notes[note_index])
 		print("appended: ", all_notes[note_index])
 		note_index += 1

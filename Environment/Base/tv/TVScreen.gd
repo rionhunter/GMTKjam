@@ -49,7 +49,6 @@ func _on_Timer_timeout():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	print("just finished playing: ", anim_name)
 	if anim_name != "static":
 		return
 	play_next()
