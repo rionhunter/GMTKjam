@@ -98,3 +98,8 @@ func _on_Input_new_input(_input):
 
 func remove_screen():
 	$AnimationPlayer.play("screen_disappear")
+	EventHub.emit_signal("game_started")
+	
+	
+func _on_intro_finish():
+	remove_screen()

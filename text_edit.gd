@@ -40,7 +40,8 @@ func process_input(input : String) -> void:
 	var input_dir = {}
 	
 	# Tags any input starting with "say" or that is bookended with quotation marks
-	# and passes this text to player's dialogue node
+	#      and passes this text to player's dialogue node
+	# TODO: have separate commands list that get processed in a function?
 	if words[0] == "say":
 		EventHub.emit_signal("player_speech", original_input.substr(3))
 		return

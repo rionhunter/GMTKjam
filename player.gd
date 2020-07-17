@@ -83,6 +83,7 @@ func _ready():
 	EventHub.connect("animation_done", self, "on_action_done")
 	EventHub.connect("harvested", self, "on_harvest")
 	EventHub.connect("note_detected", self, "_on_note_detected")
+	EventHub.connect("game_started", self, "_on_game_started")
 	
 	# Open and parse response lines
 	var file = File.new()
@@ -91,7 +92,6 @@ func _ready():
 	var result_json = JSON.parse(text)
 	bark_dict = result_json.result
 	file.close()
-	update_priorities()
 
 
 func set_destinations(dests_in : Dictionary):
@@ -375,3 +375,8 @@ func _on_note_detected():
 
 func _on_RandThoughtTimer_timeout():
 	random_response("BACKGROUND")
+
+
+func _on_game_started():
+	update_priorities()
+	$StatusTimer.start()
