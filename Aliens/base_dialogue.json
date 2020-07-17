@@ -69,6 +69,18 @@
 		"Are you just going to stay inside this tiny room and watch tv all day?"
 		],
 
+	"QUEST_GIVE":
+		[
+		"Will you help me find my deerp?"
+		],	
+
+	"QUEST_HELP":
+		[
+		"I last saw my deerp outside",
+		"My deerp loves potatoes.",
+		"Deerp don't run away if you give them potatoes"
+		],
+
 	"WHAT":
 		[
 		"How should I know?",

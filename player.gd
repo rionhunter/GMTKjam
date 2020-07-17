@@ -370,7 +370,7 @@ func _on_note_detected():
 	else:
 		random_response("ANOTHER_NOTE")
 	if note_index >= len(all_notes): # More notes in world than available dialogue
-		EventHub.emit_signal("new_thought", "This one is blank")
+		EventHub.emit_signal("new_thought", "This one is blank. I think the developer still needs to add it.")
 	else:
 		notes.append(all_notes[note_index])
 		print("appended: ", all_notes[note_index])
