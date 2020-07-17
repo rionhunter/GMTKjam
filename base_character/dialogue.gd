@@ -2,8 +2,8 @@ extends Spatial
 class_name Dialogue
 
 
-var y_offset := -75.0
-var x_offset := -250.0
+export(float) var y_offset := -75.0
+export(float) var x_offset := -250.0
 
 
 func _ready():
@@ -21,3 +21,8 @@ func _process(_delta):
 
 func _on_text_displayed():
 	$AnimationPlayer.play("hide")
+	
+
+func set_and_show(speech : String):
+	$Label.text = speech
+	$AnimationPlayer.play("show")

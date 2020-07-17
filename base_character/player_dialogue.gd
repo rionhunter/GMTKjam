@@ -9,3 +9,8 @@ func _ready():
 func _on_player_speech(text):
 	$Label.text = text
 	$AnimationPlayer.play("show")
+	
+
+func _on_text_displayed():
+	._on_text_displayed()
+	EventHub.emit_signal("speech_finished", $Label.text)

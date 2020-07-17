@@ -73,6 +73,10 @@ var dir = {
 	"aloha": "GREETING",
 	"greetings": "GREETING",
 	
+	"bye": "GOODBYE",
+	"goodbye": "GOODBYE",
+	"bai": "GOODBYE",
+	
 	"bathroom": "MAINTENANCE",
 	"toilet": "MAINTENANCE",
 	"potty": "MAINTENANCE",

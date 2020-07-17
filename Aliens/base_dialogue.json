@@ -1,0 +1,32 @@
+{
+	"AGGRESSION":
+		[
+		"you're mean!",
+		"... I don't like you either",
+		"why would you say something like that?"
+		],
+
+	"AFFECTION":
+		[
+		"Aww shucks",
+		"You're sweet",
+		"Not so bad yourself!"
+		],
+
+	"GREETING":
+		[
+		"...",
+		"........",
+		"hi",
+		"ohai",
+		"heya!",
+		"howsit going?"
+		],
+
+	"GOODBYE":
+		[
+		"bye",
+		"seeya",
+		"nice talking"
+		]
+}

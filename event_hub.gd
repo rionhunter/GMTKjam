@@ -27,6 +27,7 @@ signal new_patrol_path
 signal watching_started
 signal watching_finished
 signal new_note
+signal speech_finished
 
 # From plants
 signal harvested  # TODO: rethink how signals should look with more than one plant type

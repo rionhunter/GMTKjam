@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody",
+"class": "Alien",
+"language": "GDScript",
+"path": "res://Aliens/base_alien.gd"
+}, {
+"base": "KinematicBody",
 "class": "Character",
 "language": "GDScript",
 "path": "res://base_character/Character.gd"
@@ -35,6 +40,7 @@ _global_script_classes=[ {
 "path": "res://Environment/Base/viaduct1.gd"
 } ]
 _global_script_class_icons={
+"Alien": "",
 "Character": "",
 "Dialogue": "",
 "Log": "",
