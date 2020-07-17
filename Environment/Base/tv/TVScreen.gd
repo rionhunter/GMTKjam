@@ -1,44 +1,55 @@
 extends Spatial
+# TODO: get sprite updates to fix frame issues and add all anims
 
-
-const animations := ["potato", "housewives", "news"]
+const channels := ["potato", "housewives", "news", "beauty", "talent"]
 var is_on := false
 var rng := RandomNumberGenerator.new()
+var next_channel : String
 
 
 func _ready():
 	EventHub.connect("watching_started", self, "turn_on")
 	EventHub.connect("watching_finished", self, "turn_off")
-	turn_off()
+	$AnimationPlayer.play("idle")
+	next_channel = get_random_channel()
 
 
 func turn_on():
+	# Plays static and assigns a random channel to play after the static anim finishes
 	is_on = true
-	$AnimatedSprite3D.visible = true
-	choose_random_channel()
-	$Timer.start()
+	play_next()
+	$Timer.start() 
 
 
 func turn_off():
 	is_on = false
 	$Timer.stop()
-	$AnimatedSprite3D.stop()
-	$AnimatedSprite3D.visible = false
-	$AnimatedSprite3D.set_frame(0)
+	$AnimationPlayer.play("turn_off")
 
 
-func choose_random_channel():
-	if !is_on:
+func get_random_channel() -> String:
+	var index = rng.randi_range(0, len(channels) - 1)
+	return channels[index]
+	
+
+func play_next():
+	if !is_on: # stay idle
 		return
-	var index = rng.randi_range(0, len(animations) - 1)
-	var channel = animations[index]
-	if $AnimatedSprite3D.get_animation() == channel:
-		return
+#	if $AnimationPlayer.get_current_animation() == next_channel: # already playing
+#		return
+	if $AnimationPlayer.has_animation(next_channel): 
+		$AnimationPlayer.play(next_channel)
 	else:
-		$AnimatedSprite3D.stop()
-		$AnimatedSprite3D.set_frame(0)
-		$AnimatedSprite3D.play(channel)
+		$AnimationPlayer.play("static") # don't have that animation
 
 
 func _on_Timer_timeout():
-	choose_random_channel()
+	$AnimationPlayer.play("static")
+	next_channel = get_random_channel()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	print("just finished playing: ", anim_name)
+	if anim_name != "static":
+		return
+	play_next()
