@@ -4,6 +4,9 @@ extends Node
 enum Category {
 	AFFECTION, 
 	AGGRESSION, 
+	ANIMAL,
+	COMMAND,
+	DIRECTION,
 	EXPLORATION, 
 	FOOD, 
 	GREETING,
@@ -12,7 +15,12 @@ enum Category {
 	RESOURCES,
 	SOCIAL,
 	SUDO,
-	WHY
+	WHY,
+	HOW,
+	WHO,
+	WHAT,
+	WHERE,
+	WHEN
 	}
 
 """ 
@@ -40,11 +48,22 @@ var dir = {
 	"annoy": Category.AGGRESSION,
 	"annoying": Category.AGGRESSION,
 	
+	"pet": Category.ANIMAL,
+	"creature": Category.ANIMAL,
+	"animal": Category.ANIMAL,
+	"beast": Category.ANIMAL,
+	"dog": Category.ANIMAL,
+	"fox": Category.ANIMAL,
+	"ghost": Category.ANIMAL,
+	
+	"say": Category.COMMAND,
+	
+	"north": Category.DIRECTION,
+	"south": Category.DIRECTION,
+	"west": Category.DIRECTION,
+	"east": Category.DIRECTION,
+	
 	"outside": Category.EXPLORATION,
-	"left": Category.EXPLORATION,
-	"right": Category.EXPLORATION,
-	"up": Category.EXPLORATION,
-	"go": Category.EXPLORATION,
 	"wander": Category.EXPLORATION,
 	"walk": Category.EXPLORATION,
 	"run": Category.EXPLORATION,
@@ -86,11 +105,22 @@ var dir = {
 	"need": Category.MAINTENANCE,
 	"needs": Category.MAINTENANCE,
 	"check": Category.MAINTENANCE,
+	"sleep": Category.MAINTENANCE,
+	"pee": Category.MAINTENANCE,
 	
 	"read" : Category.READ,
+	"note" : Category.READ,
+	"notes" : Category.READ,
+	"page" : Category.READ,
+	"pages" : Category.READ,
 	
 	"sudo": Category.SUDO,
 	"debug": Category.SUDO,
 	
-	"why": Category.WHY
+	"why": Category.WHY,
+	"how": Category.HOW,
+	"who": Category.WHO,
+	"what": Category.WHAT,
+	"when": Category.WHEN,
+	"where": Category.WHERE
 	}

@@ -306,10 +306,14 @@ func _on_new_keywords(input: Dictionary) -> void:
 				queue.clear()
 			Keywords.Category.WHY:
 				random_response("WHY")
+			Keywords.Category.HOW:
+				random_response("HOW")
 			Keywords.Category.READ:
 				read_note()
 			_: #input is a keyword in keywords.gd, but no response defined in match statement
 				random_response("MISC")
+				print("no response coded for: ", word)
+				print("check player's _on_new_keyword function")
 
 
 func _on_meaningless_input():

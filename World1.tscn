@@ -146,7 +146,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0911511, 0 )
 mesh_library = ExtResource( 3 )
 cell_size = Vector3( 1, 0.3, 1 )
 data = {
-"cells": PoolIntArray( 65530, 0, 538312704, 0, 1, 2, 1, 1, 2, 2, 1, 2, 6, 1, 1, 2, 2, 2, 4, 2, 0, -65539, 2, 1, 65533, 65526, 1441792, 3, 65528, 262145, 4, 65528, 655361, 4, 65529, 1, 5, 65529, 537853953, 10, 65529, 537526273, 5, 65530, 537853953, 10, 65530, 983041, 6, 65531, 0, 65532, 65531, 1441796, 131069, 65531, 524292, 327674, 65531, 327684, 327675, 65531, 1048580, 2, 65532, 65537, 0, 65533, 393217, 13, 65533, 393217 )
+"cells": PoolIntArray( 65530, 0, 538312704, 0, 1, 2, 1, 1, 2, 2, 1, 2, 6, 1, 1, 2, 2, 2, 4, 2, 0, -65539, 2, 1, 65533, 65526, 1441792, 3, 65528, 262145, 4, 65528, 655361, 4, 65529, 1, 5, 65529, 983041, 10, 65529, 537526273, 5, 65530, 537853953, 10, 65530, 983041, 6, 65531, 0, 65532, 65531, 1441796, 131069, 65531, 524292, 327674, 65531, 327684, 327675, 65531, 1048580, 2, 65532, 65537, 0, 65533, 393217, 13, 65533, 393217 )
 }
 __meta__ = {
 "_editor_clip_": 0,
@@ -166,6 +166,13 @@ environment = SubResource( 10 )
 
 [node name="TVScreen" parent="WorldEnvironment" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8254, 3.24633, -13.8739 )
+
+[node name="BaseAnimal" parent="WorldEnvironment" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51143, 0, -1.97354 )
+
+[node name="BaseAnimal2" parent="WorldEnvironment" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49266, 0, -1.97354 )
+flip = true
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 
@@ -234,10 +241,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2456, 0.534864, -17.6509 )
 
 [node name="Note6" parent="Discoverables" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9514, 1.9351, -14.1462 )
-
-[node name="BaseAnimal" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51143, 0, -1.97354 )
-
-[node name="BaseAnimal2" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49266, 0, -1.97354 )
-flip = true

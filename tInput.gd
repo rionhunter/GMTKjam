@@ -10,14 +10,18 @@ var currentState = gameState.dev
 
 # money should probably be somewhere else listening for signals
 var money = 0
-
 const NORMAL := Color(1, 1, 1) # White
 
-# The associated color for each type of keyword
-const AGGRESSION := Color(1, 0.13, 0.13)
-const AFFECTION := Color(0.85, 0.33, 1)
-const FOOD := Color(0.44, 0.81, 0.5)
-const MAINTENANCE := Color(0.53, 0.75, 0.88)
+
+# The associated color for each type of keyword (needs to be specified in "set_keyword_colors" as well)
+const AGGRESSION := Color(1, 0.13, 0.13) # red
+const AFFECTION := Color(0.85, 0.33, 1) # pink
+const FOOD := Color(0.44, 0.81, 0.5) # green
+const MAINTENANCE := Color(0.53, 0.75, 0.88) # light blue
+const COMMAND := Color(0.99, 0.5, 0.42) # orangey
+const EXPLORATION := Color(0.99, 0.5, 0.42) # orangey
+const READ := Color(0.99, 0.5, 0.42) # orangey
+
 
 var keys = {
 		"master": "!@#/", 
@@ -54,10 +58,16 @@ func set_keyword_colors() -> void:
 				color = AGGRESSION
 			Keywords.Category.AFFECTION:
 				color = AFFECTION
+			Keywords.Category.COMMAND:
+				color = COMMAND
+			Keywords.Category.EXPLORATION:
+				color = EXPLORATION
 			Keywords.Category.FOOD:
 				color = FOOD
 			Keywords.Category.MAINTENANCE:
 				color = MAINTENANCE
+			Keywords.Category.READ:
+				color = READ
 			_:
 				color = NORMAL
 		$Input.add_keyword_color(word, color)
@@ -90,7 +100,6 @@ func inMaster(code):
 
 
 func _on_Input_new_input(_input):
-	print("input!")
 	if first_input:
 		remove_screen()
 		first_input = false
@@ -99,6 +108,7 @@ func _on_Input_new_input(_input):
 func remove_screen():
 	$AnimationPlayer.play("screen_disappear")
 	EventHub.emit_signal("game_started")
+	first_input = false
 	
 	
 func _on_intro_finish():
