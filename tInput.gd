@@ -1,7 +1,7 @@
 extends Control
 
 ## Text Input ##
-
+var first_input := true # For removing ColorRect on input
 
 ## Game state control ##
 # a dev switch
@@ -37,6 +37,7 @@ func _ready():
 	if currentState == gameState.dev:
 		parse("!@#/:00001")
 	initialize_text_fields()
+	$AnimationPlayer.play("screen_appear")
 
 
 func initialize_text_fields() -> void:
@@ -86,3 +87,14 @@ func implement(attribute, amount):
 
 func inMaster(code):
 	pass
+
+
+func _on_Input_new_input(_input):
+	print("input!")
+	if first_input:
+		remove_screen()
+		first_input = false
+
+
+func remove_screen():
+	$AnimationPlayer.play("screen_disappear")
