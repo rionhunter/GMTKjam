@@ -18,7 +18,7 @@ func set_cursor():
 
 func _on_Input_new_input(input : String):
 	set_cursor()
-	insert_text_at_cursor(">>" + input + "<<" + "\n")
+	insert_text_at_cursor(">>" + input + "\n")
 
 
 func _on_Player_new_thought(thought : String):
