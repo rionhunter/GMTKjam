@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Environment/plant.gd" type="Script" id=1]
+[ext_resource path="res://Environment/soilTilled.obj" type="ArrayMesh" id=2]
+
+[node name="soilTilled" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203591, 0.475861, -0.14292 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="Plant" type="Node" parent="."]
+script = ExtResource( 1 )

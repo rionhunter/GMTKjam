@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/trumpert1.obj-26eb623619adc06e1883047e02f2e963.mesh"
+
+[deps]
+
+files=[ "res://.import/trumpert1.obj-26eb623619adc06e1883047e02f2e963.mesh" ]
+
+source_file="res://Environment/plants/alienPlants/objs/trumpert1.obj"
+dest_files=[ "res://.import/trumpert1.obj-26eb623619adc06e1883047e02f2e963.mesh", "res://.import/trumpert1.obj-26eb623619adc06e1883047e02f2e963.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
