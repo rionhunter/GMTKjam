@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Slipperbell1.obj-6944e39c429e7cc9e9873109476c840a.mesh"
+
+[deps]
+
+files=[ "res://.import/Slipperbell1.obj-6944e39c429e7cc9e9873109476c840a.mesh" ]
+
+source_file="res://Environment/plants/alienPlants/objs/Slipperbell1.obj"
+dest_files=[ "res://.import/Slipperbell1.obj-6944e39c429e7cc9e9873109476c840a.mesh", "res://.import/Slipperbell1.obj-6944e39c429e7cc9e9873109476c840a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

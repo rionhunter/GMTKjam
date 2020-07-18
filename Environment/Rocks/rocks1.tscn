@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Environment/rocks1.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="BoxShape" id=27]
+extents = Vector3( 0.412002, 0.582918, 0.428201 )
+
+[node name="rocks1" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.203591, 0.475861, -0.14292 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="StaticBody" type="StaticBody" parent="." groups=[
+"navmesh",
+]]
+transform = Transform( 1, 0, 0, 0, 3.14189, 0, 0, 0, 1, 0, 1.46821, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 27 )

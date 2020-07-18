@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Environment/plants/alienPlants/objs/Slipperbell1.obj" type="ArrayMesh" id=1]
+
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.888039, 1, 1.22206 )
+
+[node name="Slipperbell1" type="MeshInstance"]
+transform = Transform( 0.387066, 0, 0, 0, 0.387066, 0, 0, 0, 0.387066, 3.75625, 0.185462, -2.33336 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45572, 0 )
+shape = SubResource( 5 )

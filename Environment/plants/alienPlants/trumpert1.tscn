@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Environment/plants/alienPlants/objs/trumpert1.obj" type="ArrayMesh" id=1]
+
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 2.09113, 1, 2.0041 )
+
+[node name="trumpert1" type="MeshInstance"]
+transform = Transform( 0.413857, 0, 0, 0, 0.413857, 0, 0, 0, 0.413857, 2.3253, 0.185461, -8.443 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 6 )

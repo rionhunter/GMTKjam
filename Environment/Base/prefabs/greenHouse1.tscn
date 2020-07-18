@@ -10,13 +10,12 @@ resource_name = "MetalBase1.001"
 albedo_color = Color( 0.317055, 0.105578, 0.107824, 1 )
 metallic = 0.8
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=3]
 resource_name = "None"
 albedo_color = Color( 0.8, 0.8, 0.8, 1 )
 metallic = 0.8
 
-[sub_resource type="SpatialMaterial" id=3]
-resource_name = "MetalBase1"
+[sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.123574, 0.069892, 0.172454, 1 )
 metallic = 0.8
 
@@ -58,7 +57,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 1416,
-"material": SubResource( 3 ),
+"material": SubResource( 4 ),
 "name": "MetalBase1",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -71,7 +70,7 @@ surfaces/3 = {
 "blend_shape_data": [  ],
 "format": 97539,
 "index_count": 180,
-"material": SubResource( 4 ),
+"material": SubResource( 3 ),
 "name": "None",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -84,7 +83,7 @@ surfaces/4 = {
 "blend_shape_data": [  ],
 "format": 97539,
 "index_count": 180,
-"material": SubResource( 4 ),
+"material": SubResource( 3 ),
 "name": "None",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -97,7 +96,7 @@ surfaces/5 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 36,
-"material": SubResource( 4 ),
+"material": SubResource( 3 ),
 "name": "None",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -110,7 +109,7 @@ surfaces/6 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 876,
-"material": SubResource( 4 ),
+"material": SubResource( 3 ),
 "name": "None",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -136,7 +135,7 @@ surfaces/8 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 360,
-"material": SubResource( 4 ),
+"material": SubResource( 3 ),
 "name": "None",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -149,7 +148,7 @@ surfaces/9 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 414,
-"material": SubResource( 4 ),
+"material": SubResource( 3 ),
 "name": "None",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -162,7 +161,7 @@ surfaces/10 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 7704,
-"material": SubResource( 4 ),
+"material": SubResource( 3 ),
 "name": "None",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -191,7 +190,6 @@ material/9 = null
 material/10 = null
 
 [node name="StaticBody" type="StaticBody" parent="."]
-visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0897, 0.473876, -7.85535 )

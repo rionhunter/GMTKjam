@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/cradleLoft1.obj-ffbabeb42e31f3065d663106de0f7017.mesh"
+
+[deps]
+
+files=[ "res://.import/cradleLoft1.obj-ffbabeb42e31f3065d663106de0f7017.mesh" ]
+
+source_file="res://Environment/plants/alienPlants/objs/cradleLoft1.obj"
+dest_files=[ "res://.import/cradleLoft1.obj-ffbabeb42e31f3065d663106de0f7017.mesh", "res://.import/cradleLoft1.obj-ffbabeb42e31f3065d663106de0f7017.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
