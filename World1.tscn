@@ -124,6 +124,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86265e-09, 0 )
 navmesh = SubResource( 1 )
 
 [node name="MainArea" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86265e-09, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
@@ -165,6 +166,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2386, 1.97508, -12.0514 )
 
 [node name="TVScreen" parent="Destinations" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5681, 3.24633, -6.85568 )
+
+[node name="Entertainment" type="Spatial" parent="Destinations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5873, 2.04406, -5.5861 )
 
 [node name="ExplorationPaths" type="Spatial" parent="."]
 

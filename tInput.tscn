@@ -102,19 +102,17 @@ __meta__ = {
 }
 
 [node name="Input" type="TextEdit" parent="."]
-anchor_top = 0.958
-anchor_right = 1.0
+anchor_left = -0.000976563
+anchor_top = 0.958333
+anchor_right = 0.999023
 anchor_bottom = 1.0
-margin_left = -1.0
-margin_top = 0.200012
-margin_right = -1.0
 syntax_highlighting = true
 context_menu_enabled = false
 caret_block_mode = true
 caret_blink = true
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Input"]
@@ -122,13 +120,10 @@ stream = ExtResource( 1 )
 volume_db = -10.0
 
 [node name="Log" type="TextEdit" parent="."]
-anchor_top = 0.958
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -1.0
-margin_top = -98.8
-margin_right = -1.0
-margin_bottom = -24.0
+anchor_left = -0.000976563
+anchor_top = 0.793333
+anchor_right = 0.999023
+anchor_bottom = 0.96
 readonly = true
 syntax_highlighting = true
 context_menu_enabled = false
@@ -139,7 +134,7 @@ caret_blink = true
 caret_moving_by_right_click = false
 script = ExtResource( 5 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="World" parent="." instance=ExtResource( 3 )]
@@ -149,12 +144,12 @@ wait_time = 0.75
 autostart = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -1.0
-margin_right = 1023.0
-margin_bottom = 480.0
+anchor_left = -0.000976563
+anchor_right = 0.999023
+anchor_bottom = 0.8
 color = Color( 0.180392, 0.180392, 0.180392, 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="ColorRect"]
