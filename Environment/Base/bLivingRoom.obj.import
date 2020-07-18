@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/bLivingRoom.obj-3b233ddc7d4cbcbea86853f18c886534.mesh"
+
+[deps]
+
+files=[ "res://.import/bLivingRoom.obj-3b233ddc7d4cbcbea86853f18c886534.mesh" ]
+
+source_file="res://Environment/Base/bLivingRoom.obj"
+dest_files=[ "res://.import/bLivingRoom.obj-3b233ddc7d4cbcbea86853f18c886534.mesh", "res://.import/bLivingRoom.obj-3b233ddc7d4cbcbea86853f18c886534.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
