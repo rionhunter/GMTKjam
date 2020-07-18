@@ -174,6 +174,8 @@ func stat_check(stat : float, action : String):
 		addToQueue(action)
 	else:
 		think_about("no", action)
+		if action == "eat" and potatoes < 5:
+			addToQueue("farm")
 
 func next_action():
 	# Pulls the next action from the prioritized queue
@@ -280,8 +282,8 @@ func update_priorities():
 
 func read_note():
 	if len(notes) > 0:
-		random_response("NOTE_YES")
-		yield(get_tree().create_timer(buffer_time*2), "timeout")
+		#random_response("NOTE_YES")
+		yield(get_tree().create_timer(buffer_time), "timeout")
 		EventHub.emit_signal("new_note", notes.pop_front())
 	else:
 		random_response("NOTE_ERROR")
@@ -293,7 +295,6 @@ func _on_new_keywords(input: Dictionary) -> void:
 	for word in input:
 		if Keywords.dir[word] == "SUDO":
 			queue.clear()
-			return
 		match Keywords.dir[word]:
 			"EXPLORATION":
 				addToQueue("explore")
@@ -365,7 +366,7 @@ func _on_note_detected():
 # Saves note text to player's notes array in order shown in barks.json file 
 	var all_notes = bark_dict["NOTES"]
 	if first_note:
-		EventHub.emit_signal("new_thought", "Huh. Picked up a torn page with some writing on it")
+		EventHub.emit_signal("new_thought", "Finally found a page!")
 		first_note = false
 	else:
 		random_response("ANOTHER_NOTE")
@@ -375,6 +376,7 @@ func _on_note_detected():
 		notes.append(all_notes[note_index])
 		print("appended: ", all_notes[note_index])
 		note_index += 1
+		read_note()
 
 
 func _on_RandThoughtTimer_timeout():

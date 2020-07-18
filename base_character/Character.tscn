@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://base_character/Character.gd" type="Script" id=1]
-[ext_resource path="res://base_character/astronaut_sprite.png" type="Texture" id=2]
+[ext_resource path="res://base_character/astronaut_spriteV2.png" type="Texture" id=2]
 [ext_resource path="res://base_character/snore.wav" type="AudioStream" id=3]
 [ext_resource path="res://base_character/flush.wav" type="AudioStream" id=4]
 [ext_resource path="res://base_character/door.wav" type="AudioStream" id=5]

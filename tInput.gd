@@ -113,9 +113,10 @@ func _on_Input_new_input(_input):
 	if first_input:
 		remove_screen()
 		first_input = false
-
+		print("first input")
 
 func remove_screen():
+	print("removing screen")
 	$AnimationPlayer.play("screen_disappear")
 	EventHub.emit_signal("game_started")
 	first_input = false

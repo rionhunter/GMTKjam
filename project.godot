@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "Achievement",
+"language": "GDScript",
+"path": "res://Achievements/Achievement.gd"
+}, {
 "base": "KinematicBody",
 "class": "Alien",
 "language": "GDScript",
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://Environment/Base/viaduct1.gd"
 } ]
 _global_script_class_icons={
+"Achievement": "",
 "Alien": "",
 "Character": "",
 "Dialogue": "",

@@ -1,10 +1,13 @@
 extends MeshInstance
 class_name Viaduct
 
+
 var needs_airlock := true
+
 
 func _ready():
 	EventHub.connect("start_airlock", self, "_start_airlock")
+
 
 func _on_OutsideTrigger_body_entered(body):
 	if body.get_name() == "Character":

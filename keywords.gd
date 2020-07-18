@@ -62,12 +62,14 @@ var dir = {
 	"travel": "EXPLORATION",
 	"explore": "EXPLORATION",
 	"find": "EXPLORATION",
+	"pick up": "EXPLORATION",
 	
 	"food": "EAT",
 	"dinner": "EAT",
 	"lunch": "EAT",
 	"breakfast":"EAT",
 	"eat": "EAT",
+	"snack": "EAT",
 	
 	"harvest": "FARM",
 	"till": "FARM",
@@ -79,6 +81,7 @@ var dir = {
 	"crop": "FARM",
 	"potato": "FARM",
 	"potatoes": "FARM",
+	"greenhouse": "FARM",
 	
 	"hi": "GREETING",
 	"hello": "GREETING",
@@ -95,7 +98,7 @@ var dir = {
 	"help": "HELP",
 	
 	"bathroom": "POTTY",
-	"toilet": "POTTY",
+	"toilet": "POTTY", 
 	"potty": "POTTY",
 	"restroom": "POTTY",
 	"pee": "POTTY",

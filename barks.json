@@ -17,9 +17,9 @@
 
 	"ANIMAL":
 		[
-		"The animals outside always run away from me D:",
-		"Those deerp out there are so cute",
-		"I wonder if the locals could help me tame a deerp"
+		"The deerp outside always run away from me D:",
+		"Those deerp are so cute",
+		"I could have sworn I printed out the secret to taming deerp somewhere..."
 		],
 
 	"BACKGROUND":
@@ -79,8 +79,12 @@
 	"GREETING":
 
 		[
-		"Did I just think something I intended to say?",
-		"Maybe I should be saying this out loud"
+		"is someone there?",
+		"I must be hearing things...",
+		"did the potato juice go bad?",
+		"hello?",
+		"that's creepy, I thought I heard someone",
+		"yep, I'm officially talking to myself. Well done, me. That's a new low.",
 		],
 
 	"MAINTENANCE":
@@ -176,8 +180,8 @@
 	"ANOTHER_NOTE":
 		[
 		"More litter to pick up",
-		"Another page?",
-		"Where do these keep coming from?"
+		"Another note!",
+		"How did these get out here?"
 		],
 
 	"NOTE_YES":
@@ -190,10 +194,10 @@
 
 	"NOTE_ERROR":
 		[
-		"I've already read all the notes so far",
-		"There's nothing to read",
-		"Read what?",
-		"If I want to read more notes, I'll have to find them"
+		"I think I saw some notes outside",
+		"Where did those notes go? They must have blown away outside.",
+		"I wrote some things down, but now I can't find them",
+		"Was there a note in the greenhouse?"
 		],
 
     "EXPLORE_YES":
