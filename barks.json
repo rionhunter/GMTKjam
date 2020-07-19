@@ -25,34 +25,34 @@
 		"I feel better somehow",
 		],	
 
-	"ANIMAL_FED":
+	"DEERP_FED":
 		[
 		"I love you too, deerp",
 		"awww he's so cute when he eats potatoes",
 		"this is nice"
 		],
 
-	"ANIMAL_SCARED":
+	"DEERP_SCARED":
 		[
 		":(",
 		"it ran away...",
 		"come back, deerp!"
 		],
 
-	"ANIMAL_YES":
+	"DEERP_YES":
 		[
 		"I think I'll visit the deerp outside soon",
 		"I like watching the deerp",
 		"I should go see the deerp"
 		],
 
-	"ANIMAL_START":
+	"DEERP_START":
 		[
 		"I'm coming, deerp!",
 		"gonna go see the deerp now",
 		],
 
-	"ANIMAL":
+	"DEERP":
 		[
 		"The deerp outside always run away from me D:",
 		"Those deerp are so cute",
@@ -70,12 +70,17 @@
 		"is teal a blue or a green?",
 		"maybe I just can't be happy",
 		"do potatoes just taste better in space?",
+		"what is even my purpose in life now?",
 		"I miss hats",
+		"maybe I can learn to speek deerp",
 		"sometimes it feels like my life is just a meaningless sequence of looping events",
 		"am I going space mad? I can't be, if I'm thinking that...can I?",
 		"*ah ah ah ah staying alive, staying alive!* - such a classic",
 		"how much wood *could* a woodchuck chuck?",
+		"will I ever see another sentient being?",
+		"maybe I shouldn't have torn up my log book",
 		"What would a good space-themed pickup line be? Not that I'd be able to use one...",
+		"I can't believe I tore up my entire log book",
 		],
 
 	"CHOOSE_ACTION":
@@ -87,10 +92,11 @@
 		"hm hmm hmmmmmm...",
 		"done with that. Now what?",
 		"hrmmm",
-		"Got a lot of stuff to get done",
 		"Should I watch more TV or be productive?",
 		"Am I feeling motivated to do work?",
+		"maybe I should pick up that paper",
 		"What do I feel like doing?",
+		"Should I pick up some of those notes that blew away?",
 		"What should I do?",
 		"Next up..."
 		],

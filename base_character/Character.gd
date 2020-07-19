@@ -15,7 +15,7 @@ var is_inside := true
 enum State {NORMAL, AIRLOCK}
 var state = State.NORMAL
 var patrol_path : PoolVector3Array setget setPatrolPath
-var default_x_rotation := -42.24
+var default_x_rotation := -55
 var default_y_translation := 5.795
 var potatoes := 0
 
@@ -236,11 +236,11 @@ func _on_player_animation(anim : String):
 		else:
 			setPath(patrol_path)
 		return
-	if anim == "animal" and has_potatoes():
+	if anim == "deerp" and has_potatoes():
 		$Sprite3D.flip_h = false
 		$AnimationPlayer.play("helm_farm")
 		return
-	elif anim == "animal":
+	elif anim == "deerp":
 		$AnimationPlayer.play("helm_idle_right_down")
 		yield(get_tree().create_timer(2), "timeout")
 		EventHub.emit_signal("animation_done")

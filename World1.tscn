@@ -132,7 +132,7 @@ flip = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3027, 1.91764, -14.4277 )
 
 [node name="Camera" type="Camera" parent="Character"]
-transform = Transform( 1, 0, 0, 0, 0.740265, 0.672315, 0, -0.672315, 0.740265, 0, 5.795, 4.371 )
+transform = Transform( 1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 5.795, 4.371 )
 doppler_tracking = 1
 current = true
 fov = 52.5
@@ -160,7 +160,7 @@ transform = Transform( 0.591123, 0, 0.551868, 0, 0.808693, 0, -0.551868, 0, 0.59
 [node name="Entertainment" type="Spatial" parent="Destinations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0942, 1.64733, -7.5949 )
 
-[node name="Animal" type="Spatial" parent="Destinations"]
+[node name="Deerp" type="Spatial" parent="Destinations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07894, 0, -0.991423 )
 
 [node name="ExplorationPaths" type="Spatial" parent="."]
@@ -186,7 +186,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.343, 0.534864, -6.3661 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4715, 0.534864, -7.22957 )
 
 [node name="Note3" parent="Discoverables" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.494, 0.534864, -2.52138 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.494, 0.534864, 3.58681 )
 
 [node name="Note4" parent="Discoverables" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25027, 0.534864, -1.17411 )

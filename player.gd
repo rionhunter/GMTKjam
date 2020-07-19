@@ -331,6 +331,7 @@ func update_priorities():
 
 
 func read_note():
+	$StatusTimer.stop()
 	if note_index >= len(bark_dict["NOTE_TEXT"]):
 		EventHub.emit_signal("new_thought", "This one is blank. I think the developer still needs to add it.")
 		return 
@@ -343,6 +344,9 @@ func read_note():
 		on_action_done()
 	if note_index == len(bark_dict["NOTE_TEXT"]) - 1: #last note
 		EventHub.emit_signal("last_note_found")
+		return
+	yield(get_tree().create_timer(buffer_time*5), "timeout")
+	$StatusTimer.start()
 
 func _on_new_keywords(input: Dictionary) -> void:
 	failed_attempts = 0
@@ -371,8 +375,8 @@ func _on_new_keywords(input: Dictionary) -> void:
 					addToQueue("note")
 				else:
 					think_about("no", "note")
-			"ANIMAL":
-				addToQueue("animal")
+			"DEERP":
+				addToQueue("deerp")
 			_:
 				random_response(Keywords.dir[word])
 

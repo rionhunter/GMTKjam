@@ -85,7 +85,7 @@ func set_keyword_colors() -> void:
 				color = MAINTENANCE
 			"NOTE":
 				color = READ
-			"ANIMAL":
+			"DEERP":
 				color = EXPLORATION
 			_:
 				color = NORMAL

@@ -573,4 +573,4 @@ anims/walk_right_down = SubResource( 17 )
 stream = ExtResource( 3 )
 
 [node name="Dialogue" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.851712, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.833458, 0 )
