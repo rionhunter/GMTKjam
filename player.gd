@@ -41,7 +41,7 @@ var hydration := 10.0
 # We as the player don't see this or interact with it directly, so it doesn't need to be too flash
 var inventory = {"food": {"potatoes" : 1, "carrots" : 0}}
 var potatoes := 1
-var note_index := 3
+var note_index := -1
 var nearest_note := Vector3()
 
 ### Queue
