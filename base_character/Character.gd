@@ -17,6 +17,7 @@ var state = State.NORMAL
 var patrol_path : PoolVector3Array setget setPatrolPath
 var default_x_rotation := -55
 var default_y_translation := 5.795
+var default_z_translation := 4.371
 var potatoes := 0
 
 
@@ -30,13 +31,15 @@ func _ready():
 	EventHub.connect("airlock_finished", self, "_on_airlock_finished")
 	EventHub.connect("start_exploring", self, "_on_start_exploring")
 	EventHub.connect("entered_living_room", self, "_on_living_room_entered")
-	EventHub.connect("exited_living_room", self, "_on_living_room_exited")
+	EventHub.connect("exited_living_room", self, "_default_camera")
 	EventHub.connect("greenhouse_entered", self, "_on_greenhouse_entered")
-	EventHub.connect("greenhouse_exited", self, "_on_greenhouse_exited")
+	EventHub.connect("greenhouse_exited", self, "_default_camera")
 	EventHub.connect("potato_count", self, "update_potatoes")
 	EventHub.connect("alien_arrived", self, "_on_alien_arrived")
+	EventHub.connect("bedroom_entered", self, "_on_bedroom_entered")
+	EventHub.connect("bedroom_exited", self, "_default_camera")
 	animate_sprite("idle")
-
+	_default_camera()
 
 func has_potatoes():
 	if potatoes <= 0:
@@ -59,17 +62,20 @@ func _on_living_room_entered():
 	$Camera.translation.y = .5
 
 
-func _on_living_room_exited():
+func _default_camera():
 	$Camera.rotation_degrees.x = default_x_rotation
 	$Camera.translation.y = default_y_translation
+	$Camera.translation.x = 0
+	$Camera.translation.z = default_z_translation
 
 func _on_greenhouse_entered():
 	pass
 	#$Camera.rotation_degrees.x = -25.0 # Still doesn't show mountains
 	
-func _on_greenhouse_exited():
-	$Camera.rotation_degrees.x = default_x_rotation
-	$Camera.translation.y = default_y_translation
+func _on_bedroom_entered():
+	print("hello")
+	$Camera.translation.y = 3
+	$Camera.translation.z = 2
 
 func _process(delta):
 	if destination["determined"]:

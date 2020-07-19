@@ -45,6 +45,8 @@ signal entered_living_room
 signal exited_living_room
 signal greenhouse_exited
 signal greenhouse_entered
+signal bedroom_entered
+signal bedroom_exited
 
 # From mystery notes
 signal note_detected
