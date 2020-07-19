@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Environment/Base/prefabs/Greenhouse.gd" type="Script" id=1]
+[ext_resource path="res://glass1.tres" type="Material" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 resource_name = "Foundations"
@@ -189,7 +190,7 @@ material/3 = null
 material/4 = null
 material/5 = null
 material/6 = null
-material/7 = null
+material/7 = ExtResource( 2 )
 material/8 = null
 material/9 = null
 material/10 = null

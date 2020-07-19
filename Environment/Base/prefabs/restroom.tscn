@@ -1,16 +1,25 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.537762, 1, 1.65887 )
+[ext_resource path="res://Environment/Base/objs/bathroom1.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://glass1.tres" type="Material" id=2]
 
-[node name="CSGBox" type="CSGBox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7377, 1.46475, -5.93696 )
-width = 1.7681
-height = 3.06153
-depth = 2.96999
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.37563, 1, 0.529759 )
+
+[node name="bathroom1" type="MeshInstance"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.1024, 0.0286381, -0.0871539 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = ExtResource( 2 )
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
 
 [node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333856, 1.46475, 0.793118 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16645, -0.373669 )
-shape = SubResource( 3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.221789, -1.13238, -0.704694 )
+shape = SubResource( 1 )
