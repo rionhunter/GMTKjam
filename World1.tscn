@@ -132,7 +132,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90404, 0, 3.58809 )
 [node name="player" parent="." instance=ExtResource( 4 )]
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3027, 3.12248, -14.4277 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3027, 1.91764, -14.4277 )
 
 [node name="Camera" type="Camera" parent="Character"]
 transform = Transform( 1, 0, 0, 0, 0.740265, 0.672315, 0, -0.672315, 0.740265, 0, 5.795, 4.371 )

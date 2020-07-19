@@ -16,6 +16,7 @@ signal animate
 signal start_exploring
 signal nearest_note_requested
 signal potato_count
+signal last_note_found
 
 # From character
 signal reached_destination
@@ -50,6 +51,8 @@ signal note_detected
 
 # From aliens
 signal quest
+signal alien_arrived
+signal game_over
 
 # From animals
 signal fed_animal

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://base_character/Character.gd" type="Script" id=1]
 [ext_resource path="res://base_character/astronaut_spriteV2.png" type="Texture" id=2]
@@ -10,6 +10,46 @@
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.51765
 height = 0.35355
+
+[sub_resource type="Animation" id=16]
+resource_name = "alien"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 23, 24, 25 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "eat"
@@ -471,16 +511,17 @@ shape = SubResource( 1 )
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.0119602, 0.596193, -0.0296451 )
 cast_shadow = 0
-offset = Vector2( 0, 2.20978 )
+flip_h = true
 billboard = 1
 shaded = true
 texture = ExtResource( 2 )
 vframes = 7
 hframes = 11
-frame = 55
+frame = 22
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "helm_idle_right_down"
+anims/alien = SubResource( 16 )
 anims/eat = SubResource( 2 )
 anims/entertainment = SubResource( 3 )
 anims/farm = SubResource( 4 )
@@ -500,3 +541,4 @@ anims/walk_right_down = SubResource( 15 )
 stream = ExtResource( 3 )
 
 [node name="Dialogue" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0.845122, 0 )
