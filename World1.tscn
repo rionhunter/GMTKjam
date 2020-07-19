@@ -118,6 +118,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86265e-09, 0 )
 navmesh = SubResource( 1 )
 
 [node name="MainArea" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86265e-09, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
