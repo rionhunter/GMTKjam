@@ -115,6 +115,8 @@ var dir = {
 	"relax": "ENTERTAINMENT",
 	"break": "ENTERTAINMENT",
 	"tv": "ENTERTAINMENT",
+	"entertainment": "ENTERTAINMENT",
+	"fun": "ENTERTAINMENT",
 	
 	"need": "MAINTENANCE",
 	"needs": "MAINTENANCE",

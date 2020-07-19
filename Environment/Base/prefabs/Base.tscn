@@ -7,6 +7,7 @@
 [ext_resource path="res://baseModules1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Environment/Base/prefabs/bLivingRoom.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Environment/Base/prefabs/hallway1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Environment/Base/prefabs/restroom.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Skin" id=1]
 
@@ -17,9 +18,6 @@ script/source = "extends Viaduct
 func _ready():
 	needs_airlock = false
 "
-
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.831143, 1, 1.65887 )
 
 [node name="Base" type="Spatial"]
 transform = Transform( 1.53527, 0, 0, 0, 1.53527, 0, 0, 0, 1.53527, -0.0243216, 0, 1.85323 )
@@ -54,14 +52,4 @@ transform = Transform( -4.91121e-08, 0, 1.12355, 0, 1.12355, 0, -1.12355, 0, -4.
 [node name="bLivingRoom" parent="." instance=ExtResource( 6 )]
 transform = Transform( -5.1594e-08, 0, 1.18033, 0, 1.18033, 0, -1.18033, 0, -5.1594e-08, 8.60701, -0.426029, -6.54939 )
 
-[node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7377, 1.46475, -5.93696 )
-width = 1.7681
-height = 3.06153
-depth = 2.96999
-
-[node name="StaticBody" type="StaticBody" parent="CSGBox"]
-
-[node name="CollisionShape" type="CollisionShape" parent="CSGBox/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16645, -0.373669 )
-shape = SubResource( 3 )
+[node name="CSGBox" parent="." instance=ExtResource( 8 )]
