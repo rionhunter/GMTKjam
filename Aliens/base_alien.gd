@@ -62,6 +62,7 @@ func _on_player_finished_speaking(input : String):
 				random_response(category)
 				if category == "AFFIRMATIVE":
 					EventHub.emit_signal("game_over")
+					$Timer.stop()
 				return
 	random_response("MISC")
 
