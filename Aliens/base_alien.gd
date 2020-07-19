@@ -91,7 +91,6 @@ func _ready():
 
 
 func _on_Area_body_entered(body):
-	print("body is here!!!")
 	if body.get_name() == "Character":
 		character_in_range = true
 		if is_enabled:
@@ -128,7 +127,6 @@ func _on_Timer_timeout():
 
 
 func _on_Alien_tree_entered():
-	print("alien entered tree")
 	$AnimationPlayer.play("appear")
 	yield(get_tree().create_timer(3), "timeout")
 	EventHub.emit_signal("alien_arrived")
