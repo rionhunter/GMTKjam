@@ -64,6 +64,7 @@ transform = Transform( 0.637805, 0, 0, 0, 0.637805, 0, 0, 0, 0.637805, -3.7789, 
 transform = Transform( 0.520563, 0, -0.853823, 0, 1, 0, 0.853823, 0, 0.520563, -4.66601, 0.227406, -11.1926 )
 
 [node name="Biome" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77423, 0 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Biome"]
