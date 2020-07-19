@@ -129,7 +129,7 @@ flip = true
 [node name="player" parent="." instance=ExtResource( 4 )]
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.781, 1.91764, -7.96739 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5742, 1.91764, -8.43639 )
 
 [node name="Camera" type="Camera" parent="Character"]
 transform = Transform( 1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 3, 0.459945 )
