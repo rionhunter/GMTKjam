@@ -239,6 +239,12 @@ func _on_player_animation(anim : String):
 		yield(get_tree().create_timer(2), "timeout")
 		EventHub.emit_signal("animation_done")
 		return
+	if anim == "note":
+		if is_inside:
+			$AnimationPlayer.play("note_inside")
+		else:
+			$AnimationPlayer.play("note_outside")
+		return
 	if $AnimationPlayer.has_animation(anim):
 		$AnimationPlayer.play(anim)
 		if anim == "entertainment":

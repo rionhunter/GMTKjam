@@ -52,6 +52,8 @@ var dir = {
 	"fox": "ANIMAL",
 	"ghost": "ANIMAL",
 	"deerp": "ANIMAL",
+	"feed": "ANIMAL",
+	"give": "ANIMAL",
 	
 	"say": "COMMAND",
 	"out loud": "COMMAND",

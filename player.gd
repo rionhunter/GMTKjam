@@ -135,15 +135,31 @@ func addToQueue(task):
 		return
 	if queue.has(task):
 		random_response("ALREADY_QUEUED")
+		show_queue()
 		return
 	if current_action == task:
 		random_response("ALREADY_DOING")
+		show_queue()
 		return
 	else:
 		queue.append(task)	
 		yield(get_tree().create_timer(buffer_time), "timeout")
 		think_about("yes", task)
+		show_queue()
 		
+func show_queue():
+	var queue_copy = queue
+	var queue_string = ""
+	if current_action != "none":
+		queue_string = queue_string + "first " + current_action
+		for action in queue_copy:
+			queue_string = queue_string + ", then " + action
+	else:
+		for action in queue_copy:
+			queue_string = queue_string + action + ", then "
+	queue_string = queue_string + "..."
+	EventHub.emit_signal("new_thought", queue_string)
+	
 
 func manage_queue():
 	# Prioritize queue by what if analysis: what task makes the most sense?
