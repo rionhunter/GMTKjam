@@ -62,18 +62,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("ColorRect:rect_size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1024, 600 ) ]
-}
 
 [sub_resource type="Animation" id=1]
 resource_name = "screen_appear"
@@ -127,18 +115,6 @@ tracks/3/keys = {
 "args": [  ],
 "method": "_on_intro_finish"
 } ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("ColorRect:rect_size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1024, 480 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -228,21 +204,20 @@ autostart = true
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = -0.000976563
 anchor_right = 0.999023
-anchor_bottom = 0.8
+anchor_bottom = 0.6
 margin_bottom = 120.0
-color = Color( 0.180392, 0.180392, 0.180392, 0 )
+color = Color( 0.180392, 0.180392, 0.180392, 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="ColorRect"]
-visible = false
 modulate = Color( 0.639216, 0.639216, 0.639216, 1 )
 anchor_left = 0.390625
 anchor_top = 0.583333
 anchor_right = 0.591797
 anchor_bottom = 0.6125
-text = "*Connection terminated*"
+text = "*Executing protocol: Id*"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": true
