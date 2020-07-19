@@ -42,6 +42,8 @@ func _ready():
 		parse("!@#/:00001")
 	initialize_text_fields()
 	$AnimationPlayer.play("screen_appear")
+	EventHub.connect("inside", self, "_on_inside")
+	EventHub.connect("outside", self, "_on_outside")
 
 
 func initialize_text_fields() -> void:
@@ -122,7 +124,17 @@ func remove_screen():
 	$AnimationPlayer.play("screen_disappear")
 	EventHub.emit_signal("game_started")
 	first_input = false
+	$Inside.play()
 	
 	
 func _on_intro_finish():
 	remove_screen()
+
+	
+func _on_inside():
+	$Inside.play()
+	$Outside.stop()
+	
+func _on_outside():
+	$Outside.play()
+	$Inside.stop()

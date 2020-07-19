@@ -12,8 +12,6 @@ signal game_started
 signal new_thought
 signal new_action
 signal new_destination
-signal in_house
-signal outside
 signal animate
 signal start_exploring
 signal nearest_note_requested
@@ -30,6 +28,8 @@ signal watching_started
 signal watching_finished
 signal new_note
 signal speech_finished
+signal inside
+signal outside
 
 # From plants
 signal harvested  # TODO: rethink how signals should look with more than one plant type

@@ -44,7 +44,7 @@ func has_potatoes():
 
 
 func update_potatoes(count : int):
-	potatoes += count
+	potatoes = count
 	print("potatoes updated! ", count)
 
 
@@ -213,11 +213,13 @@ func _on_inside_lock_triggered(wait_loc : Vector3):
 	# going right/inside: already had airlock event
 	if x_direction > 0: 
 		is_inside = true
+		EventHub.emit_signal("inside")
 		return
 		
 	# going left/outside from the inside: wait for airlock first and put on helmet
 	_wait_for_airlock(wait_loc) 
 	is_inside = false
+	EventHub.emit_signal("outside")
 
 
 func _on_player_animation(anim : String):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://soundbits_03_r4_wrong.wav" type="AudioStream" id=1]
 [ext_resource path="res://tInput.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Achievements/InGameAchievements.gd" type="Script" id=6]
 [ext_resource path="res://Achievements/Achievement.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Achievements/achievement_add.wav" type="AudioStream" id=8]
+[ext_resource path="res://inside.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Outside.ogg" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "screen_appear"
@@ -113,7 +115,7 @@ caret_block_mode = true
 caret_blink = true
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Input"]
@@ -229,6 +231,12 @@ margin_bottom = 112.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InGameAchievements"]
 stream = ExtResource( 8 )
+
+[node name="Inside" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="Outside" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 [connection signal="new_input" from="Input" to="Log" method="_on_Input_new_input"]
 [connection signal="new_input" from="Input" to="." method="_on_Input_new_input"]
 [connection signal="timeout" from="Timer" to="Log" method="_on_Timer_timeout"]
