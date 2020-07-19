@@ -183,10 +183,10 @@ curve = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.343, 0.534864, -6.3661 )
 
 [node name="Note2" parent="Discoverables" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4715, 0.534864, -7.22957 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3378, 0.534864, -6.0415 )
 
 [node name="Note3" parent="Discoverables" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.494, 0.534864, 3.58681 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4922, 0.534864, 5.07651 )
 
 [node name="Note4" parent="Discoverables" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25027, 0.534864, -1.17411 )
