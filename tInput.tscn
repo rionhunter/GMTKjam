@@ -11,7 +11,7 @@
 [ext_resource path="res://inside.ogg" type="AudioStream" id=9]
 [ext_resource path="res://Outside.ogg" type="AudioStream" id=10]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "game_over"
 length = 5.0
 tracks/0/type = "value"
@@ -63,8 +63,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "screen_appear"
+[sub_resource type="Animation" id=2]
 length = 11.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -117,8 +116,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "screen_disappear"
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -224,9 +222,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/game_over = SubResource( 3 )
-anims/screen_appear = SubResource( 1 )
-anims/screen_disappear = SubResource( 2 )
+anims/game_over = SubResource( 1 )
+anims/screen_appear = SubResource( 2 )
+anims/screen_disappear = SubResource( 3 )
 
 [node name="InGameAchievements" type="Control" parent="."]
 visible = false
