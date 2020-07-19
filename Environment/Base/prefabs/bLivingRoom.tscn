@@ -3,7 +3,7 @@
 [ext_resource path="res://Environment/Base/bLivingRoom.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Environment/Base/prefabs/Area.gd" type="Script" id=2]
 
-[sub_resource type="Skin" id=5]
+[sub_resource type="Skin" id=1]
 bind_count = 1
 bind/0/name = ""
 bind/0/bone = -1
@@ -23,7 +23,7 @@ extents = Vector3( 0.88572, 0.687558, 1 )
 [node name="bLivingRoom" type="MeshInstance"]
 transform = Transform( -6.29996e-08, 0, 1.44126, 0, 1.44126, 0, -1.44126, 0, -6.29996e-08, 7.54375, -0.441086, -6.18775 )
 mesh = ExtResource( 1 )
-skin = SubResource( 5 )
+skin = SubResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null

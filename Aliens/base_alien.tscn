@@ -11,7 +11,7 @@ height = 0.090602
 [sub_resource type="SphereShape" id=2]
 radius = 3.68065
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "appear"
 length = 5.0
 tracks/0/type = "value"
@@ -53,7 +53,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "hidden"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite3D:visible")
@@ -80,8 +80,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle"
+[sub_resource type="Animation" id=5]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -119,9 +118,9 @@ vframes = 4
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/appear = SubResource( 4 )
-anims/hidden = SubResource( 5 )
-anims/idle = SubResource( 3 )
+anims/appear = SubResource( 3 )
+anims/hidden = SubResource( 4 )
+anims/idle = SubResource( 5 )
 
 [node name="Dialogue" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.584921, 0 )

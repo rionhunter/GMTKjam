@@ -24,8 +24,16 @@ func _on_text_displayed():
 
 
 func set_and_show(speech : String):
-	$Label.text = speech
-	$AnimationPlayer.play("show")
+	print(speech)
+	if $AnimationPlayer.is_playing():
+		$AnimationPlayer.stop()
+		$Label.text = speech
+		$AnimationPlayer.queue("show")
+
+	else:
+		$Label.text = speech
+		$AnimationPlayer.play("show")
+
 
 
 func hide_text():

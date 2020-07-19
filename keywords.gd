@@ -52,6 +52,8 @@ var dir = {
 	"fox": "ANIMAL",
 	"ghost": "ANIMAL",
 	"deerp": "ANIMAL",
+	"feed": "ANIMAL",
+	"give": "ANIMAL",
 	
 	"say": "COMMAND",
 	"out loud": "COMMAND",
@@ -60,6 +62,8 @@ var dir = {
 	"south": "DIRECTION",
 	"west": "DIRECTION",
 	"east": "DIRECTION",
+	"left": "DIRECTION",
+	"right": "DIRECTION",
 	
 	"outside": "EXPLORATION",
 	"wander": "EXPLORATION",
@@ -80,6 +84,7 @@ var dir = {
 	"fertilize": "FARM",
 	"reap": "FARM",
 	"farm": "FARM",
+	"farming": "FARM",
 	"sow": "FARM",
 	"crops": "FARM",
 	"crop": "FARM",
@@ -128,6 +133,8 @@ var dir = {
 	"notes" : "NOTE",
 	"page" : "NOTE",
 	"pages" : "NOTE",
+	"paper" : "NOTE",
+	"papers" : "NOTE",
 	
 	"sudo": "SUDO",
 	"debug": "SUDO",
