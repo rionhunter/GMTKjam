@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://base_character/dialogue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Aliens/sprite1.png" type="Texture" id=2]
@@ -10,6 +10,75 @@ height = 0.090602
 
 [sub_resource type="SphereShape" id=2]
 radius = 3.68065
+
+[sub_resource type="Animation" id=4]
+resource_name = "appear"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_appeared"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "hidden"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "idle"
@@ -29,6 +98,7 @@ tracks/0/keys = {
 }
 
 [node name="Alien" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8806, 0 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -42,20 +112,21 @@ shape = SubResource( 2 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+visible = false
 billboard = 1
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 3
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/appear = SubResource( 4 )
+anims/hidden = SubResource( 5 )
 anims/idle = SubResource( 3 )
 
 [node name="Dialogue" parent="." instance=ExtResource( 1 )]
-y_offset = -52.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.584921, 0 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
-[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
-[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="tree_entered" from="." to="." method="_on_Alien_tree_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

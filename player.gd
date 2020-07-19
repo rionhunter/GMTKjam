@@ -86,6 +86,7 @@ func _ready():
 	EventHub.connect("game_started", self, "_on_game_started")
 	EventHub.connect("fed_animal", self, "_on_fed_animal")
 	EventHub.connect("scared_animal", self, "_on_animal_scared")	
+	EventHub.connect("alien_arrived", self, "_on_alien_arrived")
 	
 	# Open and parse response lines
 	var file = File.new()
@@ -95,8 +96,14 @@ func _ready():
 	bark_dict = result_json.result
 	file.close()
 
+func _on_alien_arrived():
+	$StatusTimer.stop()
+	EventHub.emit_signal("animate", "alien")
+
+
 func _on_fed_animal():
 	random_response("ANIMAL_FED")
+
 	
 func _on_animal_scared():
 	random_response("ANIMAL_SCARED")
@@ -299,8 +306,11 @@ func on_action_done():
 		"eat":
 			hunger = max(hunger + 5, stat_max)
 			potatoes -= 1
-			var potato_string = "Now I have " + str(potatoes) + " left."
-			EventHub.emit_signal("new_thought", "That's one potato down. " + potato_string)
+			if potatoes <= 0:
+				EventHub.emit_signal("new_thought", "That was my last potato. Maybe I should restart my farm")
+			else:
+				var potato_string = "Now I have " + str(potatoes) + " left."
+				EventHub.emit_signal("new_thought", "That's one potato down. " + potato_string)
 			EventHub.emit_signal("potato_count", potatoes)
 		"potty":
 			bladder = stat_max
@@ -329,6 +339,8 @@ func read_note():
 	yield(get_tree().create_timer(buffer_time), "timeout")
 	if current_action == "note":
 		on_action_done()
+	if note_index == len(bark_dict["NOTE_TEXT"]) - 1: #last note
+		EventHub.emit_signal("last_note_found")
 
 func _on_new_keywords(input: Dictionary) -> void:
 	failed_attempts = 0
