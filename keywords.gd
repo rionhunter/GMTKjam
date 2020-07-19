@@ -18,6 +18,11 @@ var dir = {
 	"hug": "AFFECTION",
 	"snog": "AFFECTION",
 	"love": "AFFECTION",
+	"happy": "AFFECTION",
+	"cheer": "AFFECTION",
+	"cheerful": "AFFECTION",
+	"hope": "AFFECTION",
+	"care": "AFFECTION",
 	
 	"yes": "AFFIRMATIVE",
 	"okay" : "AFFIRMATIVE",
@@ -61,8 +66,6 @@ var dir = {
 	"run": "EXPLORATION",
 	"travel": "EXPLORATION",
 	"explore": "EXPLORATION",
-	"find": "EXPLORATION",
-	"pick up": "EXPLORATION",
 	
 	"food": "EAT",
 	"dinner": "EAT",
@@ -119,11 +122,11 @@ var dir = {
 	
 	"sleep": "SLEEP",
 
-	"read" : "READ",
-	"note" : "READ",
-	"notes" : "READ",
-	"page" : "READ",
-	"pages" : "READ",
+	"read" : "NOTE",
+	"note" : "NOTE",
+	"notes" : "NOTE",
+	"page" : "NOTE",
+	"pages" : "NOTE",
 	
 	"sudo": "SUDO",
 	"debug": "SUDO",

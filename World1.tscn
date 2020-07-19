@@ -97,7 +97,7 @@ _data = {
 
 [sub_resource type="Curve3D" id=6]
 _data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 3.25115, 0, -3.92017, 0, 0, 0, 0, 0, 0, 8.48274, 0, -0.459908, 0, 0, 0, 0, 0, 0, 17.083, 0, -2.80816, 0, 0, 0, 0, 0, 0, 24.275, 0, -7.26414, 0, 0, 0, 0, 0, 0, 22.0363, 0, 2.30845 ),
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 3.25115, 0, -3.92017, 0, 0, 0, 0, 0, 0, -4.50019, 0, 1.87675, 0, 0, 0, 0, 0, 0, -13.7676, 0, 7.27427, 0, 0, 0, 0, 0, 0, -15.3971, 0, 15.9307, 0, 0, 0, 0, 0, 0, -2.76891, 0, 15.116 ),
 "tilts": PoolRealArray( 0, 0, 0, 0, 0 )
 }
 
@@ -124,7 +124,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86265e-09, 0 )
 navmesh = SubResource( 1 )
 
 [node name="MainArea" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86265e-09, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
@@ -134,7 +133,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51143, 0, -1.97354 )
 flip = true
 
 [node name="BaseAnimal2" parent="WorldEnvironment" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.49266, 0, -1.97354 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1333, 0, 3.97871 )
 
 [node name="player" parent="." instance=ExtResource( 4 )]
 
@@ -164,14 +163,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4811, 1.78021, -19.7778 )
 [node name="Potty" type="Spatial" parent="Destinations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1444, 2.45767, -7.13133 )
 
-[node name="Entertainment" type="Spatial" parent="Destinations"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9753, 1.97508, -6.83919 )
-
 [node name="TVScreen" parent="Destinations" instance=ExtResource( 7 )]
 transform = Transform( 0.591123, 0, 0.551868, 0, 0.808693, 0, -0.551868, 0, 0.591123, 11.7584, 3.19981, -9.26 )
 
 [node name="Entertainment" type="Spatial" parent="Destinations"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5873, 2.04406, -5.5861 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.686, 2.04406, -8.11621 )
 
 [node name="ExplorationPaths" type="Spatial" parent="."]
 
@@ -199,7 +195,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.343, 0.534864, -6.3661 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31812, 0.534864, -7.22957 )
 
 [node name="Note3" parent="Discoverables" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5419, 0.534864, -0.706425 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7473, 0.534864, 6.33603 )
 
 [node name="Note4" parent="Discoverables" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.992788, 0.534864, -1.17411 )

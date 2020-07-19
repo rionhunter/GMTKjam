@@ -1,4 +1,16 @@
 ﻿{
+	"ALREADY_QUEUED":
+		[
+		"in a bit, brain",
+		"yep, already on my list",
+		"patience, brain"
+		],	
+
+	"ALREADY_DOING":
+		[
+		"what does it look like I'm doing now?"
+		],
+
 	"AGGRESSION":
 		[
 		"I keep getting these angry thoughts",
@@ -170,26 +182,42 @@
 		"how indeed"
 		],
 
-	"NOTES":
+	"NOTE_YES":
 		[
-		"Day 1: The locals aren't hostile, but they are ambivalent. Every attempt at socializing is met with abject disinterest. Tomorrow I will try my best anecdote, but I fear it will not be enough",
-		"Day 2: They were not at all impressed or endeared that I once subsisted entirely on yogurt and apples for three weeks. All may be for naught.",
-		"Day 5: They keep asking probing questions like 'how are you really?' and 'is everything okay' and 'what are you excited about?'",
+		"I think I will pick up more of those torn pages in a bit",
+		"Yeah... where did that other note go?",
+		"I'll find more notes soon"
+		],
+	"NOTE_START":
+		[
+		"Time to find a note",
+		"Going to pick up another note now",
+		"Let's see ... I think I saw a page over here"
+		],
+
+	"NOTE_NO":
+		[
+		"That was the last note",
+		"there are no more notes to find",
+		"I cleaned up all the torn pages"
+		],
+
+	"NOTE_TEXT":
+		[
+		"Day 71 Planetside: I lost the satellite feed today, right in the middle of Miranda throwing her wine in Julie's face. At least I still have the recordings. Miranda's basically my best friend after all the time we've spent together on this boring mission.",
+		"Day 1 Planetside: The new base has been established. Today marks the beginning of my astronautical adventure on Planet 30x-98. I will have to think of a better name for this world - I'll be here for quite a while after all.",
+		"Day 76 Planetside: Well. Figured out why I lost satellite feed. Turns out my homeplanet and everyone I know or care about died, probably incredibly painfully, in a literal nuclear holocaust. The emergency signal was sitting in my inbox for days while I did fuck all.",
+		"Day 24 Planetside: I've been analyzing the deerp's food sources. Interestingly, they seem to tolerate high glycoalkaloid levels far better than I'd expect. Time to conduct a practical experiment - can deerp eat sprouted potatoes? EDIT: yes. yes they can.",
+		"Day why the hell does it matter Planetside: If you're a social creature, but you lose all social connection, are you even still living? Why am I even writing this when no one will ever see it?"
 		],
 
 	"ANOTHER_NOTE":
 		[
-		"More litter to pick up",
-		"Another note!",
-		"How did these get out here?"
-		],
-
-	"NOTE_YES":
-		[
-		"What does this even say?",
-		"Let's see what we have here",
-		"Tell me your secrets",
-		"I can't help myself"
+		"I thought I got rid of all these. I wonder if any others are still lying around.",
+		"It seems so long ago now.",
+		"I don't want to read this again. It was hard enough writing it.",
+		"Maybe I should visit them again",
+		"Well that was the worst day of my life",
 		],
 
 	"NOTE_ERROR":
@@ -248,7 +276,7 @@
 	
     "FARM_FINISH":
         [
-        "always nice to see anothing living thing every now and again",
+        "always nice to see another living thing every now and again",
         "another day, another potato.",
 	"I'm such a proud plant parent"
         ],
@@ -426,6 +454,12 @@
         [
 		"I'm not tired though"
         ],
+
+    "SLEEP_START":
+        [
+		"nap time"
+        ],
+	
 
     "SLEEP_ARRIVE":
         [

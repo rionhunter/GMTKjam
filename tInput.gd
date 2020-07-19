@@ -19,7 +19,7 @@ const AFFECTION := Color(0.85, 0.33, 1) # pink
 const FOOD := Color(0.44, 0.81, 0.5) # green
 const MAINTENANCE := Color(0.53, 0.75, 0.88) # light blue
 const COMMAND := Color(0.99, 0.5, 0.42) # orangey
-const EXPLORATION := Color(0.99, 0.5, 0.42) # orangey
+const EXPLORATION := Color(0.53, 0.75, 0.88) # light blue
 const READ := Color(0.99, 0.5, 0.42) # orangey
 
 
@@ -76,7 +76,7 @@ func set_keyword_colors() -> void:
 				color = MAINTENANCE
 			"ENTERTAINMENT":
 				color = MAINTENANCE
-			"READ":
+			"NOTE":
 				color = READ
 			_:
 				color = NORMAL
