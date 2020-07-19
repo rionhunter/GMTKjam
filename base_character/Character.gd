@@ -17,6 +17,7 @@ var state = State.NORMAL
 var patrol_path : PoolVector3Array setget setPatrolPath
 var default_x_rotation := -42.24
 var default_y_translation := 5.795
+var potatoes := 0
 
 
 func _ready():
@@ -32,7 +33,20 @@ func _ready():
 	EventHub.connect("exited_living_room", self, "_on_living_room_exited")
 	EventHub.connect("greenhouse_entered", self, "_on_greenhouse_entered")
 	EventHub.connect("greenhouse_exited", self, "_on_greenhouse_exited")
+	EventHub.connect("potato_count", self, "update_potatoes")
 	animate_sprite("idle")
+
+
+func has_potatoes():
+	if potatoes <= 0:
+		return false
+	return true
+
+
+func update_potatoes(count : int):
+	potatoes += count
+	print("potatoes updated! ", count)
+
 
 func _on_living_room_entered():
 	$Camera.rotation_degrees.x = 0
@@ -214,7 +228,15 @@ func _on_player_animation(anim : String):
 		else:
 			setPath(patrol_path)
 		return
-	
+	if anim == "animal" and has_potatoes():
+		$Sprite3D.flip_h = false
+		$AnimationPlayer.play("helm_farm")
+		return
+	elif anim == "animal":
+		$AnimationPlayer.play("helm_idle_right_down")
+		yield(get_tree().create_timer(2), "timeout")
+		EventHub.emit_signal("animation_done")
+		return
 	if $AnimationPlayer.has_animation(anim):
 		$AnimationPlayer.play(anim)
 		if anim == "entertainment":

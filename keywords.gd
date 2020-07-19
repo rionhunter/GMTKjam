@@ -23,6 +23,7 @@ var dir = {
 	"cheerful": "AFFECTION",
 	"hope": "AFFECTION",
 	"care": "AFFECTION",
+	"nice": "AFFECTION",
 	
 	"yes": "AFFIRMATIVE",
 	"okay" : "AFFIRMATIVE",

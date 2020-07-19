@@ -1,8 +1,35 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Environment/Animals/base_animal.gd" type="Script" id=1]
 [ext_resource path="res://Environment/Animals/sprite.png" type="Texture" id=2]
 [ext_resource path="res://Environment/Animals/soundbits_03_r3_alien.wav" type="AudioStream" id=3]
+
+[sub_resource type="Animation" id=5]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 10 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D:opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "eat"
@@ -114,9 +141,10 @@ billboard = 1
 texture = ExtResource( 2 )
 vframes = 3
 hframes = 5
-frame = 11
+frame = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/appear = SubResource( 5 )
 anims/eat = SubResource( 1 )
 anims/hide = SubResource( 2 )
 anims/idle = SubResource( 3 )

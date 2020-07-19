@@ -477,7 +477,7 @@ shaded = true
 texture = ExtResource( 2 )
 vframes = 7
 hframes = 11
-frame = 13
+frame = 55
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "helm_idle_right_down"

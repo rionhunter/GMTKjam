@@ -21,11 +21,36 @@
 
 	"AFFECTION":
 		[
-		"I miss my Laura",
-		"Laura, Laura, my dear Laura. Not long now",
-		"I can't wait to fix Laura a plate of potato dumplings",
-		"man it's lonely in space",
+		":)",
+		"I feel better somehow",
 		],	
+
+	"ANIMAL_FED":
+		[
+		"I love you too, deerp",
+		"awww he's so cute when he eats potatoes",
+		"this is nice"
+		],
+
+	"ANIMAL_SCARED":
+		[
+		":(",
+		"it ran away...",
+		"come back, deerp!"
+		],
+
+	"ANIMAL_YES":
+		[
+		"I think I'll visit the deerp outside soon",
+		"I like watching the deerp",
+		"I should go see the deerp"
+		],
+
+	"ANIMAL_START":
+		[
+		"I'm coming, deerp!",
+		"gonna go see the deerp now",
+		],
 
 	"ANIMAL":
 		[
@@ -37,12 +62,11 @@
 	"BACKGROUND":
 		[
 		"do I really love potatoes, or just the fact that they're the only thing that reminds me of home?",
-		"I dreamed of living in space, but now...I guess it's just not what I expected",
+		"I dreamed of living in space, but now...",
 		"it's so lonely out here",
 		"why don't they make space suits in more colors?",
-		"I want to stop being alone, but I can't stand the thought of being around people. How does that make sense?",
 		"go to space, they said, be a pioneer, they said...",
-		"my hometown was so proud when the news came out. Why aren't I?",
+		"my hometown was so proud when the news came out that I'd be heading to space",
 		"is teal a blue or a green?",
 		"maybe I just can't be happy",
 		"do potatoes just taste better in space?",
@@ -50,9 +74,8 @@
 		"sometimes it feels like my life is just a meaningless sequence of looping events",
 		"am I going space mad? I can't be, if I'm thinking that...can I?",
 		"*ah ah ah ah staying alive, staying alive!* - such a classic",
-		"at least I don't have to worry about the earth pandemic...beyond all my friends and family being there...",
 		"how much wood *could* a woodchuck chuck?",
-		"heh. What would a good space-themed pickup line be?",
+		"What would a good space-themed pickup line be? Not that I'd be able to use one...",
 		],
 
 	"CHOOSE_ACTION":
@@ -61,7 +84,6 @@
 		"hmmmm...",
 		"what should I do next? hmmm",
 		"what's next?",
-		"So many things to do, so little time.",
 		"hm hmm hmmmmmm...",
 		"done with that. Now what?",
 		"hrmmm",
@@ -304,18 +326,18 @@
 
     "ENTERTAINMENT_ARRIVE":
         [
-        "Dang just missed the start",
-	"Oh.. what show is this?",
 	"It's nice to just veg out sometimes",
-	"Aha, no. Definitely going watch a different channel.",
-	"Yes! It just started."
+	"Aha, no. Definitely going watch a different video.",
+	"What recording should I pick...",
+	"Hello tv, my good friend",
+	"it's just you and me, tv"
         ],
 
     "ENTERTAINMENT_YES":
 	[
 	"I'll catch some TV soon",
-	"I should see if there's anything worth watching on TV.",
-	"There's usually something good on TV around now.",
+	"Might as well watch TV",
+	"I don't really feel like doing anything else but watching tv anyway",
 	"Going to take a break soon and watch some TV."
 	],
 
@@ -325,25 +347,24 @@
 		"did I nod off there?",
 		"why am I watching this?",
 		"I cannot believe people got paid money to make that",
-		"better the first time",
+		"better the 57th time",
 		"I'll never get sick of this show",
 		"heh. I feel a bit better now",
 		"lawl they just crack me up",
 		"maybe I should have pursued acting...",
-		"I hear they're filming an episode on the next moon over",
-		"Oh THAT'S the actor's name. I knew I knew them from somewhere.",
 		"I would have written that episode a little differently if I was directing.",
 		"Woah, they really botched the end of that one.",
 		"I was so hooked right up until the end.",
 		"The music that plays over the end credits is the best part about this show.",
 		"That episode was incredible.",
 		"Well that was an average episode..",
-		"What a cliffhanger. Now I can't wait until the next one."
+		"What a cliffhanger!"
 		],
 
  "POTTY_YES":
         [
-	"Yeah, I think I will take a bio break soon"
+	"Yeah, I think I will take a bio break soon",	
+	"I need to pee!"
         ],
 
  "POTTY_NO":

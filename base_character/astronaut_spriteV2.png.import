@@ -14,7 +14,7 @@ dest_files=[ "res://.import/astronaut_spriteV2.png-e35db5806feeaead04638b02356b1
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

@@ -78,6 +78,8 @@ func set_keyword_colors() -> void:
 				color = MAINTENANCE
 			"NOTE":
 				color = READ
+			"ANIMAL":
+				color = EXPLORATION
 			_:
 				color = NORMAL
 		$Input.add_keyword_color(word, color)
