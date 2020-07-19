@@ -329,6 +329,8 @@ func _on_new_keywords(input: Dictionary) -> void:
 					addToQueue("note")
 				else:
 					think_about("no", "note")
+			"ANIMAL":
+				addToQueue("animal")
 			_:
 				random_response(Keywords.dir[word])
 

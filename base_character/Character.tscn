@@ -473,6 +473,7 @@ transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.0119602, 0.596193, -0.029645
 cast_shadow = 0
 offset = Vector2( 0, 2.20978 )
 billboard = 1
+shaded = true
 texture = ExtResource( 2 )
 vframes = 7
 hframes = 11

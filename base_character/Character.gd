@@ -26,7 +26,18 @@ func _ready():
 	EventHub.connect("outside_lock_triggered", self, "_on_outside_lock_triggered")
 	EventHub.connect("airlock_finished", self, "_on_airlock_finished")
 	EventHub.connect("start_exploring", self, "_on_start_exploring")
+	EventHub.connect("entered_living_room", self, "_on_living_room_entered")
+	EventHub.connect("exited_living_room", self, "_on_living_room_exited")
 	animate_sprite("idle")
+
+func _on_living_room_entered():
+	$Camera.rotation_degrees.x = 0
+	$Camera.translation.y = .5
+
+
+func _on_living_room_exited():
+	$Camera.rotation_degrees.x = -42.24
+	$Camera.translation.y = 5.795
 
 
 func _process(delta):
@@ -201,7 +212,7 @@ func _on_player_animation(anim : String):
 	else:
 		print("I don't have the animation ", anim)
 		print("I'm just going to do this")
-		$AnimationPlayer.play("idle")
+		$AnimationPlayer.play("farm")
 
 
 func _on_animation_finished():
