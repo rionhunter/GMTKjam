@@ -48,6 +48,7 @@ func _ready():
 
 func _on_game_over():
 	$AnimationPlayer.play("game_over")
+	$Input.readonly = true
 
 
 func initialize_text_fields() -> void:

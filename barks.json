@@ -95,6 +95,12 @@
 		"Next up..."
 		],
 
+	"DIRECTION":
+		[
+		"I need a purpose... I don't want to just walk around aimlessly",
+		"but why go there?"
+		],
+
 	"EXPLORATION":
 		[
 		"why do I get a sudden urge to move?",

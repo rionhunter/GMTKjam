@@ -41,7 +41,7 @@ var hydration := 10.0
 # We as the player don't see this or interact with it directly, so it doesn't need to be too flash
 var inventory = {"food": {"potatoes" : 1, "carrots" : 0}}
 var potatoes := 1
-var note_index := -1
+var note_index := 3
 var nearest_note := Vector3()
 
 ### Queue
@@ -103,6 +103,8 @@ func _on_alien_arrived():
 
 func _on_fed_animal():
 	random_response("ANIMAL_FED")
+	potatoes -= 1
+	EventHub.emit_signal("new_thought", "one potato down, " + str(potatoes) + " left")
 
 	
 func _on_animal_scared():

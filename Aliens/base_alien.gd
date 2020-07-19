@@ -7,6 +7,7 @@ var rng = RandomNumberGenerator.new()
 var character_in_range := true
 var is_enabled := true
 var waiting_for_reply := false
+var player_has_spoken := false
 var no_response_periods := 0
 var quest_keyword := "deerp"
 var quest_accepted := false
@@ -40,7 +41,8 @@ func say_goodbye():
 
 
 func _on_player_finished_speaking(input : String):
-	$Timer.stop()
+	$Timer.start(15)
+	player_has_spoken = true
 	no_response_periods = 0
 	
 	if quest_keyword in input:
@@ -114,10 +116,12 @@ func _on_appeared():
 
 
 func _on_Timer_timeout():
-	if !waiting_for_reply or no_response_periods >= len(phrases["NO_RESPONSE"]):
-		$Timer.stop()
+	var response = ""
+	if !player_has_spoken:
+		response = phrases["NO_RESPONSE"][no_response_periods % len(phrases["NO_RESPONSE"])]
+	else:
+		random_response("MISC")
 		return
-	var response = phrases["NO_RESPONSE"][no_response_periods]
 	$Dialogue.set_and_show(response)
 	no_response_periods += 1
 
