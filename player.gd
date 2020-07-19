@@ -41,9 +41,8 @@ var hydration := 10.0
 # We as the player don't see this or interact with it directly, so it doesn't need to be too flash
 var inventory = {"food": {"potatoes" : 1, "carrots" : 0}}
 var potatoes := 1
-var notes := []
-var first_note := true
-var note_index := 0
+var note_index := -1
+var nearest_note := Vector3()
 
 ### Queue
 # Each time a new item is added, as well as at random, semi-frequent intervals, the character will assess the
@@ -122,7 +121,13 @@ func on_harvest(num : int):
 
 
 func addToQueue(task):
-	if task == null or queue.has(task) or current_action == task:
+	if task == null:
+		return
+	if queue.has(task):
+		random_response("ALREADY_QUEUED")
+		return
+	if current_action == task:
+		random_response("ALREADY_DOING")
 		return
 	else:
 		queue.append(task)	
@@ -176,6 +181,12 @@ func stat_check(stat : float, action : String):
 		think_about("no", action)
 		if action == "eat" and potatoes < 5:
 			addToQueue("farm")
+
+func set_next_note_location(location : Vector3):
+	if location != Vector3():
+		destinations["note"] = location
+	else:
+		destinations.erase("note")
 
 func next_action():
 	# Pulls the next action from the prioritized queue
@@ -281,13 +292,15 @@ func update_priorities():
 
 
 func read_note():
-	if len(notes) > 0:
-		#random_response("NOTE_YES")
-		yield(get_tree().create_timer(buffer_time), "timeout")
-		EventHub.emit_signal("new_note", notes.pop_front())
-	else:
-		random_response("NOTE_ERROR")
-
+	if note_index >= len(bark_dict["NOTE_TEXT"]):
+		EventHub.emit_signal("new_thought", "This one is blank. I think the developer still needs to add it.")
+		return 
+	EventHub.emit_signal("new_thought", bark_dict["ANOTHER_NOTE"][note_index])
+	yield(get_tree().create_timer(buffer_time), "timeout")
+	EventHub.emit_signal("new_note", bark_dict["NOTE_TEXT"][note_index])
+	EventHub.emit_signal("nearest_note_requested")
+	yield(get_tree().create_timer(buffer_time), "timeout")
+	on_action_done()
 
 func _on_new_keywords(input: Dictionary) -> void:
 	failed_attempts = 0
@@ -308,11 +321,14 @@ func _on_new_keywords(input: Dictionary) -> void:
 				stat_check(happiness, "entertainment")
 			"EAT":
 				stat_check(hunger, "eat")
-			"READ":
-				read_note()
 			"MAINTENANCE":
 				random_response("MAINTENANCE")
 				add_lowest()
+			"NOTE":
+				if destinations.has("note"):
+					addToQueue("note")
+				else:
+					think_about("no", "note")
 			_:
 				random_response(Keywords.dir[word])
 
@@ -363,20 +379,8 @@ func _on_StatusTimer_timeout():
 
 
 func _on_note_detected():
-# Saves note text to player's notes array in order shown in barks.json file 
-	var all_notes = bark_dict["NOTES"]
-	if first_note:
-		EventHub.emit_signal("new_thought", "Finally found a page!")
-		first_note = false
-	else:
-		random_response("ANOTHER_NOTE")
-	if note_index >= len(all_notes): # More notes in world than available dialogue
-		EventHub.emit_signal("new_thought", "This one is blank. I think the developer still needs to add it.")
-	else:
-		notes.append(all_notes[note_index])
-		print("appended: ", all_notes[note_index])
-		note_index += 1
-		read_note()
+	note_index += 1
+	read_note()
 
 
 func _on_RandThoughtTimer_timeout():

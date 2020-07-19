@@ -16,6 +16,7 @@ signal in_house
 signal outside
 signal animate
 signal start_exploring
+signal nearest_note_requested
 
 # From character
 signal reached_destination

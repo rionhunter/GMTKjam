@@ -201,7 +201,7 @@ func _on_player_animation(anim : String):
 	else:
 		print("I don't have the animation ", anim)
 		print("I'm just going to do this")
-		$AnimationPlayer.play("work")
+		$AnimationPlayer.play("idle")
 
 
 func _on_animation_finished():
