@@ -34,6 +34,7 @@ func _ready():
 	EventHub.connect("greenhouse_entered", self, "_on_greenhouse_entered")
 	EventHub.connect("greenhouse_exited", self, "_on_greenhouse_exited")
 	EventHub.connect("potato_count", self, "update_potatoes")
+	EventHub.connect("alien_arrived", self, "_on_alien_arrived")
 	animate_sprite("idle")
 
 
@@ -47,6 +48,11 @@ func update_potatoes(count : int):
 	potatoes = count
 	print("potatoes updated! ", count)
 
+
+func _on_alien_arrived():
+	$Camera.rotation_degrees.x = 0
+	$Camera.translation.y = 0
+	
 
 func _on_living_room_entered():
 	$Camera.rotation_degrees.x = 0
