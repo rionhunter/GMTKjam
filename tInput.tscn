@@ -156,16 +156,16 @@ __meta__ = {
 [node name="Input" type="TextEdit" parent="."]
 anchor_left = -0.000976563
 anchor_top = 0.958333
-anchor_right = 0.999023
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1.0
+margin_right = -6.10352e-05
 syntax_highlighting = true
 context_menu_enabled = false
 caret_block_mode = true
 caret_blink = true
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Input"]
@@ -175,11 +175,9 @@ volume_db = -10.0
 [node name="Log" type="TextEdit" parent="."]
 anchor_left = -0.000976563
 anchor_top = 0.793333
-anchor_right = 0.999023
+anchor_right = 1.0
 anchor_bottom = 0.96
-margin_top = 3.05176e-05
-margin_right = 1.0
-margin_bottom = 6.10352e-05
+margin_right = -6.10352e-05
 readonly = true
 syntax_highlighting = true
 context_menu_enabled = false
@@ -202,15 +200,13 @@ autostart = true
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = -0.000976563
 anchor_right = 0.999023
-anchor_bottom = 0.6
-margin_bottom = 120.0
+anchor_bottom = 0.8
 color = Color( 0.180392, 0.180392, 0.180392, 0 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="ColorRect"]
-visible = false
 modulate = Color( 0.639216, 0.639216, 0.639216, 1 )
 anchor_left = 0.390625
 anchor_top = 0.583333
