@@ -469,11 +469,13 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.0244
 shape = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.0119602, 0.596193, -0.0296451 )
+transform = Transform( 0.357316, 0, 0, 0, 0.357316, 0, 0, 0, 0.357316, 0.0119602, 0.596192, -0.0296451 )
 cast_shadow = 0
 offset = Vector2( 0, 2.20978 )
+pixel_size = 0.1
 billboard = 1
 shaded = true
+alpha_cut = 2
 texture = ExtResource( 2 )
 vframes = 7
 hframes = 11

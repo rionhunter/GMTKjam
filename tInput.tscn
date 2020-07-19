@@ -237,6 +237,6 @@ stream = ExtResource( 9 )
 
 [node name="Outside" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-[connection signal="new_input" from="Input" to="Log" method="_on_Input_new_input"]
 [connection signal="new_input" from="Input" to="." method="_on_Input_new_input"]
+[connection signal="new_input" from="Input" to="Log" method="_on_Input_new_input"]
 [connection signal="timeout" from="Timer" to="Log" method="_on_Timer_timeout"]
