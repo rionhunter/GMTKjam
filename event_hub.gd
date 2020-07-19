@@ -41,6 +41,8 @@ signal inside_lock_triggered
 signal airlock_finished
 signal entered_living_room
 signal exited_living_room
+signal greenhouse_exited
+signal greenhouse_entered
 
 # From mystery notes
 signal note_detected
