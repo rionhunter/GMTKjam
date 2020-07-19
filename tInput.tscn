@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://soundbits_03_r4_wrong.wav" type="AudioStream" id=1]
 [ext_resource path="res://tInput.gd" type="Script" id=2]
@@ -12,7 +12,58 @@
 [ext_resource path="res://Outside.ogg" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
-resource_name = "screen_appear"
+resource_name = "game_over"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.180392, 0.180392, 0.180392, 0 ), Color( 0.180392, 0.180392, 0.180392, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InGameAchievements:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "<Connection terminated>", "<Status: success>" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ColorRect/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=2]
 length = 11.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -65,8 +116,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "screen_disappear"
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -106,16 +156,16 @@ __meta__ = {
 [node name="Input" type="TextEdit" parent="."]
 anchor_left = -0.000976563
 anchor_top = 0.958333
-anchor_right = 0.999023
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1.0
+margin_right = -6.10352e-05
 syntax_highlighting = true
 context_menu_enabled = false
 caret_block_mode = true
 caret_blink = true
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Input"]
@@ -125,11 +175,9 @@ volume_db = -10.0
 [node name="Log" type="TextEdit" parent="."]
 anchor_left = -0.000976563
 anchor_top = 0.793333
-anchor_right = 0.999023
+anchor_right = 1.0
 anchor_bottom = 0.96
-margin_top = 3.05176e-05
-margin_right = 1.0
-margin_bottom = 6.10352e-05
+margin_right = -6.10352e-05
 readonly = true
 syntax_highlighting = true
 context_menu_enabled = false
@@ -153,7 +201,7 @@ autostart = true
 anchor_left = -0.000976563
 anchor_right = 0.999023
 anchor_bottom = 0.8
-color = Color( 0.180392, 0.180392, 0.180392, 1 )
+color = Color( 0.180392, 0.180392, 0.180392, 0 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -164,17 +212,19 @@ anchor_left = 0.390625
 anchor_top = 0.583333
 anchor_right = 0.591797
 anchor_bottom = 0.6125
-text = "*Executing protocol: Id*"
+text = "<Connection terminated>"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/screen_appear = SubResource( 1 )
-anims/screen_disappear = SubResource( 2 )
+anims/game_over = SubResource( 1 )
+anims/screen_appear = SubResource( 2 )
+anims/screen_disappear = SubResource( 3 )
 
 [node name="InGameAchievements" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 6 )

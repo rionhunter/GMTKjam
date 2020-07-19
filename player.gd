@@ -86,6 +86,7 @@ func _ready():
 	EventHub.connect("game_started", self, "_on_game_started")
 	EventHub.connect("fed_animal", self, "_on_fed_animal")
 	EventHub.connect("scared_animal", self, "_on_animal_scared")	
+	EventHub.connect("alien_arrived", self, "_on_alien_arrived")
 	
 	# Open and parse response lines
 	var file = File.new()
@@ -95,8 +96,16 @@ func _ready():
 	bark_dict = result_json.result
 	file.close()
 
+func _on_alien_arrived():
+	$StatusTimer.stop()
+	EventHub.emit_signal("animate", "alien")
+
+
 func _on_fed_animal():
 	random_response("ANIMAL_FED")
+	potatoes -= 1
+	EventHub.emit_signal("new_thought", "one potato down, " + str(potatoes) + " left")
+
 	
 func _on_animal_scared():
 	random_response("ANIMAL_SCARED")
@@ -135,15 +144,31 @@ func addToQueue(task):
 		return
 	if queue.has(task):
 		random_response("ALREADY_QUEUED")
+		show_queue()
 		return
 	if current_action == task:
 		random_response("ALREADY_DOING")
+		show_queue()
 		return
 	else:
 		queue.append(task)	
 		yield(get_tree().create_timer(buffer_time), "timeout")
 		think_about("yes", task)
+		show_queue()
 		
+func show_queue():
+	var queue_copy = queue
+	var queue_string = ""
+	if current_action != "none":
+		queue_string = queue_string + "first " + current_action
+		for action in queue_copy:
+			queue_string = queue_string + ", then " + action
+	else:
+		for action in queue_copy:
+			queue_string = queue_string + action + ", then "
+	queue_string = queue_string + "..."
+	EventHub.emit_signal("new_thought", queue_string)
+	
 
 func manage_queue():
 	# Prioritize queue by what if analysis: what task makes the most sense?
@@ -283,8 +308,11 @@ func on_action_done():
 		"eat":
 			hunger = max(hunger + 5, stat_max)
 			potatoes -= 1
-			var potato_string = "Now I have " + str(potatoes) + " left."
-			EventHub.emit_signal("new_thought", "That's one potato down. " + potato_string)
+			if potatoes <= 0:
+				EventHub.emit_signal("new_thought", "That was my last potato. Maybe I should restart my farm")
+			else:
+				var potato_string = "Now I have " + str(potatoes) + " left."
+				EventHub.emit_signal("new_thought", "That's one potato down. " + potato_string)
 			EventHub.emit_signal("potato_count", potatoes)
 		"potty":
 			bladder = stat_max
@@ -303,6 +331,7 @@ func update_priorities():
 
 
 func read_note():
+	$StatusTimer.stop()
 	if note_index >= len(bark_dict["NOTE_TEXT"]):
 		EventHub.emit_signal("new_thought", "This one is blank. I think the developer still needs to add it.")
 		return 
@@ -313,6 +342,11 @@ func read_note():
 	yield(get_tree().create_timer(buffer_time), "timeout")
 	if current_action == "note":
 		on_action_done()
+	if note_index == len(bark_dict["NOTE_TEXT"]) - 1: #last note
+		EventHub.emit_signal("last_note_found")
+		return
+	yield(get_tree().create_timer(buffer_time*5), "timeout")
+	$StatusTimer.start()
 
 func _on_new_keywords(input: Dictionary) -> void:
 	failed_attempts = 0
@@ -341,8 +375,8 @@ func _on_new_keywords(input: Dictionary) -> void:
 					addToQueue("note")
 				else:
 					think_about("no", "note")
-			"ANIMAL":
-				addToQueue("animal")
+			"DEERP":
+				addToQueue("deerp")
 			_:
 				random_response(Keywords.dir[word])
 

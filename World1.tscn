@@ -118,7 +118,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86265e-09, 0 )
 navmesh = SubResource( 1 )
 
 [node name="MainArea" parent="Navigation/NavigationMeshInstance" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86265e-09, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
@@ -127,16 +126,13 @@ environment = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51143, 0, -1.97354 )
 flip = true
 
-[node name="BaseAnimal2" parent="WorldEnvironment" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90404, 0, 3.58809 )
-
 [node name="player" parent="." instance=ExtResource( 4 )]
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3027, 3.12248, -14.4277 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.781, 1.91764, -7.96739 )
 
 [node name="Camera" type="Camera" parent="Character"]
-transform = Transform( 1, 0, 0, 0, 0.740265, 0.672315, 0, -0.672315, 0.740265, 0, 5.795, 4.371 )
+transform = Transform( 1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 3, 0.459945 )
 doppler_tracking = 1
 current = true
 fov = 52.5
@@ -164,8 +160,8 @@ transform = Transform( 0.591123, 0, 0.551868, 0, 0.808693, 0, -0.551868, 0, 0.59
 [node name="Entertainment" type="Spatial" parent="Destinations"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.122, 1.77016, -7.57107 )
 
-[node name="Animal" type="Spatial" parent="Destinations"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92489, 0, 4.71431 )
+[node name="Deerp" type="Spatial" parent="Destinations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07894, 0, -0.991423 )
 
 [node name="ExplorationPaths" type="Spatial" parent="."]
 
@@ -187,10 +183,10 @@ curve = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.343, 0.534864, -6.3661 )
 
 [node name="Note2" parent="Discoverables" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31812, 0.534864, -7.22957 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4715, 0.534864, -7.22957 )
 
 [node name="Note3" parent="Discoverables" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1514, 0.534864, 2.72703 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.494, 0.534864, 3.58681 )
 
 [node name="Note4" parent="Discoverables" instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25027, 0.534864, -1.17411 )
