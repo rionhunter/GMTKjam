@@ -14,8 +14,17 @@ func _ready():
 	EventHub.connect("path_requested", self, "findPath")
 	EventHub.connect("new_patrol_path", self, "newPatrolPath")
 	EventHub.connect("nearest_note_requested", self, "_on_noteRequested")
+	EventHub.connect("last_note_found", self, "_on_last_note_found")
 	setDestinations()
 
+
+func _on_last_note_found():
+	yield(get_tree().create_timer(3), "timeout")
+	var alien = preload("res://Aliens/base_alien.tscn").instance()
+	var cv3 = to_global(character.translation)
+	alien.translation = Vector3(cv3.x - 1.2, cv3.y, cv3.z)
+	add_child(alien)
+	
 
 func loadFiles():
 	var file = File.new()

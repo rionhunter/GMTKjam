@@ -3,7 +3,7 @@ class_name Dialogue
 
 
 export(float) var y_offset := -75.0
-export(float) var x_offset := -250.0
+export(float) var x_offset := 250.0
 
 
 func _ready():
@@ -16,7 +16,7 @@ func _process(_delta):
 	var pos = to_global(translation)
 	var cam = get_tree().get_root().get_camera()
 	var screen_pos = cam.unproject_position(pos)
-	$Label.rect_position = Vector2(screen_pos.x + x_offset, screen_pos.y + y_offset)
+	$Label.rect_position = Vector2(screen_pos.x - x_offset, screen_pos.y - y_offset)
 
 
 func _on_text_displayed():
@@ -24,8 +24,16 @@ func _on_text_displayed():
 
 
 func set_and_show(speech : String):
-	$Label.text = speech
-	$AnimationPlayer.play("show")
+	print(speech)
+	if $AnimationPlayer.is_playing():
+		$AnimationPlayer.stop()
+		$Label.text = speech
+		$AnimationPlayer.queue("show")
+
+	else:
+		$Label.text = speech
+		$AnimationPlayer.play("show")
+
 
 
 func hide_text():

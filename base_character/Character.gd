@@ -15,7 +15,7 @@ var is_inside := true
 enum State {NORMAL, AIRLOCK}
 var state = State.NORMAL
 var patrol_path : PoolVector3Array setget setPatrolPath
-var default_x_rotation := -42.24
+var default_x_rotation := -55
 var default_y_translation := 5.795
 var potatoes := 0
 
@@ -34,6 +34,7 @@ func _ready():
 	EventHub.connect("greenhouse_entered", self, "_on_greenhouse_entered")
 	EventHub.connect("greenhouse_exited", self, "_on_greenhouse_exited")
 	EventHub.connect("potato_count", self, "update_potatoes")
+	EventHub.connect("alien_arrived", self, "_on_alien_arrived")
 	animate_sprite("idle")
 
 
@@ -47,6 +48,11 @@ func update_potatoes(count : int):
 	potatoes = count
 	print("potatoes updated! ", count)
 
+
+func _on_alien_arrived():
+	$Camera.rotation_degrees.x = 0
+	$Camera.translation.y = 0
+	
 
 func _on_living_room_entered():
 	$Camera.rotation_degrees.x = 0
@@ -230,14 +236,20 @@ func _on_player_animation(anim : String):
 		else:
 			setPath(patrol_path)
 		return
-	if anim == "animal" and has_potatoes():
+	if anim == "deerp" and has_potatoes():
 		$Sprite3D.flip_h = false
 		$AnimationPlayer.play("helm_farm")
 		return
-	elif anim == "animal":
+	elif anim == "deerp":
 		$AnimationPlayer.play("helm_idle_right_down")
 		yield(get_tree().create_timer(2), "timeout")
 		EventHub.emit_signal("animation_done")
+		return
+	if anim == "note":
+		if is_inside:
+			$AnimationPlayer.play("note_inside")
+		else:
+			$AnimationPlayer.play("note_outside")
 		return
 	if $AnimationPlayer.has_animation(anim):
 		$AnimationPlayer.play(anim)

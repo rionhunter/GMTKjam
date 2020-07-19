@@ -44,6 +44,11 @@ func _ready():
 	$AnimationPlayer.play("screen_appear")
 	EventHub.connect("inside", self, "_on_inside")
 	EventHub.connect("outside", self, "_on_outside")
+	EventHub.connect("game_over", self, "_on_game_over")
+
+func _on_game_over():
+	$AnimationPlayer.play("game_over")
+	$Input.readonly = true
 
 
 func initialize_text_fields() -> void:
@@ -80,7 +85,7 @@ func set_keyword_colors() -> void:
 				color = MAINTENANCE
 			"NOTE":
 				color = READ
-			"ANIMAL":
+			"DEERP":
 				color = EXPLORATION
 			_:
 				color = NORMAL
@@ -134,6 +139,7 @@ func _on_intro_finish():
 func _on_inside():
 	$Inside.play()
 	$Outside.stop()
+	
 	
 func _on_outside():
 	$Outside.play()

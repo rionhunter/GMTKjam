@@ -4,22 +4,14 @@ class_name Alien
 
 var phrases := {}
 var rng = RandomNumberGenerator.new()
-var character_in_range := false
-var is_enabled := false
+var character_in_range := true
+var is_enabled := true
 var waiting_for_reply := false
+var player_has_spoken := false
 var no_response_periods := 0
 var quest_keyword := "deerp"
 var quest_accepted := false
 var quest_help_index := 0
-# TODO: 
-# basic movement
-# connect to player speech finished signal (also make that signal)
-# say something when spoken to
-# randomly greet even if not spoken to? -> e.g. "aren't you going to say something?" (and if not, do something like "rude!")
-					# saying "something" should yield a specific response / set of responses
-# "talk to alien" -> "go to alien" (nearest alien?) + "what should I say?"
-
-# Call goodbye function when leaves area or when player says goodbye? starts timer to reset a bool value?
 
 
 func random_response(category : String):
@@ -29,12 +21,16 @@ func random_response(category : String):
 	var responses = phrases[category]
 	var i = rng.randi_range(0, len(responses)-1)
 	$Dialogue.set_and_show(responses[i])
-#	if "deerp" in responses[i]:
-
 
 
 func greet():
 	random_response("GREETING")
+	yield(get_tree().create_timer(4), "timeout")
+	$Dialogue.set_and_show("I moved in down the planet")
+	yield(get_tree().create_timer(4), "timeout")
+	$Dialogue.set_and_show("I'm X AE A-XIII")
+	yield(get_tree().create_timer(4), "timeout")
+	$Dialogue.set_and_show("Wanna hang out some time?")
 	$Timer.start()	
 	waiting_for_reply = true
 
@@ -45,7 +41,8 @@ func say_goodbye():
 
 
 func _on_player_finished_speaking(input : String):
-	$Timer.stop()
+	$Timer.start(15)
+	player_has_spoken = true
 	no_response_periods = 0
 	
 	if quest_keyword in input:
@@ -60,8 +57,11 @@ func _on_player_finished_speaking(input : String):
 	for word in words:
 		if Keywords.dir.has(word):
 			var category = Keywords.dir[word]
+			print("category: ", category)
 			if phrases.has(category):
 				random_response(category)
+				if category == "AFFIRMATIVE":
+					EventHub.emit_signal("game_over")
 				return
 	random_response("MISC")
 
@@ -76,8 +76,8 @@ func _on_quest_keyword():
 		
 func _ready():
 	# Open and parse response lines
-	$AnimationPlayer.play("idle")
-	
+	#$AnimationPlayer.play("hidden")
+	$Sprite3D.visible = false
 	var file = File.new()
 	file.open("res://Aliens/base_dialogue.json", file.READ)
 	var text = file.get_as_text()
@@ -90,6 +90,7 @@ func _ready():
 
 
 func _on_Area_body_entered(body):
+	print("body is here!!!")
 	if body.get_name() == "Character":
 		character_in_range = true
 		if is_enabled:
@@ -107,12 +108,26 @@ func _on_game_started():
 	is_enabled = true
 	if character_in_range:
 		greet()
+		
+
+func _on_appeared():
+	greet()
+	$AnimationPlayer.play("idle")
 
 
 func _on_Timer_timeout():
-	if !waiting_for_reply or no_response_periods >= len(phrases["NO_RESPONSE"]):
-		$Timer.stop()
+	var response = ""
+	if !player_has_spoken:
+		response = phrases["NO_RESPONSE"][no_response_periods % len(phrases["NO_RESPONSE"])]
+	else:
+		random_response("MISC")
 		return
-	var response = phrases["NO_RESPONSE"][no_response_periods]
 	$Dialogue.set_and_show(response)
 	no_response_periods += 1
+
+
+func _on_Alien_tree_entered():
+	print("alien entered tree")
+	$AnimationPlayer.play("appear")
+	yield(get_tree().create_timer(3), "timeout")
+	EventHub.emit_signal("alien_arrived")

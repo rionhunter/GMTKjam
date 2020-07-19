@@ -22,7 +22,7 @@
 	"ANIMAL":
 		[
 		"You want to know about the deerp?",
-		"I could tell you how to tame the deerp if you help me with something first"
+		"Deerp love potatoes"
 		],
 
 	"EAT":
@@ -66,7 +66,7 @@
 	"NEGATIVE":
 		[
 		"You're no fun.",
-		"Are you just going to stay inside this tiny room and watch tv all day?"
+		"why not?"
 		],
 
 	"QUEST_GIVE":
@@ -98,27 +98,11 @@
 		"Why not?"
 		],
 
-	"WHO":
-		[
-		"I'm your roommate, B-12"
-		],
-
 	"HOW":
 		[
-		"If you're not sure how, try taking a walk",
 		"That is up to you"
 		],
 
-	"WHERE":
-		[
-		"Try outside",
-		"I think I that yesterday on a walk"
-		],
-	
-	"X":
-		[
-		"I think X AE A-12 is outside now"
-		],
 
 	"MISC":
 		[
@@ -126,10 +110,9 @@
 		"......",
 		"Okay...",
 		"Well then",
-		"Wait, tell me more",
+		"...is that a yes?",
 		"and?",
-		"And how does that make you feel?",
-		"Have you told X AE A-12 this?",
-		"...look, I just want to find my missing deerp"
+		"So yes to hanging out?",
+		"So yes to being friends?"
 		]
 }
