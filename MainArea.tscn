@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Environment/Base/prefabs/Base.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Environment/Biome.gd" type="Script" id=2]
+[ext_resource path="res://Environment/plants/alienPlants/Slipperbell1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Environment/plants/alienPlants/cradleLoft1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Environment/plants/alienPlants/plantLeaf.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Environment/plants/alienPlants/trumpert1.tscn" type="PackedScene" id=5]
 
 [sub_resource type="VisualShaderNodeColorFunc" id=1]
 
@@ -35,8 +36,11 @@ shader = SubResource( 5 )
 [sub_resource type="BoxShape" id=7]
 extents = Vector3( 55.6672, 0.357684, 51.3468 )
 
-[sub_resource type="BoxShape" id=8]
-extents = Vector3( 72.2315, 3.80367, 25.3068 )
+[sub_resource type="Skin" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.701961, 0.309804, 0.643137, 1 )
+metallic = 0.34
 
 [node name="MainArea" type="CSGBox" groups=[
 "navmesh",
@@ -57,16 +61,1678 @@ material = SubResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.170441, 0 )
 shape = SubResource( 7 )
 
-[node name="cradleLoft1" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.637805, 0, 0, 0, 0.637805, 0, 0, 0, 0.637805, -3.7789, 1.30947, -12.5067 )
+[node name="vegetation" type="Spatial" parent="."]
 
-[node name="plantLeaf" parent="." instance=ExtResource( 4 )]
+[node name="cradleLoft1" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.637805, 0, 0, 0, 0.637805, 0, 0, 0, 0.637805, -0.353734, -0.328814, -12.5067 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft2" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.116493, 0, -0.627076, 0, 0.637805, 0, 0.627076, 0, 0.116493, 10.5362, -0.328813, -9.98748 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf" parent="vegetation" instance=ExtResource( 4 )]
 transform = Transform( 0.520563, 0, -0.853823, 0, 1, 0, 0.853823, 0, 0.520563, -4.66601, 0.227406, -11.1926 )
 
-[node name="Biome" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77423, 0 )
-script = ExtResource( 2 )
+[node name="Slipperbell1" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.356013, 0, -0.151904, 0, 0.387066, 0, 0.151904, 0, -0.356013, 8.78737, -0.0401485, -10.0957 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Biome"]
-transform = Transform( 0.935055, 0, -0.354503, 0, 1, 0, 0.354503, 0, 0.935055, -81.2561, 0, -68.2551 )
-shape = SubResource( 8 )
+[node name="trumpert1" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.398122, 0, -0.302706, 0, 0.500132, 0, 0.302706, 0, 0.398122, 15.9255, -0.00140688, -5.62724 )
+
+[node name="trumpert2" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.417167, -0.0267076, 0.0917446, 0.0295536, 0.426829, -0.0101286, -0.0908677, 0.0162084, 0.417899, 15.6279, -0.0272272, -5.91527 )
+
+[node name="Slipperbell2" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.613775, -0.0392946, 0.134983, 0.043482, 0.62799, -0.0149022, -0.133693, 0.0238473, 0.614851, 21.5883, -0.113772, -5.01735 )
+
+[node name="Slipperbell3" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0979723, 0.0185125, 0.494264, 0.034819, 0.502874, -0.0119332, -0.493383, 0.0318128, -0.0989894, 21.5636, -0.113771, -8.20842 )
+
+[node name="plantLeaf2" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.97044, 0, 1.55708, 0, 1.83473, 0, -1.55708, 0, -0.97044, 30.7053, -0.0071621, -9.39257 )
+
+[node name="cradleLoft3" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.637805, 0, 0, 0, 0.637805, 0, 0, 0, 0.637805, 16.6524, -0.328812, 2.0718 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft4" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.116493, 0, -0.627076, 0, 0.637805, 0, 0.627076, 0, 0.116493, 27.5423, -0.328811, 4.59101 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf3" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.520563, 0, -0.853823, 0, 1, 0, 0.853823, 0, 0.520563, 12.3401, 0.227408, 3.3859 )
+
+[node name="Slipperbell4" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.356013, 0, -0.151904, 0, 0.387066, 0, 0.151904, 0, -0.356013, 25.7935, -0.0401466, 4.48277 )
+
+[node name="trumpert3" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.398122, 0, -0.302706, 0, 0.500132, 0, 0.302706, 0, 0.398122, 32.9316, -0.00140497, 8.95126 )
+
+[node name="trumpert4" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.417167, -0.0267076, 0.0917446, 0.0295536, 0.426829, -0.0101286, -0.0908677, 0.0162084, 0.417899, 32.634, -0.0272253, 8.66323 )
+
+[node name="Slipperbell5" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.613775, -0.0392946, 0.134983, 0.043482, 0.62799, -0.0149022, -0.133693, 0.0238473, 0.614851, 38.5944, -0.11377, 9.56115 )
+
+[node name="Slipperbell6" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0979723, 0.0185125, 0.494264, 0.034819, 0.502874, -0.0119332, -0.493383, 0.0318128, -0.0989894, 38.5697, -0.113769, 6.37008 )
+
+[node name="plantLeaf4" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.97044, 0, 1.55708, 0, 1.83473, 0, -1.55708, 0, -0.97044, 47.7114, -0.00716019, 5.18592 )
+
+[node name="cradleLoft5" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.280106, 0, 0.573006, 0, 0.637805, 0, -0.573006, 0, -0.280106, 36.4852, -0.328812, 25.6791 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft6" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.512207, 0, 0.380052, 0, 0.637805, 0, -0.380052, 0, 0.512207, 33.9659, -0.328811, 14.7892 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf5" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.538461, 0, 0.84265, 0, 1, 0, -0.84265, 0, 0.538461, 39.5596, 0.227408, 28.9762 )
+
+[node name="Slipperbell7" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.292822, 0, -0.253132, 0, 0.387066, 0, 0.253132, 0, 0.292822, 34.6367, -0.0401466, 16.4079 )
+
+[node name="trumpert5" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.0971086, 0, 0.490614, 0, 0.500132, 0, -0.490614, 0, 0.0971086, 35.5163, -0.00140497, 8.03256 )
+
+[node name="trumpert6" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.264844, 0.0262909, 0.33515, 0.0295536, 0.426829, -0.0101286, -0.334878, 0.0168759, -0.265953, 35.3883, -0.0272253, 8.42642 )
+
+[node name="Slipperbell8" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.389662, 0.0386815, 0.493103, 0.043482, 0.62799, -0.0149022, -0.492703, 0.0248294, -0.391294, 33.5773, -0.11377, 2.67722 )
+
+[node name="Slipperbell9" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.40023, 0.0204506, -0.305999, 0.034819, 0.502874, -0.0119332, 0.304698, -0.0306029, -0.400575, 30.7213, -0.113769, 4.1008 )
+
+[node name="plantLeaf6" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.972695, 0, -1.55567, 0, 1.83473, 0, 1.55567, 0, -0.972695, 25.6427, -0.00716019, -3.59203 )
+
+[node name="cradleLoft7" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.542868, 0, -0.334798, 0, 0.637805, 0, 0.334798, 0, -0.542868, 31.2766, -0.328814, 23.7077 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft8" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.428319, 0, 0.472586, 0, 0.637805, 0, -0.472586, 0, -0.428319, 20.6853, -0.328813, 27.2799 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf7" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.891268, 0, 0.453477, 0, 1, 0, -0.453477, 0, -0.891268, 34.2572, 0.227406, 20.3256 )
+
+[node name="Slipperbell10" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.223283, 0, 0.316172, 0, 0.387066, 0, -0.316172, 0, 0.223283, 22.2306, -0.0401485, 26.454 )
+
+[node name="trumpert7" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.497759, 0, 0.0486656, 0, 0.500132, 0, -0.0486656, 0, -0.497759, 13.8094, -0.00140688, 26.3976 )
+
+[node name="trumpert8" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.307374, 0.014224, -0.297453, 0.0295536, 0.426829, -0.0101286, 0.296322, -0.0278152, -0.307536, 14.2139, -0.0272272, 26.4865 )
+
+[node name="Slipperbell11" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.452236, 0.0209277, -0.43764, 0.043482, 0.62799, -0.0149022, 0.435977, -0.0409242, -0.452475, 8.66934, -0.113772, 28.851 )
+
+[node name="Slipperbell12" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.342377, -0.0324561, -0.368731, 0.034819, 0.502874, -0.0119332, 0.368515, -0.0173599, 0.343705, 10.3654, -0.113771, 31.5541 )
+
+[node name="plantLeaf8" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.64333, 0, -0.815902, 0, 1.83473, 0, 0.815902, 0, 1.64333, 3.20608, -0.0071621, 37.3607 )
+
+[node name="cradleLoft9" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.542868, 0, -0.334798, 0, 0.637805, 0, 0.334798, 0, -0.542868, 9.14933, -0.328812, 20.2261 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft10" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.428319, 0, 0.472586, 0, 0.637805, 0, -0.472586, 0, -0.428319, -1.44205, -0.328811, 23.7982 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf9" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.505104, 0, -1.17504, 0, 1.279, 0, 1.17504, 0, -0.505104, 12.1299, 0.227408, 16.844 )
+
+[node name="Slipperbell13" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.223283, 0, 0.316172, 0, 0.387066, 0, -0.316172, 0, 0.223283, 0.103298, -0.0401466, 22.9724 )
+
+[node name="trumpert9" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.497759, 0, 0.0486656, 0, 0.500132, 0, -0.0486656, 0, -0.497759, -8.31792, -0.00140497, 22.916 )
+
+[node name="trumpert10" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.307374, 0.014224, -0.297453, 0.0295536, 0.426829, -0.0101286, 0.296322, -0.0278152, -0.307536, -7.91343, -0.0272253, 23.0049 )
+
+[node name="Slipperbell14" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.452236, 0.0209277, -0.43764, 0.043482, 0.62799, -0.0149022, 0.435977, -0.0409242, -0.452475, -13.458, -0.11377, 25.3694 )
+
+[node name="Slipperbell15" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.342377, -0.0324561, -0.368731, 0.034819, 0.502874, -0.0119332, 0.368515, -0.0173599, 0.343705, -11.7619, -0.113769, 28.0725 )
+
+[node name="plantLeaf10" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.64333, 0, -0.815902, 0, 1.83473, 0, 0.815902, 0, 1.64333, -18.9212, -0.00716019, 33.8791 )
+
+[node name="cradleLoft11" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.539195, 0, -0.340681, 0, 0.637805, 0, 0.340681, 0, 0.539195, -20.1234, -0.328812, 10.5434 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft12" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.356837, 0, -0.893875, 0, 0.962468, 0, 0.893875, 0, -0.356837, -12.2627, -0.328811, 18.4899 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf11" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.0159861, 0, -0.999872, 0, 1, 0, 0.999872, 0, -0.0159861, -24.4709, 0.227408, 9.35092 )
+
+[node name="Slipperbell16" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.38211, 0, 0.0617445, 0, 0.387066, 0, -0.0617445, 0, -0.38211, -13.6834, -0.0401466, 17.4643 )
+
+[node name="trumpert11" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.17488, 0, -0.468561, 0, 0.500132, 0, 0.468561, 0, 0.17488, -10.0357, -0.00140497, 25.0547 )
+
+[node name="trumpert12" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.401207, -0.031236, -0.145659, 0.0295536, 0.426829, -0.0101286, 0.146009, -0.000563272, 0.402293, -10.1334, -0.0272253, 24.6522 )
+
+[node name="Slipperbell17" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.590292, -0.0459573, -0.214306, 0.043482, 0.62799, -0.0149022, 0.214822, -0.000828745, 0.591891, -5.57415, -0.11377, 28.5951 )
+
+[node name="Slipperbell18" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.180713, -0.00134238, 0.470721, 0.034819, 0.502874, -0.0119332, -0.469434, 0.0367826, 0.180324, -3.8905, -0.113769, 25.8842 )
+
+[node name="plantLeaf12" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.0113037, 0, 1.8347, 0, 1.83473, 0, -1.8347, 0, 0.0113037, 4.47028, -0.00716019, 29.7661 )
+
+[node name="cradleLoft13" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.637805, 0, 0, 0, 0.637805, 0, 0, 0, 0.637805, -59.8618, -0.328814, -40.6889 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft14" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.116493, 0, -0.627076, 0, 0.637805, 0, 0.627076, 0, 0.116493, -48.9718, -0.328813, -38.1697 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf13" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.520563, 0, -0.853823, 0, 1, 0, 0.853823, 0, 0.520563, -64.174, 0.227406, -39.3748 )
+
+[node name="Slipperbell19" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.356013, 0, -0.151904, 0, 0.387066, 0, 0.151904, 0, -0.356013, -50.7207, -0.0401485, -38.278 )
+
+[node name="trumpert13" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.398122, 0, -0.302706, 0, 0.500132, 0, 0.302706, 0, 0.398122, -43.5825, -0.00140688, -33.8095 )
+
+[node name="trumpert14" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.417167, -0.0267076, 0.0917446, 0.0295536, 0.426829, -0.0101286, -0.0908677, 0.0162084, 0.417899, -43.8801, -0.0272272, -34.0975 )
+
+[node name="Slipperbell20" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.613775, -0.0392946, 0.134983, 0.043482, 0.62799, -0.0149022, -0.133693, 0.0238473, 0.614851, -37.9197, -0.113772, -33.1996 )
+
+[node name="Slipperbell21" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0979723, 0.0185125, 0.494264, 0.034819, 0.502874, -0.0119332, -0.493383, 0.0318128, -0.0989894, -37.9444, -0.113771, -36.3907 )
+
+[node name="plantLeaf14" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.97044, 0, 1.55708, 0, 1.83473, 0, -1.55708, 0, -0.97044, -28.8028, -0.0071621, -37.5748 )
+
+[node name="cradleLoft15" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.637805, 0, 0, 0, 0.637805, 0, 0, 0, 0.637805, -42.8557, -0.328812, -26.1104 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft16" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.116493, 0, -0.627076, 0, 0.637805, 0, 0.627076, 0, 0.116493, -31.9657, -0.328811, -23.5912 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf15" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.520563, 0, -0.853823, 0, 1, 0, 0.853823, 0, 0.520563, -47.168, 0.227408, -24.7963 )
+
+[node name="Slipperbell22" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.356013, 0, -0.151904, 0, 0.387066, 0, 0.151904, 0, -0.356013, -33.7146, -0.0401466, -23.6995 )
+
+[node name="trumpert15" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.398122, 0, -0.302706, 0, 0.500132, 0, 0.302706, 0, 0.398122, -26.5765, -0.00140497, -19.231 )
+
+[node name="trumpert16" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.417167, -0.0267076, 0.0917446, 0.0295536, 0.426829, -0.0101286, -0.0908677, 0.0162084, 0.417899, -26.8741, -0.0272253, -19.519 )
+
+[node name="Slipperbell23" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.613775, -0.0392946, 0.134983, 0.043482, 0.62799, -0.0149022, -0.133693, 0.0238473, 0.614851, -20.9136, -0.11377, -18.6211 )
+
+[node name="Slipperbell24" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0979723, 0.0185125, 0.494264, 0.034819, 0.502874, -0.0119332, -0.493383, 0.0318128, -0.0989894, -20.9383, -0.113769, -21.8122 )
+
+[node name="plantLeaf16" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.97044, 0, 1.55708, 0, 1.83473, 0, -1.55708, 0, -0.97044, -11.7967, -0.00716019, -22.9963 )
+
+[node name="cradleLoft17" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.280106, 0, 0.573006, 0, 0.637805, 0, -0.573006, 0, -0.280106, -23.0229, -0.328812, -2.50311 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft18" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.512207, 0, 0.380052, 0, 0.637805, 0, -0.380052, 0, 0.512207, -25.5422, -0.328811, -13.393 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf17" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.538461, 0, 0.84265, 0, 1, 0, -0.84265, 0, 0.538461, -19.9485, 0.227408, 0.79394 )
+
+[node name="Slipperbell25" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.292822, 0, -0.253132, 0, 0.387066, 0, 0.253132, 0, 0.292822, -24.8714, -0.0401466, -11.7743 )
+
+[node name="trumpert17" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.0971086, 0, 0.490614, 0, 0.500132, 0, -0.490614, 0, 0.0971086, -23.9917, -0.00140497, -20.1497 )
+
+[node name="trumpert18" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.264844, 0.0262909, 0.33515, 0.0295536, 0.426829, -0.0101286, -0.334878, 0.0168759, -0.265953, -24.1198, -0.0272253, -19.7558 )
+
+[node name="Slipperbell26" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.389662, 0.0386815, 0.493103, 0.043482, 0.62799, -0.0149022, -0.492703, 0.0248294, -0.391294, -25.9307, -0.11377, -25.505 )
+
+[node name="Slipperbell27" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.40023, 0.0204506, -0.305999, 0.034819, 0.502874, -0.0119332, 0.304698, -0.0306029, -0.400575, -28.7868, -0.113769, -24.0814 )
+
+[node name="plantLeaf18" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.972695, 0, -1.55567, 0, 1.83473, 0, 1.55567, 0, -0.972695, -33.8654, -0.00716019, -31.7743 )
+
+[node name="cradleLoft19" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.542868, 0, -0.334798, 0, 0.637805, 0, 0.334798, 0, -0.542868, -28.2314, -0.328814, -4.47453 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft20" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.428319, 0, 0.472586, 0, 0.637805, 0, -0.472586, 0, -0.428319, -38.8228, -0.328813, -0.902384 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf19" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.891268, 0, 0.453477, 0, 1, 0, -0.453477, 0, -0.891268, -25.2508, 0.227406, -7.85663 )
+
+[node name="Slipperbell28" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.223283, 0, 0.316172, 0, 0.387066, 0, -0.316172, 0, 0.223283, -37.2774, -0.0401485, -1.72826 )
+
+[node name="trumpert19" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.497759, 0, 0.0486656, 0, 0.500132, 0, -0.0486656, 0, -0.497759, -45.6987, -0.00140688, -1.78466 )
+
+[node name="trumpert20" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.307374, 0.014224, -0.297453, 0.0295536, 0.426829, -0.0101286, 0.296322, -0.0278152, -0.307536, -45.2942, -0.0272272, -1.69572 )
+
+[node name="Slipperbell29" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.452236, 0.0209277, -0.43764, 0.043482, 0.62799, -0.0149022, 0.435977, -0.0409242, -0.452475, -50.8387, -0.113772, 0.668768 )
+
+[node name="Slipperbell30" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.342377, -0.0324561, -0.368731, 0.034819, 0.502874, -0.0119332, 0.368515, -0.0173599, 0.343705, -49.1426, -0.113771, 3.3719 )
+
+[node name="plantLeaf20" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.64333, 0, -0.815902, 0, 1.83473, 0, 0.815902, 0, 1.64333, -56.302, -0.0071621, 9.17844 )
+
+[node name="cradleLoft21" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.542868, 0, -0.334798, 0, 0.637805, 0, 0.334798, 0, -0.542868, -50.3587, -0.328812, -7.95615 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft22" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.428319, 0, 0.472586, 0, 0.637805, 0, -0.472586, 0, -0.428319, -60.9501, -0.328811, -4.384 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf21" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.505104, 0, -1.17504, 0, 1.279, 0, 1.17504, 0, -0.505104, -47.3781, 0.227408, -11.3383 )
+
+[node name="Slipperbell31" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.223283, 0, 0.316172, 0, 0.387066, 0, -0.316172, 0, 0.223283, -59.4047, -0.0401466, -5.20988 )
+
+[node name="trumpert21" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.497759, 0, 0.0486656, 0, 0.500132, 0, -0.0486656, 0, -0.497759, -67.826, -0.00140497, -5.26628 )
+
+[node name="trumpert22" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.307374, 0.014224, -0.297453, 0.0295536, 0.426829, -0.0101286, 0.296322, -0.0278152, -0.307536, -67.4215, -0.0272253, -5.17734 )
+
+[node name="Slipperbell32" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.452236, 0.0209277, -0.43764, 0.043482, 0.62799, -0.0149022, 0.435977, -0.0409242, -0.452475, -72.966, -0.11377, -2.81285 )
+
+[node name="Slipperbell33" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.342377, -0.0324561, -0.368731, 0.034819, 0.502874, -0.0119332, 0.368515, -0.0173599, 0.343705, -71.27, -0.113769, -0.109716 )
+
+[node name="plantLeaf22" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.64333, 0, -0.815902, 0, 1.83473, 0, 0.815902, 0, 1.64333, -78.4293, -0.00716019, 5.69682 )
+
+[node name="cradleLoft23" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.539195, 0, -0.340681, 0, 0.637805, 0, 0.340681, 0, 0.539195, -79.6314, -0.328812, -17.6389 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft24" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.356837, 0, -0.893875, 0, 0.962468, 0, 0.893875, 0, -0.356837, -71.7708, -0.328811, -9.69232 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf23" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.0159861, 0, -0.999872, 0, 1, 0, 0.999872, 0, -0.0159861, -83.9789, 0.227408, -18.8313 )
+
+[node name="Slipperbell34" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.38211, 0, 0.0617445, 0, 0.387066, 0, -0.0617445, 0, -0.38211, -73.1914, -0.0401466, -10.718 )
+
+[node name="trumpert23" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.17488, 0, -0.468561, 0, 0.500132, 0, 0.468561, 0, 0.17488, -69.5437, -0.00140497, -3.12754 )
+
+[node name="trumpert24" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.401207, -0.031236, -0.145659, 0.0295536, 0.426829, -0.0101286, 0.146009, -0.000563272, 0.402293, -69.6415, -0.0272253, -3.53 )
+
+[node name="Slipperbell35" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.590292, -0.0459573, -0.214306, 0.043482, 0.62799, -0.0149022, 0.214822, -0.000828745, 0.591891, -65.0822, -0.11377, 0.412823 )
+
+[node name="Slipperbell36" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.180713, -0.00134238, 0.470721, 0.034819, 0.502874, -0.0119332, -0.469434, 0.0367826, 0.180324, -63.3985, -0.113769, -2.29805 )
+
+[node name="plantLeaf24" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.0113037, 0, 1.8347, 0, 1.83473, 0, -1.8347, 0, 0.0113037, -55.0378, -0.00716019, 1.58384 )
+
+[node name="cradleLoft25" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.637805, 0, 0, 0, 0.637805, 0, 0, 0, 0.637805, 2.57106, -0.328814, -79.5266 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft26" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.116493, 0, -0.627076, 0, 0.637805, 0, 0.627076, 0, 0.116493, 13.461, -0.328813, -77.0074 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf25" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.520563, 0, -0.853823, 0, 1, 0, 0.853823, 0, 0.520563, -1.74121, 0.227406, -78.2125 )
+
+[node name="Slipperbell37" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.356013, 0, -0.151904, 0, 0.387066, 0, 0.151904, 0, -0.356013, 11.7122, -0.0401485, -77.1156 )
+
+[node name="trumpert25" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.398122, 0, -0.302706, 0, 0.500132, 0, 0.302706, 0, 0.398122, 18.8503, -0.00140688, -72.6471 )
+
+[node name="trumpert26" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.417167, -0.0267076, 0.0917446, 0.0295536, 0.426829, -0.0101286, -0.0908677, 0.0162084, 0.417899, 18.5527, -0.0272272, -72.9352 )
+
+[node name="Slipperbell38" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.613775, -0.0392946, 0.134983, 0.043482, 0.62799, -0.0149022, -0.133693, 0.0238473, 0.614851, 24.5131, -0.113772, -72.0372 )
+
+[node name="Slipperbell39" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0979723, 0.0185125, 0.494264, 0.034819, 0.502874, -0.0119332, -0.493383, 0.0318128, -0.0989894, 24.4884, -0.113771, -75.2283 )
+
+[node name="plantLeaf26" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.97044, 0, 1.55708, 0, 1.83473, 0, -1.55708, 0, -0.97044, 33.6301, -0.0071621, -76.4125 )
+
+[node name="cradleLoft27" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.637805, 0, 0, 0, 0.637805, 0, 0, 0, 0.637805, 19.5772, -0.328812, -64.9481 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft28" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.116493, 0, -0.627076, 0, 0.637805, 0, 0.627076, 0, 0.116493, 30.4671, -0.328811, -62.4289 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf27" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.520563, 0, -0.853823, 0, 1, 0, 0.853823, 0, 0.520563, 15.2649, 0.227408, -63.634 )
+
+[node name="Slipperbell40" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.356013, 0, -0.151904, 0, 0.387066, 0, 0.151904, 0, -0.356013, 28.7183, -0.0401466, -62.5371 )
+
+[node name="trumpert27" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.398122, 0, -0.302706, 0, 0.500132, 0, 0.302706, 0, 0.398122, 35.8564, -0.00140497, -58.0686 )
+
+[node name="trumpert28" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.417167, -0.0267076, 0.0917446, 0.0295536, 0.426829, -0.0101286, -0.0908677, 0.0162084, 0.417899, 35.5588, -0.0272253, -58.3567 )
+
+[node name="Slipperbell41" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.613775, -0.0392946, 0.134983, 0.043482, 0.62799, -0.0149022, -0.133693, 0.0238473, 0.614851, 41.5192, -0.11377, -57.4587 )
+
+[node name="Slipperbell42" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0979723, 0.0185125, 0.494264, 0.034819, 0.502874, -0.0119332, -0.493383, 0.0318128, -0.0989894, 41.4945, -0.113769, -60.6498 )
+
+[node name="plantLeaf28" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.97044, 0, 1.55708, 0, 1.83473, 0, -1.55708, 0, -0.97044, 50.6362, -0.00716019, -61.834 )
+
+[node name="cradleLoft29" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.280106, 0, 0.573006, 0, 0.637805, 0, -0.573006, 0, -0.280106, 39.41, -0.328812, -41.3408 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft30" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.512207, 0, 0.380052, 0, 0.637805, 0, -0.380052, 0, 0.512207, 36.8907, -0.328811, -52.2307 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf29" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.538461, 0, 0.84265, 0, 1, 0, -0.84265, 0, 0.538461, 42.4844, 0.227408, -38.0437 )
+
+[node name="Slipperbell43" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.292822, 0, -0.253132, 0, 0.387066, 0, 0.253132, 0, 0.292822, 37.5615, -0.0401466, -50.612 )
+
+[node name="trumpert29" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.0971086, 0, 0.490614, 0, 0.500132, 0, -0.490614, 0, 0.0971086, 38.4411, -0.00140497, -58.9873 )
+
+[node name="trumpert30" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.264844, 0.0262909, 0.33515, 0.0295536, 0.426829, -0.0101286, -0.334878, 0.0168759, -0.265953, 38.3131, -0.0272253, -58.5935 )
+
+[node name="Slipperbell44" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.389662, 0.0386815, 0.493103, 0.043482, 0.62799, -0.0149022, -0.492703, 0.0248294, -0.391294, 36.5021, -0.11377, -64.3427 )
+
+[node name="Slipperbell45" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.40023, 0.0204506, -0.305999, 0.034819, 0.502874, -0.0119332, 0.304698, -0.0306029, -0.400575, 33.6461, -0.113769, -62.9191 )
+
+[node name="plantLeaf30" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.972695, 0, -1.55567, 0, 1.83473, 0, 1.55567, 0, -0.972695, 28.5675, -0.00716019, -70.6119 )
+
+[node name="cradleLoft31" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.542868, 0, -0.334798, 0, 0.637805, 0, 0.334798, 0, -0.542868, 34.2014, -0.328814, -43.3122 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft32" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.428319, 0, 0.472586, 0, 0.637805, 0, -0.472586, 0, -0.428319, 23.6101, -0.328813, -39.74 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf31" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.891268, 0, 0.453477, 0, 1, 0, -0.453477, 0, -0.891268, 37.182, 0.227406, -46.6943 )
+
+[node name="Slipperbell46" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.223283, 0, 0.316172, 0, 0.387066, 0, -0.316172, 0, 0.223283, 25.1554, -0.0401485, -40.5659 )
+
+[node name="trumpert31" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.497759, 0, 0.0486656, 0, 0.500132, 0, -0.0486656, 0, -0.497759, 16.7342, -0.00140688, -40.6223 )
+
+[node name="trumpert32" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.307374, 0.014224, -0.297453, 0.0295536, 0.426829, -0.0101286, 0.296322, -0.0278152, -0.307536, 17.1387, -0.0272272, -40.5334 )
+
+[node name="Slipperbell47" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.452236, 0.0209277, -0.43764, 0.043482, 0.62799, -0.0149022, 0.435977, -0.0409242, -0.452475, 11.5941, -0.113772, -38.1689 )
+
+[node name="Slipperbell48" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.342377, -0.0324561, -0.368731, 0.034819, 0.502874, -0.0119332, 0.368515, -0.0173599, 0.343705, 13.2902, -0.113771, -35.4658 )
+
+[node name="plantLeaf32" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.64333, 0, -0.815902, 0, 1.83473, 0, 0.815902, 0, 1.64333, 6.13088, -0.0071621, -29.6592 )
+
+[node name="cradleLoft33" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.542868, 0, -0.334798, 0, 0.637805, 0, 0.334798, 0, -0.542868, 12.0741, -0.328812, -46.7938 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft34" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.428319, 0, 0.472586, 0, 0.637805, 0, -0.472586, 0, -0.428319, 1.48274, -0.328811, -43.2217 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf33" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.505104, 0, -1.17504, 0, 1.279, 0, 1.17504, 0, -0.505104, 15.0547, 0.227408, -50.1759 )
+
+[node name="Slipperbell49" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.223283, 0, 0.316172, 0, 0.387066, 0, -0.316172, 0, 0.223283, 3.0281, -0.0401466, -44.0475 )
+
+[node name="trumpert33" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.497759, 0, 0.0486656, 0, 0.500132, 0, -0.0486656, 0, -0.497759, -5.39313, -0.00140497, -44.1039 )
+
+[node name="trumpert34" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.307374, 0.014224, -0.297453, 0.0295536, 0.426829, -0.0101286, 0.296322, -0.0278152, -0.307536, -4.98862, -0.0272253, -44.015 )
+
+[node name="Slipperbell50" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.452236, 0.0209277, -0.43764, 0.043482, 0.62799, -0.0149022, 0.435977, -0.0409242, -0.452475, -10.5332, -0.11377, -41.6505 )
+
+[node name="Slipperbell51" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.342377, -0.0324561, -0.368731, 0.034819, 0.502874, -0.0119332, 0.368515, -0.0173599, 0.343705, -8.83712, -0.113769, -38.9474 )
+
+[node name="plantLeaf34" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.64333, 0, -0.815902, 0, 1.83473, 0, 0.815902, 0, 1.64333, -15.9964, -0.00716019, -33.1408 )
+
+[node name="cradleLoft35" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.539195, 0, -0.340681, 0, 0.637805, 0, 0.340681, 0, 0.539195, -17.1986, -0.328812, -56.4765 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft36" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.356837, 0, -0.893875, 0, 0.962468, 0, 0.893875, 0, -0.356837, -9.33793, -0.328811, -48.53 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf35" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.0159861, 0, -0.999872, 0, 1, 0, 0.999872, 0, -0.0159861, -21.5461, 0.227408, -57.669 )
+
+[node name="Slipperbell52" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.38211, 0, 0.0617445, 0, 0.387066, 0, -0.0617445, 0, -0.38211, -10.7586, -0.0401466, -49.5556 )
+
+[node name="trumpert35" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.17488, 0, -0.468561, 0, 0.500132, 0, 0.468561, 0, 0.17488, -7.11088, -0.00140497, -41.9652 )
+
+[node name="trumpert36" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.401207, -0.031236, -0.145659, 0.0295536, 0.426829, -0.0101286, 0.146009, -0.000563272, 0.402293, -7.20863, -0.0272253, -42.3677 )
+
+[node name="Slipperbell53" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.590292, -0.0459573, -0.214306, 0.043482, 0.62799, -0.0149022, 0.214822, -0.000828745, 0.591891, -2.64935, -0.11377, -38.4248 )
+
+[node name="Slipperbell54" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.180713, -0.00134238, 0.470721, 0.034819, 0.502874, -0.0119332, -0.469434, 0.0367826, 0.180324, -0.965706, -0.113769, -41.1357 )
+
+[node name="plantLeaf36" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.0113037, 0, 1.8347, 0, 1.83473, 0, -1.8347, 0, 0.0113037, 7.39507, -0.00716019, -37.2538 )
+
+[node name="cradleLoft37" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.637805, 0, 0, 0, 0.637805, 0, 0, 0, 0.637805, 57.4785, -0.328814, -56.1318 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft38" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.116493, 0, -0.627076, 0, 0.637805, 0, 0.627076, 0, 0.116493, 68.3685, -0.328813, -53.6126 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf37" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.520563, 0, -0.853823, 0, 1, 0, 0.853823, 0, 0.520563, 53.1662, 0.227406, -54.8177 )
+
+[node name="Slipperbell55" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.356013, 0, -0.151904, 0, 0.387066, 0, 0.151904, 0, -0.356013, 66.6196, -0.0401485, -53.7208 )
+
+[node name="trumpert37" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.398122, 0, -0.302706, 0, 0.500132, 0, 0.302706, 0, 0.398122, 73.7578, -0.00140688, -49.2523 )
+
+[node name="trumpert38" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.417167, -0.0267076, 0.0917446, 0.0295536, 0.426829, -0.0101286, -0.0908677, 0.0162084, 0.417899, 73.4601, -0.0272272, -49.5404 )
+
+[node name="Slipperbell56" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.613775, -0.0392946, 0.134983, 0.043482, 0.62799, -0.0149022, -0.133693, 0.0238473, 0.614851, 79.4206, -0.113772, -48.6424 )
+
+[node name="Slipperbell57" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0979723, 0.0185125, 0.494264, 0.034819, 0.502874, -0.0119332, -0.493383, 0.0318128, -0.0989894, 79.3959, -0.113771, -51.8335 )
+
+[node name="plantLeaf38" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.97044, 0, 1.55708, 0, 1.83473, 0, -1.55708, 0, -0.97044, 88.5375, -0.0071621, -53.0177 )
+
+[node name="cradleLoft39" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 3.24372, 0, 0, 0, 3.24372, 0, 0, 0, 3.24372, 74.4846, -0.328812, -41.5533 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft40" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.116493, 0, -0.627076, 0, 0.637805, 0, 0.627076, 0, 0.116493, 85.3746, -0.328811, -39.0341 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf39" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.520563, 0, -0.853823, 0, 1, 0, 0.853823, 0, 0.520563, 70.1723, 0.227408, -40.2392 )
+
+[node name="Slipperbell58" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.356013, 0, -0.151904, 0, 0.387066, 0, 0.151904, 0, -0.356013, 83.6257, -0.0401466, -39.1423 )
+
+[node name="trumpert39" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.398122, 0, -0.302706, 0, 0.500132, 0, 0.302706, 0, 0.398122, 90.7638, -0.00140497, -34.6738 )
+
+[node name="trumpert40" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.417167, -0.0267076, 0.0917446, 0.0295536, 0.426829, -0.0101286, -0.0908677, 0.0162084, 0.417899, 90.4662, -0.0272253, -34.9619 )
+
+[node name="Slipperbell59" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.613775, -0.0392946, 0.134983, 0.043482, 0.62799, -0.0149022, -0.133693, 0.0238473, 0.614851, 96.4267, -0.11377, -34.0639 )
+
+[node name="Slipperbell60" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0979723, 0.0185125, 0.494264, 0.034819, 0.502874, -0.0119332, -0.493383, 0.0318128, -0.0989894, 96.402, -0.113769, -37.255 )
+
+[node name="plantLeaf40" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.97044, 0, 1.55708, 0, 1.83473, 0, -1.55708, 0, -0.97044, 105.544, -0.00716019, -38.4392 )
+
+[node name="cradleLoft41" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.280106, 0, 0.573006, 0, 0.637805, 0, -0.573006, 0, -0.280106, 94.3174, -0.328812, -17.946 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft42" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.512207, 0, 0.380052, 0, 0.637805, 0, -0.380052, 0, 0.512207, 91.7981, -0.328811, -28.8359 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf41" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.538461, 0, 0.84265, 0, 1, 0, -0.84265, 0, 0.538461, 97.3918, 0.227408, -14.6489 )
+
+[node name="Slipperbell61" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.292822, 0, -0.253132, 0, 0.387066, 0, 0.253132, 0, 0.292822, 92.4689, -0.0401466, -27.2172 )
+
+[node name="trumpert41" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.0971086, 0, 0.490614, 0, 0.500132, 0, -0.490614, 0, 0.0971086, 93.3486, -0.00140497, -35.5925 )
+
+[node name="trumpert42" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.264844, 0.0262909, 0.33515, 0.0295536, 0.426829, -0.0101286, -0.334878, 0.0168759, -0.265953, 93.2205, -0.0272253, -35.1987 )
+
+[node name="Slipperbell62" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.389662, 0.0386815, 0.493103, 0.043482, 0.62799, -0.0149022, -0.492703, 0.0248294, -0.391294, 91.4096, -0.11377, -40.9479 )
+
+[node name="Slipperbell63" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.40023, 0.0204506, -0.305999, 0.034819, 0.502874, -0.0119332, 0.304698, -0.0306029, -0.400575, 88.5535, -0.113769, -39.5243 )
+
+[node name="plantLeaf42" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.972695, 0, -1.55567, 0, 1.83473, 0, 1.55567, 0, -0.972695, 83.4749, -0.00716019, -47.2171 )
+
+[node name="cradleLoft43" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.542868, 0, -0.334798, 0, 0.637805, 0, 0.334798, 0, -0.542868, 89.1089, -0.328814, -19.9174 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft44" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.428319, 0, 0.472586, 0, 0.637805, 0, -0.472586, 0, -0.428319, 78.5175, -0.328813, -16.3452 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf43" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.891268, 0, 0.453477, 0, 1, 0, -0.453477, 0, -0.891268, 92.0895, 0.227406, -23.2995 )
+
+[node name="Slipperbell64" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.223283, 0, 0.316172, 0, 0.387066, 0, -0.316172, 0, 0.223283, 80.0629, -0.0401485, -17.1711 )
+
+[node name="trumpert43" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.497759, 0, 0.0486656, 0, 0.500132, 0, -0.0486656, 0, -0.497759, 71.6416, -0.00140688, -17.2275 )
+
+[node name="trumpert44" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.307374, 0.014224, -0.297453, 0.0295536, 0.426829, -0.0101286, 0.296322, -0.0278152, -0.307536, 72.0461, -0.0272272, -17.1386 )
+
+[node name="Slipperbell65" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.452236, 0.0209277, -0.43764, 0.043482, 0.62799, -0.0149022, 0.435977, -0.0409242, -0.452475, 66.5016, -0.113772, -14.7741 )
+
+[node name="Slipperbell66" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.342377, -0.0324561, -0.368731, 0.034819, 0.502874, -0.0119332, 0.368515, -0.0173599, 0.343705, 68.1976, -0.113771, -12.0709 )
+
+[node name="plantLeaf44" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.64333, 0, -0.815902, 0, 1.83473, 0, 0.815902, 0, 1.64333, 61.0383, -0.0071621, -6.26441 )
+
+[node name="cradleLoft45" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.542868, 0, -0.334798, 0, 0.637805, 0, 0.334798, 0, -0.542868, 66.9816, -0.328812, -23.399 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft46" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.428319, 0, 0.472586, 0, 0.637805, 0, -0.472586, 0, -0.428319, 56.3902, -0.328811, -19.8269 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf45" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.505104, 0, -1.17504, 0, 1.279, 0, 1.17504, 0, -0.505104, 69.9622, 0.227408, -26.7811 )
+
+[node name="Slipperbell67" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.223283, 0, 0.316172, 0, 0.387066, 0, -0.316172, 0, 0.223283, 57.9356, -0.0401466, -20.6527 )
+
+[node name="trumpert45" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.497759, 0, 0.0486656, 0, 0.500132, 0, -0.0486656, 0, -0.497759, 49.5143, -0.00140497, -20.7091 )
+
+[node name="trumpert46" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.307374, 0.014224, -0.297453, 0.0295536, 0.426829, -0.0101286, 0.296322, -0.0278152, -0.307536, 49.9188, -0.0272253, -20.6202 )
+
+[node name="Slipperbell68" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.452236, 0.0209277, -0.43764, 0.043482, 0.62799, -0.0149022, 0.435977, -0.0409242, -0.452475, 44.3743, -0.11377, -18.2557 )
+
+[node name="Slipperbell69" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.342377, -0.0324561, -0.368731, 0.034819, 0.502874, -0.0119332, 0.368515, -0.0173599, 0.343705, 46.0703, -0.113769, -15.5526 )
+
+[node name="plantLeaf46" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.64333, 0, -0.815902, 0, 1.83473, 0, 0.815902, 0, 1.64333, 38.911, -0.00716019, -9.74603 )
+
+[node name="cradleLoft47" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.539195, 0, -0.340681, 0, 0.637805, 0, 0.340681, 0, 0.539195, 37.7089, -0.328812, -33.0817 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft48" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.356837, 0, -0.893875, 0, 0.962468, 0, 0.893875, 0, -0.356837, 45.5695, -0.328811, -25.1352 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf47" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.0159861, 0, -0.999872, 0, 1, 0, 0.999872, 0, -0.0159861, 33.3614, 0.227408, -34.2742 )
+
+[node name="Slipperbell70" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.38211, 0, 0.0617445, 0, 0.387066, 0, -0.0617445, 0, -0.38211, 44.1489, -0.0401466, -26.1608 )
+
+[node name="trumpert47" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.17488, 0, -0.468561, 0, 0.500132, 0, 0.468561, 0, 0.17488, 47.7966, -0.00140497, -18.5704 )
+
+[node name="trumpert48" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.401207, -0.031236, -0.145659, 0.0295536, 0.426829, -0.0101286, 0.146009, -0.000563272, 0.402293, 47.6988, -0.0272253, -18.9729 )
+
+[node name="Slipperbell71" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.590292, -0.0459573, -0.214306, 0.043482, 0.62799, -0.0149022, 0.214822, -0.000828745, 0.591891, 52.2581, -0.11377, -15.03 )
+
+[node name="Slipperbell72" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.180713, -0.00134238, 0.470721, 0.034819, 0.502874, -0.0119332, -0.469434, 0.0367826, 0.180324, 53.9417, -0.113769, -17.7409 )
+
+[node name="plantLeaf48" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.0113037, 0, 1.8347, 0, 1.83473, 0, -1.8347, 0, 0.0113037, 62.3025, -0.00716019, -13.859 )
+
+[node name="cradleLoft49" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.030026, 0, 0.700333, 0, 0.700976, 0, -0.700333, 0, 0.030026, 49.8004, -0.356359, -79.0945 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft50" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.694036, 0, 0.0983929, 0, 0.700976, 0, -0.0983929, 0, 0.694036, 53.0793, -0.356359, -90.9334 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf49" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.962035, 0, 0.531401, 0, 1.09904, 0, -0.531401, 0, 0.962035, 51.0403, 0.254951, -74.2976 )
+
+[node name="Slipperbell73" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.150036, 0, -0.398066, 0, 0.425403, 0, 0.398066, 0, 0.150036, 52.8781, -0.0391031, -89.0182 )
+
+[node name="trumpert49" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.351125, 0, 0.422902, 0, 0.549667, 0, -0.422902, 0, 0.351125, 58.1207, 0.00347563, -96.6458 )
+
+[node name="trumpert50" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.080137, 0.0165401, 0.463187, 0.0324808, 0.469104, -0.0111318, -0.462343, 0.0300889, -0.0810654, 57.7904, -0.024902, -96.3325 )
+
+[node name="Slipperbell74" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.117905, 0.0243353, 0.681483, 0.0477887, 0.690189, -0.0163781, -0.680241, 0.0442696, -0.119271, 59.057, -0.120018, -102.835 )
+
+[node name="Slipperbell75" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.546365, 0.0358031, -0.0854254, 0.0382676, 0.552682, -0.0131151, 0.0843501, -0.0188297, -0.547379, 55.5519, -0.120018, -102.958 )
+
+[node name="plantLeaf50" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -1.75541, 0, -0.992276, 0, 2.01645, 0, 0.992276, 0, -1.75541, 54.682, -0.00284961, -113.052 )
+
+[node name="cradleLoft51" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.030026, 0, 0.700333, 0, 0.700976, 0, -0.700333, 0, 0.030026, 66.6087, -0.356357, -97.0814 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft52" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.694036, 0, 0.0983929, 0, 0.700976, 0, -0.0983929, 0, 0.694036, 69.8876, -0.356356, -108.92 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf51" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.962035, 0, 0.531401, 0, 1.09904, 0, -0.531401, 0, 0.962035, 67.8487, 0.254953, -92.2845 )
+
+[node name="Slipperbell76" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.150036, 0, -0.398066, 0, 0.425403, 0, 0.398066, 0, 0.150036, 69.6864, -0.039101, -107.005 )
+
+[node name="trumpert51" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.351125, 0, 0.422902, 0, 0.549667, 0, -0.422902, 0, 0.351125, 74.929, 0.00347773, -114.633 )
+
+[node name="trumpert52" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.080137, 0.0165401, 0.463187, 0.0324808, 0.469104, -0.0111318, -0.462343, 0.0300889, -0.0810654, 74.5987, -0.0248999, -114.32 )
+
+[node name="Slipperbell77" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.117905, 0.0243353, 0.681483, 0.0477887, 0.690189, -0.0163781, -0.680241, 0.0442696, -0.119271, 75.8653, -0.120016, -120.822 )
+
+[node name="Slipperbell78" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.546365, 0.0358031, -0.0854254, 0.0382676, 0.552682, -0.0131151, 0.0843501, -0.0188297, -0.547379, 72.3602, -0.120016, -120.945 )
+
+[node name="plantLeaf52" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -1.75541, 0, -0.992276, 0, 2.01645, 0, 0.992276, 0, -1.75541, 71.4903, -0.00284751, -131.039 )
+
+[node name="cradleLoft53" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.642368, 0, -0.28059, 0, 0.700976, 0, 0.28059, 0, -0.642368, 93.4641, -0.356357, -117.747 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft54" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.393197, 0, 0.580313, 0, 0.700976, 0, -0.580313, 0, -0.393197, 81.388, -0.356356, -115.494 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf53" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.899911, 0, 0.63092, 0, 1.09904, 0, -0.63092, 0, -0.899911, 97.2291, 0.254953, -120.968 )
+
+[node name="Slipperbell79" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.291733, 0, 0.309612, 0, 0.425403, 0, -0.309612, 0, 0.291733, 83.197, -0.039101, -116.154 )
+
+[node name="trumpert53" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.53414, 0, 0.129725, 0, 0.549667, 0, -0.129725, 0, -0.53414, 74.0419, 0.00347773, -117.514 )
+
+[node name="trumpert54" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.380176, 0.019768, -0.276248, 0.0324808, 0.469104, -0.0111318, 0.275043, -0.0280739, -0.380527, 74.4684, -0.0248999, -117.355 )
+
+[node name="Slipperbell80" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.55935, 0.0290846, -0.406441, 0.0477887, 0.690189, -0.0163781, 0.404668, -0.0413048, -0.559866, 68.0703, -0.120016, -115.637 )
+
+[node name="Slipperbell81" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.315728, -0.0326403, -0.454251, 0.0382676, 0.552682, -0.0131151, 0.453812, -0.0238962, 0.31714, 69.499, -0.120016, -112.434 )
+
+[node name="plantLeaf54" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.66239, 0, -1.14129, 0, 2.01645, 0, 1.14129, 0, 1.66239, 60.8129, -0.00284751, -107.22 )
+
+[node name="cradleLoft55" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.342063, 0, -0.61185, 0, 0.700976, 0, 0.61185, 0, 0.342063, 91.0542, -0.356359, -112.121 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft56" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.539081, 0, -0.448062, 0, 0.700976, 0, 0.448062, 0, -0.539081, 94.478, -0.356359, -100.323 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf55" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.539892, 0, -0.957296, 0, 1.09904, 0, 0.957296, 0, -0.539892, 87.4809, 0.254951, -115.553 )
+
+[node name="Slipperbell82" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.336657, 0, 0.260057, 0, 0.425403, 0, -0.260057, 0, -0.336657, 93.6439, -0.0391031, -102.059 )
+
+[node name="trumpert55" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.0768696, 0, -0.544266, 0, 0.549667, 0, 0.544266, 0, -0.0768696, 93.1855, 0.00347563, -92.8146 )
+
+[node name="trumpert56" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.310902, -0.0298724, -0.351689, 0.0324808, 0.469104, -0.0111318, 0.351457, -0.0169279, 0.312136, 93.3022, -0.024902, -93.2545 )
+
+[node name="Slipperbell83" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.457428, -0.0439511, -0.517437, 0.0477887, 0.690189, -0.0163781, 0.517096, -0.0249059, 0.459243, 95.6375, -0.120018, -87.0551 )
+
+[node name="Slipperbell84" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.420761, -0.0205897, 0.360041, 0.0382676, 0.552682, -0.0131151, -0.358593, 0.0348207, 0.421061, 98.6855, -0.120018, -88.7902 )
+
+[node name="plantLeaf56" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.973253, 0, 1.76603, 0, 2.01645, 0, -1.76603, 0, 0.973253, 104.724, -0.00284961, -80.6556 )
+
+[node name="cradleLoft57" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.342063, 0, -0.61185, 0, 0.700976, 0, 0.61185, 0, 0.342063, 86.1896, -0.356357, -87.9882 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft58" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.539081, 0, -0.448062, 0, 0.700976, 0, 0.448062, 0, -0.539081, 89.6133, -0.356356, -76.1903 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf57" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.26646, 0, -0.60994, 0, 1.40568, 0, 0.60994, 0, 1.26646, 82.6162, 0.254953, -91.4202 )
+
+[node name="Slipperbell85" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.336657, 0, 0.260057, 0, 0.425403, 0, -0.260057, 0, -0.336657, 88.7792, -0.039101, -77.926 )
+
+[node name="trumpert57" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.0768696, 0, -0.544266, 0, 0.549667, 0, 0.544266, 0, -0.0768696, 88.3209, 0.00347773, -68.6819 )
+
+[node name="trumpert58" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.310902, -0.0298724, -0.351689, 0.0324808, 0.469104, -0.0111318, 0.351457, -0.0169279, 0.312136, 88.4375, -0.0248999, -69.1219 )
+
+[node name="Slipperbell86" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.457428, -0.0439511, -0.517437, 0.0477887, 0.690189, -0.0163781, 0.517096, -0.0249059, 0.459243, 90.7728, -0.120016, -62.9224 )
+
+[node name="Slipperbell87" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.420761, -0.0205897, 0.360041, 0.0382676, 0.552682, -0.0131151, -0.358593, 0.0348207, 0.421061, 93.8208, -0.120016, -64.6575 )
+
+[node name="plantLeaf58" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.973253, 0, 1.76603, 0, 2.01645, 0, -1.76603, 0, 0.973253, 99.8596, -0.00284751, -56.523 )
+
+[node name="cradleLoft59" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.399464, 0, 0.576018, 0, 0.700976, 0, -0.576018, 0, 0.399464, 74.1795, -0.356357, -56.3015 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft60" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.964708, 0, -0.433901, 0, 1.0578, 0, 0.433901, 0, 0.964708, 83.2752, -0.356356, -64.5587 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf59" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.09714, 0, -0.0646244, 0, 1.09904, 0, 0.0646244, 0, 1.09714, 72.6655, 0.254953, -51.584 )
+
+[node name="Slipperbell88" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0857864, 0, -0.416663, 0, 0.425403, 0, 0.416663, 0, -0.0857864, 82.0821, -0.039101, -63.0471 )
+
+[node name="trumpert59" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.522729, 0, 0.169966, 0, 0.549667, 0, -0.169966, 0, 0.522729, 90.5884, 0.00347773, -66.6951 )
+
+[node name="trumpert60" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.179211, -0.002089, 0.434875, 0.0324808, 0.469104, -0.0111318, -0.433666, 0.0342718, 0.178877, 90.1419, -0.0248999, -66.6067 )
+
+[node name="Slipperbell89" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.263672, -0.00307353, 0.639829, 0.0477887, 0.690189, -0.0163781, -0.638049, 0.0504237, 0.263181, 94.6859, -0.120016, -71.4273 )
+
+[node name="Slipperbell90" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.506948, 0.0403255, 0.220162, 0.0382676, 0.552682, -0.0131151, -0.220529, 0.00320561, -0.50838, 91.7885, -0.120016, -73.4036 )
+
+[node name="plantLeaf60" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -2.01403, 0, 0.0987842, 0, 2.01645, 0, -0.0987842, 0, -2.01403, 96.4446, -0.00284751, -82.4013 )
+
+[node name="cradleLoft61" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.030026, 0, 0.700333, 0, 0.700976, 0, -0.700333, 0, 0.030026, -64.3727, -0.356359, -84.5983 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft62" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.694036, 0, 0.0983929, 0, 0.700976, 0, -0.0983929, 0, 0.694036, -61.0939, -0.356359, -96.4373 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf61" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.962035, 0, 0.531401, 0, 1.09904, 0, -0.531401, 0, 0.962035, -63.1328, 0.254951, -79.8014 )
+
+[node name="Slipperbell91" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.150036, 0, -0.398066, 0, 0.425403, 0, 0.398066, 0, 0.150036, -61.2951, -0.0391031, -94.5221 )
+
+[node name="trumpert61" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.351125, 0, 0.422902, 0, 0.549667, 0, -0.422902, 0, 0.351125, -56.0525, 0.00347563, -102.15 )
+
+[node name="trumpert62" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.080137, 0.0165401, 0.463187, 0.0324808, 0.469104, -0.0111318, -0.462343, 0.0300889, -0.0810654, -56.3828, -0.024902, -101.836 )
+
+[node name="Slipperbell92" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.117905, 0.0243353, 0.681483, 0.0477887, 0.690189, -0.0163781, -0.680241, 0.0442696, -0.119271, -55.1162, -0.120018, -108.339 )
+
+[node name="Slipperbell93" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.546365, 0.0358031, -0.0854254, 0.0382676, 0.552682, -0.0131151, 0.0843501, -0.0188297, -0.547379, -58.6213, -0.120018, -108.462 )
+
+[node name="plantLeaf62" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -1.75541, 0, -0.992276, 0, 2.01645, 0, 0.992276, 0, -1.75541, -59.4911, -0.00284961, -118.556 )
+
+[node name="cradleLoft63" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.030026, 0, 0.700333, 0, 0.700976, 0, -0.700333, 0, 0.030026, -47.5644, -0.356357, -102.585 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft64" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.694036, 0, 0.0983929, 0, 0.700976, 0, -0.0983929, 0, 0.694036, -44.2856, -0.356356, -114.424 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf63" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.962035, 0, 0.531401, 0, 1.09904, 0, -0.531401, 0, 0.962035, -46.3245, 0.254953, -97.7884 )
+
+[node name="Slipperbell94" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.150036, 0, -0.398066, 0, 0.425403, 0, 0.398066, 0, 0.150036, -44.4868, -0.039101, -112.509 )
+
+[node name="trumpert63" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.351125, 0, 0.422902, 0, 0.549667, 0, -0.422902, 0, 0.351125, -39.2441, 0.00347773, -120.137 )
+
+[node name="trumpert64" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.080137, 0.0165401, 0.463187, 0.0324808, 0.469104, -0.0111318, -0.462343, 0.0300889, -0.0810654, -39.5744, -0.0248999, -119.823 )
+
+[node name="Slipperbell95" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.117905, 0.0243353, 0.681483, 0.0477887, 0.690189, -0.0163781, -0.680241, 0.0442696, -0.119271, -38.3079, -0.120016, -126.326 )
+
+[node name="Slipperbell96" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.546365, 0.0358031, -0.0854254, 0.0382676, 0.552682, -0.0131151, 0.0843501, -0.0188297, -0.547379, -41.813, -0.120016, -126.449 )
+
+[node name="plantLeaf64" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -1.75541, 0, -0.992276, 0, 2.01645, 0, 0.992276, 0, -1.75541, -42.6828, -0.00284751, -136.543 )
+
+[node name="cradleLoft65" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.642368, 0, -0.28059, 0, 0.700976, 0, 0.28059, 0, -0.642368, -20.7091, -0.356357, -123.251 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft66" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.393197, 0, 0.580313, 0, 0.700976, 0, -0.580313, 0, -0.393197, -32.7852, -0.356356, -120.997 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf65" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.899911, 0, 0.63092, 0, 1.09904, 0, -0.63092, 0, -0.899911, -16.944, 0.254953, -126.472 )
+
+[node name="Slipperbell97" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.291733, 0, 0.309612, 0, 0.425403, 0, -0.309612, 0, 0.291733, -30.9762, -0.039101, -121.658 )
+
+[node name="trumpert65" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.53414, 0, 0.129725, 0, 0.549667, 0, -0.129725, 0, -0.53414, -40.1312, 0.00347773, -123.018 )
+
+[node name="trumpert66" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.380176, 0.019768, -0.276248, 0.0324808, 0.469104, -0.0111318, 0.275043, -0.0280739, -0.380527, -39.7048, -0.0248999, -122.859 )
+
+[node name="Slipperbell98" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.55935, 0.0290846, -0.406441, 0.0477887, 0.690189, -0.0163781, 0.404668, -0.0413048, -0.559866, -46.1029, -0.120016, -121.141 )
+
+[node name="Slipperbell99" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.315728, -0.0326403, -0.454251, 0.0382676, 0.552682, -0.0131151, 0.453812, -0.0238962, 0.31714, -44.6742, -0.120016, -117.938 )
+
+[node name="plantLeaf66" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.66239, 0, -1.14129, 0, 2.01645, 0, 1.14129, 0, 1.66239, -53.3603, -0.00284751, -112.724 )
+
+[node name="cradleLoft67" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.342063, 0, -0.61185, 0, 0.700976, 0, 0.61185, 0, 0.342063, -23.1189, -0.356359, -117.625 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft68" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.539081, 0, -0.448062, 0, 0.700976, 0, 0.448062, 0, -0.539081, -19.6952, -0.356359, -105.827 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf67" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.539892, 0, -0.957296, 0, 1.09904, 0, 0.957296, 0, -0.539892, -26.6923, 0.254951, -121.057 )
+
+[node name="Slipperbell100" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.336657, 0, 0.260057, 0, 0.425403, 0, -0.260057, 0, -0.336657, -20.5293, -0.0391031, -107.563 )
+
+[node name="trumpert67" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.0768696, 0, -0.544266, 0, 0.549667, 0, 0.544266, 0, -0.0768696, -20.9877, 0.00347563, -98.3184 )
+
+[node name="trumpert68" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.310902, -0.0298724, -0.351689, 0.0324808, 0.469104, -0.0111318, 0.351457, -0.0169279, 0.312136, -20.871, -0.024902, -98.7584 )
+
+[node name="Slipperbell101" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.457428, -0.0439511, -0.517437, 0.0477887, 0.690189, -0.0163781, 0.517096, -0.0249059, 0.459243, -18.5357, -0.120018, -92.559 )
+
+[node name="Slipperbell102" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.420761, -0.0205897, 0.360041, 0.0382676, 0.552682, -0.0131151, -0.358593, 0.0348207, 0.421061, -15.4877, -0.120018, -94.294 )
+
+[node name="plantLeaf68" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.973253, 0, 1.76603, 0, 2.01645, 0, -1.76603, 0, 0.973253, -9.44897, -0.00284961, -86.1595 )
+
+[node name="cradleLoft69" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.342063, 0, -0.61185, 0, 0.700976, 0, 0.61185, 0, 0.342063, -27.9836, -0.356357, -93.4921 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft70" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.539081, 0, -0.448062, 0, 0.700976, 0, 0.448062, 0, -0.539081, -24.5598, -0.356356, -81.6942 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf69" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.26646, 0, -0.60994, 0, 1.40568, 0, 0.60994, 0, 1.26646, -31.5569, 0.254953, -96.9241 )
+
+[node name="Slipperbell103" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.336657, 0, 0.260057, 0, 0.425403, 0, -0.260057, 0, -0.336657, -25.3939, -0.039101, -83.4299 )
+
+[node name="trumpert69" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.0768696, 0, -0.544266, 0, 0.549667, 0, 0.544266, 0, -0.0768696, -25.8523, 0.00347773, -74.1857 )
+
+[node name="trumpert70" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.310902, -0.0298724, -0.351689, 0.0324808, 0.469104, -0.0111318, 0.351457, -0.0169279, 0.312136, -25.7356, -0.0248999, -74.6257 )
+
+[node name="Slipperbell104" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.457428, -0.0439511, -0.517437, 0.0477887, 0.690189, -0.0163781, 0.517096, -0.0249059, 0.459243, -23.4003, -0.120016, -68.4263 )
+
+[node name="Slipperbell105" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.420761, -0.0205897, 0.360041, 0.0382676, 0.552682, -0.0131151, -0.358593, 0.0348207, 0.421061, -20.3524, -0.120016, -70.1614 )
+
+[node name="plantLeaf70" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.973253, 0, 1.76603, 0, 2.01645, 0, -1.76603, 0, 0.973253, -14.3136, -0.00284751, -62.0268 )
+
+[node name="cradleLoft71" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.399464, 0, 0.576018, 0, 0.700976, 0, -0.576018, 0, 0.399464, -39.9936, -0.356357, -61.8054 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft72" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.964708, 0, -0.433901, 0, 1.0578, 0, 0.433901, 0, 0.964708, -30.898, -0.356356, -70.0626 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf71" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.09714, 0, -0.0646244, 0, 1.09904, 0, 0.0646244, 0, 1.09714, -41.5077, 0.254953, -57.0878 )
+
+[node name="Slipperbell106" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0857864, 0, -0.416663, 0, 0.425403, 0, 0.416663, 0, -0.0857864, -32.0911, -0.039101, -68.5509 )
+
+[node name="trumpert71" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.522729, 0, 0.169966, 0, 0.549667, 0, -0.169966, 0, 0.522729, -23.5848, 0.00347773, -72.1989 )
+
+[node name="trumpert72" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.179211, -0.002089, 0.434875, 0.0324808, 0.469104, -0.0111318, -0.433666, 0.0342718, 0.178877, -24.0313, -0.0248999, -72.1105 )
+
+[node name="Slipperbell107" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.263672, -0.00307353, 0.639829, 0.0477887, 0.690189, -0.0163781, -0.638049, 0.0504237, 0.263181, -19.4873, -0.120016, -76.9312 )
+
+[node name="Slipperbell108" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.506948, 0.0403255, 0.220162, 0.0382676, 0.552682, -0.0131151, -0.220529, 0.00320561, -0.50838, -22.3847, -0.120016, -78.9075 )
+
+[node name="plantLeaf72" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -2.01403, 0, 0.0987842, 0, 2.01645, 0, -0.0987842, 0, -2.01403, -17.7286, -0.00284751, -87.9052 )
+
+[node name="cradleLoft73" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.030026, 0, 0.700333, 0, 0.700976, 0, -0.700333, 0, 0.030026, -115.131, -0.356359, -52.3499 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft74" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.694036, 0, 0.0983929, 0, 0.700976, 0, -0.0983929, 0, 0.694036, -111.852, -0.356359, -64.1889 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf73" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.962035, 0, 0.531401, 0, 1.09904, 0, -0.531401, 0, 0.962035, -113.891, 0.254951, -47.553 )
+
+[node name="Slipperbell109" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.150036, 0, -0.398066, 0, 0.425403, 0, 0.398066, 0, 0.150036, -112.054, -0.0391031, -62.2737 )
+
+[node name="trumpert73" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.351125, 0, 0.422902, 0, 0.549667, 0, -0.422902, 0, 0.351125, -106.811, 0.00347563, -69.9013 )
+
+[node name="trumpert74" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.080137, 0.0165401, 0.463187, 0.0324808, 0.469104, -0.0111318, -0.462343, 0.0300889, -0.0810654, -107.141, -0.024902, -69.588 )
+
+[node name="Slipperbell110" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.117905, 0.0243353, 0.681483, 0.0477887, 0.690189, -0.0163781, -0.680241, 0.0442696, -0.119271, -105.875, -0.120018, -76.0905 )
+
+[node name="Slipperbell111" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.546365, 0.0358031, -0.0854254, 0.0382676, 0.552682, -0.0131151, 0.0843501, -0.0188297, -0.547379, -109.38, -0.120018, -76.2137 )
+
+[node name="plantLeaf74" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -1.75541, 0, -0.992276, 0, 2.01645, 0, 0.992276, 0, -1.75541, -110.25, -0.00284961, -86.3073 )
+
+[node name="cradleLoft75" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.030026, 0, 0.700333, 0, 0.700976, 0, -0.700333, 0, 0.030026, -98.3229, -0.356357, -70.3369 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft76" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.694036, 0, 0.0983929, 0, 0.700976, 0, -0.0983929, 0, 0.694036, -95.0441, -0.356356, -82.1759 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf75" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.962035, 0, 0.531401, 0, 1.09904, 0, -0.531401, 0, 0.962035, -97.083, 0.254953, -65.54 )
+
+[node name="Slipperbell112" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.150036, 0, -0.398066, 0, 0.425403, 0, 0.398066, 0, 0.150036, -95.2453, -0.039101, -80.2607 )
+
+[node name="trumpert75" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.351125, 0, 0.422902, 0, 0.549667, 0, -0.422902, 0, 0.351125, -90.0027, 0.00347773, -87.8882 )
+
+[node name="trumpert76" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.080137, 0.0165401, 0.463187, 0.0324808, 0.469104, -0.0111318, -0.462343, 0.0300889, -0.0810654, -90.3329, -0.0248999, -87.575 )
+
+[node name="Slipperbell113" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.117905, 0.0243353, 0.681483, 0.0477887, 0.690189, -0.0163781, -0.680241, 0.0442696, -0.119271, -89.0664, -0.120016, -94.0775 )
+
+[node name="Slipperbell114" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.546365, 0.0358031, -0.0854254, 0.0382676, 0.552682, -0.0131151, 0.0843501, -0.0188297, -0.547379, -92.5715, -0.120016, -94.2007 )
+
+[node name="plantLeaf76" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -1.75541, 0, -0.992276, 0, 2.01645, 0, 0.992276, 0, -1.75541, -93.4413, -0.00284751, -104.294 )
+
+[node name="cradleLoft77" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.642368, 0, -0.28059, 0, 0.700976, 0, 0.28059, 0, -0.642368, -71.4676, -0.356357, -91.0027 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft78" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.393197, 0, 0.580313, 0, 0.700976, 0, -0.580313, 0, -0.393197, -83.5437, -0.356356, -88.7491 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf77" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.899911, 0, 0.63092, 0, 1.09904, 0, -0.63092, 0, -0.899911, -67.7025, 0.254953, -94.2233 )
+
+[node name="Slipperbell115" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.291733, 0, 0.309612, 0, 0.425403, 0, -0.309612, 0, 0.291733, -81.7347, -0.039101, -89.4095 )
+
+[node name="trumpert77" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.53414, 0, 0.129725, 0, 0.549667, 0, -0.129725, 0, -0.53414, -90.8897, 0.00347773, -90.7696 )
+
+[node name="trumpert78" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.380176, 0.019768, -0.276248, 0.0324808, 0.469104, -0.0111318, 0.275043, -0.0280739, -0.380527, -90.4633, -0.0248999, -90.6105 )
+
+[node name="Slipperbell116" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.55935, 0.0290846, -0.406441, 0.0477887, 0.690189, -0.0163781, 0.404668, -0.0413048, -0.559866, -96.8614, -0.120016, -88.8926 )
+
+[node name="Slipperbell117" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.315728, -0.0326403, -0.454251, 0.0382676, 0.552682, -0.0131151, 0.453812, -0.0238962, 0.31714, -95.4327, -0.120016, -85.6896 )
+
+[node name="plantLeaf78" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.66239, 0, -1.14129, 0, 2.01645, 0, 1.14129, 0, 1.66239, -104.119, -0.00284751, -80.4753 )
+
+[node name="cradleLoft79" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.342063, 0, -0.61185, 0, 0.700976, 0, 0.61185, 0, 0.342063, -73.8775, -0.356359, -85.3764 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft80" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.539081, 0, -0.448062, 0, 0.700976, 0, 0.448062, 0, -0.539081, -70.4537, -0.356359, -73.5785 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf79" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.539892, 0, -0.957296, 0, 1.09904, 0, 0.957296, 0, -0.539892, -77.4508, 0.254951, -88.8084 )
+
+[node name="Slipperbell118" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.336657, 0, 0.260057, 0, 0.425403, 0, -0.260057, 0, -0.336657, -71.2878, -0.0391031, -75.3142 )
+
+[node name="trumpert79" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.0768696, 0, -0.544266, 0, 0.549667, 0, 0.544266, 0, -0.0768696, -71.7462, 0.00347563, -66.0701 )
+
+[node name="trumpert80" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.310902, -0.0298724, -0.351689, 0.0324808, 0.469104, -0.0111318, 0.351457, -0.0169279, 0.312136, -71.6295, -0.024902, -66.51 )
+
+[node name="Slipperbell119" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.457428, -0.0439511, -0.517437, 0.0477887, 0.690189, -0.0163781, 0.517096, -0.0249059, 0.459243, -69.2942, -0.120018, -60.3106 )
+
+[node name="Slipperbell120" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.420761, -0.0205897, 0.360041, 0.0382676, 0.552682, -0.0131151, -0.358593, 0.0348207, 0.421061, -66.2462, -0.120018, -62.0457 )
+
+[node name="plantLeaf80" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.973253, 0, 1.76603, 0, 2.01645, 0, -1.76603, 0, 0.973253, -60.2075, -0.00284961, -53.9111 )
+
+[node name="cradleLoft81" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.342063, 0, -0.61185, 0, 0.700976, 0, 0.61185, 0, 0.342063, -78.7421, -0.356357, -61.2437 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft82" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.539081, 0, -0.448062, 0, 0.700976, 0, 0.448062, 0, -0.539081, -75.3183, -0.356356, -49.4458 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf81" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.26646, 0, -0.60994, 0, 1.40568, 0, 0.60994, 0, 1.26646, -82.3154, 0.254953, -64.6757 )
+
+[node name="Slipperbell121" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.336657, 0, 0.260057, 0, 0.425403, 0, -0.260057, 0, -0.336657, -76.1524, -0.039101, -51.1815 )
+
+[node name="trumpert81" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.0768696, 0, -0.544266, 0, 0.549667, 0, 0.544266, 0, -0.0768696, -76.6108, 0.00347773, -41.9374 )
+
+[node name="trumpert82" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.310902, -0.0298724, -0.351689, 0.0324808, 0.469104, -0.0111318, 0.351457, -0.0169279, 0.312136, -76.4941, -0.0248999, -42.3773 )
+
+[node name="Slipperbell122" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.457428, -0.0439511, -0.517437, 0.0477887, 0.690189, -0.0163781, 0.517096, -0.0249059, 0.459243, -74.1588, -0.120016, -36.1779 )
+
+[node name="Slipperbell123" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.420761, -0.0205897, 0.360041, 0.0382676, 0.552682, -0.0131151, -0.358593, 0.0348207, 0.421061, -71.1109, -0.120016, -37.913 )
+
+[node name="plantLeaf82" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.973253, 0, 1.76603, 0, 2.01645, 0, -1.76603, 0, 0.973253, -65.0721, -0.00284751, -29.7784 )
+
+[node name="cradleLoft83" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.399464, 0, 0.576018, 0, 0.700976, 0, -0.576018, 0, 0.399464, -90.7521, -0.356357, -29.557 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft84" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.964708, 0, -0.433901, 0, 1.0578, 0, 0.433901, 0, 0.964708, -81.6565, -0.356356, -37.8142 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf83" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.09714, 0, -0.0646244, 0, 1.09904, 0, 0.0646244, 0, 1.09714, -92.2662, 0.254953, -24.8395 )
+
+[node name="Slipperbell124" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0857864, 0, -0.416663, 0, 0.425403, 0, 0.416663, 0, -0.0857864, -82.8496, -0.039101, -36.3026 )
+
+[node name="trumpert83" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.522729, 0, 0.169966, 0, 0.549667, 0, -0.169966, 0, 0.522729, -74.3433, 0.00347773, -39.9505 )
+
+[node name="trumpert84" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.179211, -0.002089, 0.434875, 0.0324808, 0.469104, -0.0111318, -0.433666, 0.0342718, 0.178877, -74.7898, -0.0248999, -39.8621 )
+
+[node name="Slipperbell125" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.263672, -0.00307353, 0.639829, 0.0477887, 0.690189, -0.0163781, -0.638049, 0.0504237, 0.263181, -70.2458, -0.120016, -44.6828 )
+
+[node name="Slipperbell126" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.506948, 0.0403255, 0.220162, 0.0382676, 0.552682, -0.0131151, -0.220529, 0.00320561, -0.50838, -73.1432, -0.120016, -46.6591 )
+
+[node name="plantLeaf84" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -2.01403, 0, 0.0987842, 0, 2.01645, 0, -0.0987842, 0, -2.01403, -68.4871, -0.00284751, -55.6568 )
+
+[node name="cradleLoft85" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.030026, 0, 0.700333, 0, 0.700976, 0, -0.700333, 0, 0.030026, 52.7575, -0.356359, 25.0325 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft86" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.694036, 0, 0.0983929, 0, 0.700976, 0, -0.0983929, 0, 0.694036, 56.0363, -0.356359, 13.1935 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf85" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.962035, 0, 0.531401, 0, 1.09904, 0, -0.531401, 0, 0.962035, 53.9974, 0.254951, 29.8294 )
+
+[node name="Slipperbell127" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.150036, 0, -0.398066, 0, 0.425403, 0, 0.398066, 0, 0.150036, 55.8351, -0.0391031, 15.1088 )
+
+[node name="trumpert85" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.351125, 0, 0.422902, 0, 0.549667, 0, -0.422902, 0, 0.351125, 61.0778, 0.00347563, 7.48119 )
+
+[node name="trumpert86" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.080137, 0.0165401, 0.463187, 0.0324808, 0.469104, -0.0111318, -0.462343, 0.0300889, -0.0810654, 60.7475, -0.024902, 7.79442 )
+
+[node name="Slipperbell128" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.117905, 0.0243353, 0.681483, 0.0477887, 0.690189, -0.0163781, -0.680241, 0.0442696, -0.119271, 62.014, -0.120018, 1.29193 )
+
+[node name="Slipperbell129" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.546365, 0.0358031, -0.0854254, 0.0382676, 0.552682, -0.0131151, 0.0843501, -0.0188297, -0.547379, 58.5089, -0.120018, 1.16878 )
+
+[node name="plantLeaf86" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -8.5489, 0, -4.83241, 0, 9.82018, 0, 4.83241, 0, -8.5489, 57.6391, -0.00284961, -8.9248 )
+
+[node name="cradleLoft87" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.030026, 0, 0.700333, 0, 0.700976, 0, -0.700333, 0, 0.030026, 69.5658, -0.356357, 7.04552 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft88" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.694036, 0, 0.0983929, 0, 0.700976, 0, -0.0983929, 0, 0.694036, 72.8446, -0.356356, -4.79344 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf87" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.962035, 0, 0.531401, 0, 1.09904, 0, -0.531401, 0, 0.962035, 70.8057, 0.254953, 11.8424 )
+
+[node name="Slipperbell130" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.150036, 0, -0.398066, 0, 0.425403, 0, 0.398066, 0, 0.150036, 72.6434, -0.039101, -2.87823 )
+
+[node name="trumpert87" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.351125, 0, 0.422902, 0, 0.549667, 0, -0.422902, 0, 0.351125, 77.8861, 0.00347773, -10.5058 )
+
+[node name="trumpert88" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.080137, 0.0165401, 0.463187, 0.0324808, 0.469104, -0.0111318, -0.462343, 0.0300889, -0.0810654, 77.5558, -0.0248999, -10.1926 )
+
+[node name="Slipperbell131" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.117905, 0.0243353, 0.681483, 0.0477887, 0.690189, -0.0163781, -0.680241, 0.0442696, -0.119271, 78.8223, -0.120016, -16.6951 )
+
+[node name="Slipperbell132" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.546365, 0.0358031, -0.0854254, 0.0382676, 0.552682, -0.0131151, 0.0843501, -0.0188297, -0.547379, 75.3173, -0.120016, -16.8182 )
+
+[node name="plantLeaf88" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -1.75541, 0, -0.992276, 0, 2.01645, 0, 0.992276, 0, -1.75541, 74.4474, -0.00284751, -26.9118 )
+
+[node name="cradleLoft89" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.642368, 0, -0.28059, 0, 0.700976, 0, 0.28059, 0, -0.642368, 96.4212, -0.356357, -13.6202 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft90" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.393197, 0, 0.580313, 0, 0.700976, 0, -0.580313, 0, -0.393197, 84.345, -0.356356, -11.3667 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf89" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.899911, 0, 0.63092, 0, 1.09904, 0, -0.63092, 0, -0.899911, 100.186, 0.254953, -16.8409 )
+
+[node name="Slipperbell133" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.291733, 0, 0.309612, 0, 0.425403, 0, -0.309612, 0, 0.291733, 86.154, -0.039101, -12.027 )
+
+[node name="trumpert89" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.53414, 0, 0.129725, 0, 0.549667, 0, -0.129725, 0, -0.53414, 76.999, 0.00347773, -13.3872 )
+
+[node name="trumpert90" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.380176, 0.019768, -0.276248, 0.0324808, 0.469104, -0.0111318, 0.275043, -0.0280739, -0.380527, 77.4254, -0.0248999, -13.228 )
+
+[node name="Slipperbell134" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.55935, 0.0290846, -0.406441, 0.0477887, 0.690189, -0.0163781, 0.404668, -0.0413048, -0.559866, 71.0273, -0.120016, -11.5102 )
+
+[node name="Slipperbell135" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.315728, -0.0326403, -0.454251, 0.0382676, 0.552682, -0.0131151, 0.453812, -0.0238962, 0.31714, 72.456, -0.120016, -8.30714 )
+
+[node name="plantLeaf90" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.66239, 0, -1.14129, 0, 2.01645, 0, 1.14129, 0, 1.66239, 63.7699, -0.00284751, -3.0928 )
+
+[node name="cradleLoft91" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.342063, 0, -0.61185, 0, 0.700976, 0, 0.61185, 0, 0.342063, 94.0113, -0.356359, -7.99391 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft92" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.539081, 0, -0.448062, 0, 0.700976, 0, 0.448062, 0, -0.539081, 97.435, -0.356359, 3.80397 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf91" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.539892, 0, -0.957296, 0, 1.09904, 0, 0.957296, 0, -0.539892, 90.4379, 0.254951, -11.4259 )
+
+[node name="Slipperbell136" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.336657, 0, 0.260057, 0, 0.425403, 0, -0.260057, 0, -0.336657, 96.6009, -0.0391031, 2.06824 )
+
+[node name="trumpert91" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.0768696, 0, -0.544266, 0, 0.549667, 0, 0.544266, 0, -0.0768696, 96.1425, 0.00347563, 11.3124 )
+
+[node name="trumpert92" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.310902, -0.0298724, -0.351689, 0.0324808, 0.469104, -0.0111318, 0.351457, -0.0169279, 0.312136, 96.2592, -0.024902, 10.8724 )
+
+[node name="Slipperbell137" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.457428, -0.0439511, -0.517437, 0.0477887, 0.690189, -0.0163781, 0.517096, -0.0249059, 0.459243, 98.5945, -0.120018, 17.0719 )
+
+[node name="Slipperbell138" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.420761, -0.0205897, 0.360041, 0.0382676, 0.552682, -0.0131151, -0.358593, 0.0348207, 0.421061, 101.643, -0.120018, 15.3368 )
+
+[node name="plantLeaf92" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.973253, 0, 1.76603, 0, 2.01645, 0, -1.76603, 0, 0.973253, 107.681, -0.00284961, 23.4713 )
+
+[node name="cradleLoft93" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.342063, 0, -0.61185, 0, 0.700976, 0, 0.61185, 0, 0.342063, 89.1466, -0.356357, 16.1388 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft94" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.539081, 0, -0.448062, 0, 0.700976, 0, 0.448062, 0, -0.539081, 92.5704, -0.356356, 27.9367 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf93" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.26646, 0, -0.60994, 0, 1.40568, 0, 0.60994, 0, 1.26646, 85.5733, 0.254953, 12.7068 )
+
+[node name="Slipperbell139" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.336657, 0, 0.260057, 0, 0.425403, 0, -0.260057, 0, -0.336657, 91.7363, -0.039101, 26.2009 )
+
+[node name="trumpert93" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.0768696, 0, -0.544266, 0, 0.549667, 0, 0.544266, 0, -0.0768696, 91.2779, 0.00347773, 35.4451 )
+
+[node name="trumpert94" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.310902, -0.0298724, -0.351689, 0.0324808, 0.469104, -0.0111318, 0.351457, -0.0169279, 0.312136, 91.3946, -0.0248999, 35.0051 )
+
+[node name="Slipperbell140" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.457428, -0.0439511, -0.517437, 0.0477887, 0.690189, -0.0163781, 0.517096, -0.0249059, 0.459243, 93.7299, -0.120016, 41.2045 )
+
+[node name="Slipperbell141" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.420761, -0.0205897, 0.360041, 0.0382676, 0.552682, -0.0131151, -0.358593, 0.0348207, 0.421061, 96.7778, -0.120016, 39.4695 )
+
+[node name="plantLeaf94" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.973253, 0, 1.76603, 0, 2.01645, 0, -1.76603, 0, 0.973253, 102.817, -0.00284751, 47.604 )
+
+[node name="cradleLoft95" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.399464, 0, 0.576018, 0, 0.700976, 0, -0.576018, 0, 0.399464, 77.1366, -0.356357, 47.8254 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft96" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.964708, 0, -0.433901, 0, 1.0578, 0, 0.433901, 0, 0.964708, 86.2322, -0.356356, 39.5682 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf95" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.09714, 0, -0.0646244, 0, 1.09904, 0, 0.0646244, 0, 1.09714, 75.6226, 0.254953, 52.543 )
+
+[node name="Slipperbell142" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0857864, 0, -0.416663, 0, 0.425403, 0, 0.416663, 0, -0.0857864, 85.0392, -0.039101, 41.0799 )
+
+[node name="trumpert95" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.522729, 0, 0.169966, 0, 0.549667, 0, -0.169966, 0, 0.522729, 93.5454, 0.00347773, 37.4319 )
+
+[node name="trumpert96" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.179211, -0.002089, 0.434875, 0.0324808, 0.469104, -0.0111318, -0.433666, 0.0342718, 0.178877, 93.0989, -0.0248999, 37.5203 )
+
+[node name="Slipperbell143" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.263672, -0.00307353, 0.639829, 0.0477887, 0.690189, -0.0163781, -0.638049, 0.0504237, 0.263181, 97.6429, -0.120016, 32.6997 )
+
+[node name="Slipperbell144" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.506948, 0.0403255, 0.220162, 0.0382676, 0.552682, -0.0131151, -0.220529, 0.00320561, -0.50838, 94.7455, -0.120016, 30.7233 )
+
+[node name="plantLeaf96" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -2.01403, 0, 0.0987842, 0, 2.01645, 0, -0.0987842, 0, -2.01403, 99.4016, -0.00284751, 21.7257 )
+
+[node name="cradleLoft97" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.459956, 0, 0.528969, 0, 0.700976, 0, -0.528969, 0, 0.459956, -13.9843, -0.356359, -103.407 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft98" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.604081, 0, -0.355604, 0, 0.700976, 0, 0.355604, 0, 0.604081, -4.04163, -0.356359, -110.622 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf97" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.08353, 0, -0.184004, 0, 1.09904, 0, 0.184004, 0, 1.08353, -16.0043, 0.254951, -98.8828 )
+
+[node name="Slipperbell145" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.130757, 0, -0.404809, 0, 0.425403, 0, 0.404809, 0, -0.130757, -5.39261, -0.0391031, -109.249 )
+
+[node name="trumpert97" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.538159, 0, 0.111888, 0, 0.549667, 0, -0.111888, 0, 0.538159, 3.46107, 0.00347563, -111.947 )
+
+[node name="trumpert98" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.22548, -0.00581768, 0.41275, 0.0324808, 0.469104, -0.0111318, -0.411511, 0.0338389, 0.22528, 3.00755, -0.024902, -111.908 )
+
+[node name="Slipperbell146" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.331747, -0.00855951, 0.607276, 0.0477887, 0.690189, -0.0163781, -0.605453, 0.0497869, 0.331453, 8.05064, -0.120018, -116.204 )
+
+[node name="Slipperbell147" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.479845, 0.0397346, 0.274342, 0.0382676, 0.552682, -0.0131151, -0.274551, 0.00758845, -0.481309, 5.38631, -0.120018, -118.485 )
+
+[node name="plantLeaf98" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -1.99121, 0, 0.318049, 0, 2.01645, 0, -0.318049, 0, -1.99121, 10.9967, -0.00284961, -126.92 )
+
+[node name="cradleLoft99" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.459956, 0, 0.528969, 0, 0.700976, 0, -0.528969, 0, 0.459956, 10.3705, -0.356357, -106.998 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft100" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.604081, 0, -0.355604, 0, 0.700976, 0, 0.355604, 0, 0.604081, 20.3132, -0.356356, -114.213 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf99" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.08353, 0, -0.184004, 0, 1.09904, 0, 0.184004, 0, 1.08353, 8.35055, 0.254953, -102.474 )
+
+[node name="Slipperbell148" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.130757, 0, -0.404809, 0, 0.425403, 0, 0.404809, 0, -0.130757, 18.9622, -0.039101, -112.84 )
+
+[node name="trumpert99" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.538159, 0, 0.111888, 0, 0.549667, 0, -0.111888, 0, 0.538159, 27.8159, 0.00347773, -115.538 )
+
+[node name="trumpert100" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.22548, -0.00581768, 0.41275, 0.0324808, 0.469104, -0.0111318, -0.411511, 0.0338389, 0.22528, 27.3624, -0.0248999, -115.499 )
+
+[node name="Slipperbell149" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.331747, -0.00855951, 0.607276, 0.0477887, 0.690189, -0.0163781, -0.605453, 0.0497869, 0.331453, 32.4055, -0.120016, -119.795 )
+
+[node name="Slipperbell150" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.479845, 0.0397346, 0.274342, 0.0382676, 0.552682, -0.0131151, -0.274551, 0.00758845, -0.481309, 29.7411, -0.120016, -122.075 )
+
+[node name="plantLeaf100" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -1.99121, 0, 0.318049, 0, 2.01645, 0, -0.318049, 0, -1.99121, 35.3516, -0.00284751, -130.511 )
+
+[node name="cradleLoft101" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.677227, 0, 0.180918, 0, 0.700976, 0, -0.180918, 0, -0.677227, 44.252, -0.356357, -106.422 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft102" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.0541807, 0, 0.698879, 0, 0.700976, 0, -0.698879, 0, 0.0541807, 33.4035, -0.356356, -112.186 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf101" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -0.310546, 0, 1.05426, 0, 1.09904, 0, -1.05426, 0, -0.310546, 49.2035, 0.254953, -106.594 )
+
+[node name="Slipperbell151" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.421106, 0, 0.0603074, 0, 0.425403, 0, -0.0603074, 0, 0.421106, 35.2298, -0.039101, -111.575 )
+
+[node name="trumpert101" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.336865, 0, 0.434346, 0, 0.549667, 0, -0.434346, 0, -0.336865, 28.9179, 0.00347773, -118.344 )
+
+[node name="trumpert102" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.468727, 0.032956, 0.0211245, 0.0324808, 0.469104, -0.0111318, -0.0218482, -0.00963445, -0.469753, 29.1522, -0.0248999, -117.954 )
+
+[node name="Slipperbell152" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.689635, 0.0484878, 0.0310803, 0.0477887, 0.690189, -0.0163781, -0.032145, -0.0141751, -0.691143, 23.0781, -0.120016, -120.598 )
+
+[node name="Slipperbell153" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.0359235, -0.0106328, -0.552893, 0.0382676, 0.552682, -0.0131151, 0.551669, -0.0390303, -0.0350934, 22.1991, -0.120016, -117.203 )
+
+[node name="plantLeaf102" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.588747, 0, -1.92859, 0, 2.01645, 0, 1.92859, 0, 0.588747, 12.1566, -0.00284751, -118.538 )
+
+[node name="cradleLoft103" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.113824, 0, -0.691673, 0, 0.700976, 0, 0.691673, 0, -0.113824, 38.8608, -0.356359, -103.524 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft104" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.700828, 0, -0.0144231, 0, 0.700976, 0, 0.0144231, 0, -0.700828, 34.1854, -0.356359, -92.1636 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf103" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -8.50471, 0, -3.44045, 0, 9.17424, 0, 3.44045, 0, -8.50471, 38.2053, 0.254951, -108.435 )
+
+[node name="Slipperbell154" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.101199, 0, 0.41319, 0, 0.425403, 0, -0.41319, 0, -0.101199, 34.6149, -0.0391031, -94.0408 )
+
+[node name="trumpert103" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.399322, 0, -0.377725, 0, 0.549667, 0, 0.377725, 0, -0.399322, 28.4951, 0.00347563, -87.0973 )
+
+[node name="trumpert104" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.0240939, -0.0128111, -0.469567, 0.0324808, 0.469104, -0.0111318, 0.468617, -0.0318558, 0.0249144, 28.8606, -0.024902, -87.3686 )
+
+[node name="Slipperbell155" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.10398, -0.0552876, -2.02647, 0.140174, 2.02447, -0.0480406, 2.02237, -0.137477, 0.107521, 26.8231, -0.120018, -81.065 )
+
+[node name="Slipperbell156" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 2.4163, -0.165318, 0.0837128, 0.167348, 2.41693, -0.0573535, -0.0795772, 0.0629666, 2.42127, 30.2881, -0.120018, -80.5223 )
+
+[node name="plantLeaf104" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 9.90278, 0, 4.11969, 0, 10.7255, 0, -4.11969, 0, 9.90278, 29.9408, -0.00284961, -70.3972 )
+
+[node name="cradleLoft105" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.61465, 0, -3.73505, 0, 3.78528, 0, 3.73505, 0, -0.61465, 20.0161, -0.356357, -87.683 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft106" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( -0.700828, 0, -0.0144231, 0, 0.700976, 0, 0.0144231, 0, -0.700828, 15.3407, -0.356356, -76.3229 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf105" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.610273, 0, -1.2663, 0, 1.40568, 0, 1.2663, 0, 0.610273, 19.3606, 0.254953, -92.594 )
+
+[node name="Slipperbell157" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.101199, 0, 0.41319, 0, 0.425403, 0, -0.41319, 0, -0.101199, 15.7702, -0.039101, -78.2001 )
+
+[node name="trumpert105" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( -0.399322, 0, -0.377725, 0, 0.549667, 0, 0.377725, 0, -0.399322, 9.65038, 0.00347773, -71.2565 )
+
+[node name="trumpert106" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.058954, -0.0313468, -1.14896, 0.0794755, 1.14783, -0.0272379, 1.14664, -0.0779464, 0.0609618, 10.0158, -0.0248999, -71.5279 )
+
+[node name="Slipperbell158" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.11175, -0.0594189, -2.1779, 0.150649, 2.17575, -0.0516304, 2.17349, -0.14775, 0.115555, 7.97838, -0.120016, -65.2243 )
+
+[node name="Slipperbell159" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.552538, -0.0378034, 0.0191427, 0.0382676, 0.552682, -0.0131151, -0.018197, 0.0143986, 0.553674, 11.4434, -0.120016, -64.6816 )
+
+[node name="plantLeaf106" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 1.86177, 0, 0.774524, 0, 2.01645, 0, -0.774524, 0, 1.86177, 11.0961, -0.00284751, -54.5565 )
+
+[node name="cradleLoft107" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.67139, 0, 0.201503, 0, 0.700976, 0, -0.201503, 0, 0.67139, -9.12449, -0.356357, -70.3881 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="cradleLoft108" parent="vegetation" instance=ExtResource( 3 )]
+transform = Transform( 0.484009, 0, -0.940567, 0, 1.0578, 0, 0.940567, 0, 0.484009, 3.13479, -0.356356, -71.1768 )
+skin = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="plantLeaf107" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( 0.817724, 0, -0.73432, 0, 1.09904, 0, 0.73432, 0, 0.817724, -13.2487, 0.254953, -67.6425 )
+
+[node name="Slipperbell160" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.326768, 0, -0.272379, 0, 0.425403, 0, 0.272379, 0, -0.326768, 1.25965, -0.039101, -70.7382 )
+
+[node name="trumpert107" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.51472, 0, -0.192866, 0, 0.549667, 0, 0.192866, 0, 0.51472, 10.1854, 0.00347773, -68.2896 )
+
+[node name="trumpert108" parent="vegetation" instance=ExtResource( 5 )]
+transform = Transform( 0.410426, -0.0229931, 0.228603, 0.0324808, 0.469104, -0.0111318, -0.227449, 0.0254997, 0.410919, 9.78112, -0.0248999, -68.4987 )
+
+[node name="Slipperbell161" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( 0.603856, -0.0338296, 0.336342, 0.0477887, 0.690189, -0.0163781, -0.334644, 0.0375174, 0.604581, 16.3391, -0.120016, -69.4366 )
+
+[node name="Slipperbell162" parent="vegetation" instance=ExtResource( 2 )]
+transform = Transform( -0.259007, 0.029538, 0.489016, 0.0382676, 0.552682, -0.0131151, -0.48841, 0.0276393, -0.260356, 15.305, -0.120016, -72.7879 )
+
+[node name="plantLeaf108" parent="vegetation" instance=ExtResource( 4 )]
+transform = Transform( -1.51347, 0, 1.33247, 0, 2.01645, 0, -1.33247, 0, -1.51347, 24.5538, -0.00284751, -76.9226 )

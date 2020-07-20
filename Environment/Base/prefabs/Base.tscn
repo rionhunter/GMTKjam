@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Environment/Base/prefabs/greenHouse1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Environment/Base/prefabs/viaduct1.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Environment/Base/prefabs/bLivingRoom.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Environment/Base/prefabs/hallway1.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Environment/Base/prefabs/restroom.tscn" type="PackedScene" id=8]
+[ext_resource path="res://glass1.tres" type="Material" id=9]
 
 [sub_resource type="Skin" id=1]
 
@@ -29,7 +30,7 @@ transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8.58626
 transform = Transform( -2.8213e-07, 0, -1, 0, 1, 0, 1, 0, -2.8213e-07, -1.22155, 1.00559, 1.23107 )
 
 [node name="airlock1" parent="." instance=ExtResource( 4 )]
-transform = Transform( 3.69552e-07, 0, -1, 0, 1, 0, 1, 0, 3.69552e-07, 3.91273, -0.152528, -8.7641 )
+transform = Transform( 3.69552e-07, 0, -1, 0, 1, 0, 1, 0, 3.69552e-07, 4.03192, -0.152528, -8.7641 )
 
 [node name="greenHouse1" parent="." instance=ExtResource( 1 )]
 transform = Transform( 3.69552e-07, 0, -1, 0, 1, 0, 1, 0, 3.69552e-07, 7.21376, -0.163867, -9.20511 )
@@ -43,7 +44,11 @@ transform = Transform( -2.78594e-08, 0, 0.637349, 0, 0.637349, 0, -0.637349, 0, 
 script = SubResource( 2 )
 
 [node name="viaduct3" parent="." instance=ExtResource( 2 )]
-transform = Transform( -0.637349, 0, -5.57188e-08, 0, 0.637349, 0, 5.57188e-08, 0, -0.637349, 9.8725, 0.166806, -8.90292 )
+transform = Transform( -0.637349, 0, -5.57188e-08, 0, 0.637349, 0, 5.57188e-08, 0, -0.637349, 9.86019, 0.174041, -8.90269 )
+script = SubResource( 2 )
+
+[node name="viaduct4" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.39297e-07, 0, 0.637349, 0, 0.637349, 0, -0.637349, 0, -1.39297e-07, 11.8142, 0.174041, -6.94864 )
 script = SubResource( 2 )
 
 [node name="hallway1" parent="." instance=ExtResource( 7 )]
@@ -52,4 +57,12 @@ transform = Transform( -4.91121e-08, 0, 1.12355, 0, 1.12355, 0, -1.12355, 0, -4.
 [node name="bLivingRoom" parent="." instance=ExtResource( 6 )]
 transform = Transform( -5.1594e-08, 0, 1.18033, 0, 1.18033, 0, -1.18033, 0, -5.1594e-08, 8.60701, -0.426029, -6.54939 )
 
-[node name="CSGBox" parent="." instance=ExtResource( 8 )]
+[node name="Bathroom" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.0982, 0.00923907, -4.90065 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.847094, 0.531443, 0, -0.531443, 0.847094, 8.67218, 3.46065, -11.8676 )
+material_override = ExtResource( 9 )
+width = 2.77502
+height = 1.57049
+depth = 0.124213

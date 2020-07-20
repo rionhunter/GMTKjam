@@ -2,22 +2,16 @@
 
 [resource]
 resource_name = "glass1"
-params_diffuse_mode = 2
+flags_transparent = true
+flags_unshaded = true
+params_diffuse_mode = 1
 params_specular_mode = 2
 params_blend_mode = 1
-params_cull_mode = 2
-params_line_width = 2.9
-params_point_size = 0.1
-params_grow = true
-params_grow_amount = 0.0
-albedo_color = Color( 1, 1, 1, 0 )
-metallic = 1.0
-roughness = 0.0
-anisotropy_enabled = true
-anisotropy = 0.0
+params_cull_mode = 1
+params_depth_draw_mode = 2
+params_line_width = 0.1
+params_point_size = 2.9
+albedo_color = Color( 0.384314, 0.196078, 0.196078, 0.631373 )
 refraction_enabled = true
 refraction_scale = 0.05
 refraction_texture_channel = 0
-distance_fade_mode = 1
-distance_fade_min_distance = 0.0
-distance_fade_max_distance = 10.0
